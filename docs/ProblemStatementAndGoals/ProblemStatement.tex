@@ -3,11 +3,11 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 
-\title{Problem Statement and Goals\\\progname}
+\title{Problem Statement and Goals\\LiveNeuro}
 
-\author{\authname}
+\author{\ Bo Liang}
 
-\date{}
+\date{January 20th 2025}
 
 \input{../Comments}
 \input{../Common}
@@ -22,72 +22,39 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
+January 20 2025 & Bo Liang & Initial Draft\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \section{Problem Statement}
 
-\wss{You should check your problem statement with the
-\href{https://github.com/smiths/capTemplate/blob/main/docs/Checklists/ProbState-Checklist.pdf}
-{problem statement checklist}.} 
-
-\wss{You can change the section headings, as long as you include the required
-information.}
+Neuron data based on human brain activity is often complex and multi-sourced. To clearly represent such data, it is common to use multiple data plots for visualization. However, due to the differing coordinate dimensions of various data sets, it becomes challenging for users to track specific data points across multiple plots at a given time and to comprehend the complete data transformation process. This hinders the understanding of the overall process.
 
 \subsection{Problem}
-
+This project aims to develop an interactive data visualization method that links multiple data plots together.
 \subsection{Inputs and Outputs}
-
-\wss{Characterize the problem in terms of ``high level'' inputs and outputs.  
-Use abstraction so that you can avoid details.}
+\subsubsection{input}
+Neuron data, electrical stimulation signals, MRI data.
+\subsubsection{output}
+Interactive data visualization plots for users.
 
 \subsection{Stakeholders}
-
+Stakeholders include researchers, scholars, and students who aim to gain a clear understanding of the complete neuron stimulation process.
 \subsection{Environment}
+The project will be developed in Python 3.11 on macOS.
 
-\wss{Hardware and software environment}
 
 \section{Goals}
-
+\begin{enumerate}
+    \item Enable user interaction with data plots, allowing users to freely view specific data at any position on the plots.
+    \item 2. Implement linkage between different data plots and support user interaction.
+\end{enumerate}
 \section{Stretch Goals}
-
+Allow flexible configuration of different types of data, enabling customizable and dynamic linkages.
 \section{Challenge Level and Extras}
 
-\wss{State your expected challenge level (advanced, general or basic).  The
-challenge can come through the required domain knowledge, the implementation or
-something else.  Usually the greater the novelty of a project the greater its
-challenge level.  You should include your rationale for the selected level.
-Approval of the level will be part of the discussion with the instructor for
-approving the project.  The challenge level, with the approval (or request) of
-the instructor, can be modified over the course of the term.}
+This project poses a general level of challenge. While it is not a research-oriented project, it requires a certain level of understanding of neuroscience-related data models, extensive software development experience, and the ability to iterate based on user feedback and habits to ensure an optimal user experience.
 
-\wss{Teams may wish to include extras as either potential bonus grades, or to
-make up for a less advanced challenge level.  Potential extras include usability
-testing, code walkthroughs, user documentation, formal proof, GenderMag
-personas, Design Thinking, etc.  Normally the maximum number of extras will be
-two.  Approval of the extras will be part of the discussion with the instructor
-for approving the project.  The extras, with the approval (or request) of the
-instructor, can be modified over the course of the term.}
-
-\newpage{}
-
-\section*{Appendix --- Reflection}
-
-\wss{Not required for CAS 741}
-
-\input{../Reflection.tex}
-
-\begin{enumerate}
-    \item What went well while writing this deliverable? 
-    \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-    \item How did you and your team adjust the scope of your goals to ensure
-    they are suitable for a Capstone project (not overly ambitious but also of
-    appropriate complexity for a senior design project)?
-\end{enumerate}  
 
 \end{document}
