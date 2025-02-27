@@ -1,529 +1,1078 @@
-\documentclass[12pt, titlepage]{article}
-
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{hyperref}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-    colorlinks,
-    citecolor=blue,
-    filecolor=black,
-    linkcolor=red,
-    urlcolor=blue
-}
-\usepackage[round]{natbib}
+  pdftitle={System Verification and Validation Plan for Live Neuro},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\input{../Comments}
-\input{../Common}
+\title{System Verification and Validation Plan for Live Neuro}
+\author{}
+\date{}
 
 \begin{document}
-
-\title{System Verification and Validation Plan for \progname{}} 
-\author{\authname}
-\date{\today}
-	
 \maketitle
 
-\pagenumbering{roman}
+\begin{quote}
+Bo Liang February 26, 2025
 
-\section*{Revision History}
+\textbf{Revision History}
 
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
-\midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
-\bottomrule
-\end{tabularx}
+\textbf{Date Version Notes}
 
-~\\
-\wss{The intention of the VnV plan is to increase confidence in the software.
-However, this does not mean listing every verification and validation technique
-that has ever been devised.  The VnV plan should also be a \textbf{feasible}
-plan. Execution of the plan should be possible with the time and team available.
-If the full plan cannot be completed during the time available, it can either be
-modified to ``fake it'', or a better solution is to add a section describing
-what work has been completed and what work is still planned for the future.}
+February26, 2025 1.0 Initial Draft
 
-\wss{The VnV plan is typically started after the requirements stage, but before
-the design stage.  This means that the sections related to unit testing cannot
-initially be completed.  The sections will be filled in after the design stage
-is complete.  the final version of the VnV plan should have all sections filled
-in.}
+\textbf{Contents}
+\end{quote}
 
-\newpage
+\hypertarget{table-of-contents}{%
+\section{Table of Contents}\label{table-of-contents}}
 
-\tableofcontents
+\protect\hyperlink{symbols-abbreviations-and-acronyms}{1. Symbols,
+Abbreviations, and Acronyms
+\protect\hyperlink{symbols-abbreviations-and-acronyms}{3}}
 
-\listoftables
-\wss{Remove this section if it isn't needed}
+\protect\hyperlink{general-information}{2. General Information
+\protect\hyperlink{general-information}{5}}
 
-\listoffigures
-\wss{Remove this section if it isn't needed}
+\protect\hyperlink{summary}{2.1 Summary \protect\hyperlink{summary}{5}}
 
-\newpage
+\protect\hyperlink{objectives}{2.2 Objectives
+\protect\hyperlink{objectives}{5}}
 
-\section{Symbols, Abbreviations, and Acronyms}
+\protect\hyperlink{challenge-level-and-extras}{2.3 Challenge Level and
+Extras \protect\hyperlink{challenge-level-and-extras}{5}}
 
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
-  \textbf{symbol} & \textbf{description}\\
-  \midrule 
-  T & Test\\
-  \bottomrule
-\end{tabular}\\
+\protect\hyperlink{relevant-documentation}{2.4 Relevant Documentation
+\protect\hyperlink{relevant-documentation}{5}}
 
-\wss{symbols, abbreviations, or acronyms --- you can simply reference the SRS
-  \citep{SRS} tables, if appropriate}
+\protect\hyperlink{plan}{3. Plan \protect\hyperlink{plan}{6}}
 
-\wss{Remove this section if it isn't needed}
+\protect\hyperlink{verification-and-validation-team}{3.1 Verification
+and Validation Team
+\protect\hyperlink{verification-and-validation-team}{6}}
 
-\newpage
+\protect\hyperlink{srs-verification-plan}{3.2 SRS Verification Plan
+\protect\hyperlink{srs-verification-plan}{6}}
 
-\pagenumbering{arabic}
+\protect\hyperlink{design-verification-plan}{3.3 Design Verification
+Plan \protect\hyperlink{design-verification-plan}{6}}
 
-This document ... \wss{provide an introductory blurb and roadmap of the
-  Verification and Validation plan}
+\protect\hyperlink{_Toc191500205}{3.4 Implementation Verification Plan
+\protect\hyperlink{_Toc191500205}{7}}
 
-\section{General Information}
+\protect\hyperlink{automated-testing-and-verification-tools}{3.5
+Automated Testing and Verification Tools
+\protect\hyperlink{automated-testing-and-verification-tools}{7}}
 
-\subsection{Summary}
+\protect\hyperlink{software-validation-plan}{3.6 Software Validation
+Plan \protect\hyperlink{software-validation-plan}{7}}
 
-\wss{Say what software is being tested.  Give its name and a brief overview of
-  its general functions.}
+\protect\hyperlink{system-tests}{4. System Tests
+\protect\hyperlink{system-tests}{8}}
 
-\subsection{Objectives}
+\protect\hyperlink{tests-for-functional-requirements}{4.1 Tests for
+Functional Requirements
+\protect\hyperlink{tests-for-functional-requirements}{8}}
 
-\wss{State what is intended to be accomplished.  The objective will be around
-  the qualities that are most important for your project.  You might have
-  something like: ``build confidence in the software correctness,''
-  ``demonstrate adequate usability.'' etc.  You won't list all of the qualities,
-  just those that are most important.}
+\protect\hyperlink{tests-for-nonfunctional-requirements}{4.2 Tests for
+Nonfunctional Requirements
+\protect\hyperlink{tests-for-nonfunctional-requirements}{8}}
 
-\wss{You should also list the objectives that are out of scope.  You don't have 
-the resources to do everything, so what will you be leaving out.  For instance, 
-if you are not going to verify the quality of usability, state this.  It is also 
-worthwhile to justify why the objectives are left out.}
+\protect\hyperlink{traceability-between-test-cases-and-requirements}{4.3
+Traceability Between Test Cases and Requirements
+\protect\hyperlink{traceability-between-test-cases-and-requirements}{11}}
 
-\wss{The objectives are important because they highlight that you are aware of 
-limitations in your resources for verification and validation.  You can't do everything, 
-so what are you going to prioritize?  As an example, if your system depends on an 
-external library, you can explicitly state that you will assume that external library 
-has already been verified by its implementation team.}
+\protect\hyperlink{unit-test-description}{5. Unit Test Description
+\protect\hyperlink{unit-test-description}{12}}
 
-\subsection{Challenge Level and Extras}
+\protect\hyperlink{unit-testing-scope}{5.1 Unit Testing Scope
+\protect\hyperlink{unit-testing-scope}{12}}
 
-\wss{State the challenge level (advanced, general, basic) for your project.
-Your challenge level should exactly match what is included in your problem
-statement.  This should be the challenge level agreed on between you and the
-course instructor.  You can use a pull request to update your challenge level
-(in TeamComposition.csv or Repos.csv) if your plan changes as a result of the
-VnV planning exercise.}
+\protect\hyperlink{tests-for-functional-requirements-1}{5.2 Tests for
+Functional Requirements
+\protect\hyperlink{tests-for-functional-requirements-1}{12}}
 
-\wss{Summarize the extras (if any) that were tackled by this project.  Extras
-can include usability testing, code walkthroughs, user documentation, formal
-proof, GenderMag personas, Design Thinking, etc.  Extras should have already
-been approved by the course instructor as included in your problem statement.
-You can use a pull request to update your extras (in TeamComposition.csv or
-Repos.csv) if your plan changes as a result of the VnV planning exercise.}
+\protect\hyperlink{tests-for-nonfunctional-requirements-1}{5.3 Tests for
+Nonfunctional Requirements
+\protect\hyperlink{tests-for-nonfunctional-requirements-1}{13}}
 
-\subsection{Relevant Documentation}
+\protect\hyperlink{traceability-between-test-cases-and-modules}{5.4
+Traceability Between Test Cases and Modules
+\protect\hyperlink{traceability-between-test-cases-and-modules}{14}}
 
-\wss{Reference relevant documentation.  This will definitely include your SRS
-  and your other project documents (design documents, like MG, MIS, etc).  You
-  can include these even before they are written, since by the time the project
-  is done, they will be written.  You can create BibTeX entries for your
-  documents and within those entries include a hyperlink to the documents.}
+\protect\hyperlink{usability-survey-questionnaire}{6. Usability Survey
+Questionnaire \protect\hyperlink{usability-survey-questionnaire}{16}}
 
-\citet{SRS}
+\hypertarget{symbols-abbreviations-and-acronyms}{%
+\section{Symbols, Abbreviations, and
+Acronyms}\label{symbols-abbreviations-and-acronyms}}
 
-\wss{Don't just list the other documents.  You should explain why they are relevant and 
-how they relate to your VnV efforts.}
+The definition of symbols, abbreviations and acronyms is as same as
+those in my SRS documents.
 
-\section{Plan}
+This document presents the Verification and Validation (VnV) Plan for
+Live Neuro, an interactive neural data visualization tool. The plan is
+structured into four main sections:
 
-\wss{Introduce this section.  You can provide a roadmap of the sections to
-  come.}
+1. General Information
 
-\subsection{Verification and Validation Team}
+• Provides an overview of Live Neuro, its objectives, challenge level,
+and relevant documentation.
 
-\wss{Your teammates.  Maybe your supervisor.
-  You should do more than list names.  You should say what each person's role is
-  for the project's verification.  A table is a good way to summarize this information.}
+• Defines the scope of verification, including functional and
+non-functional requirements.
 
-\subsection{SRS Verification Plan}
+2. Plan
 
-\wss{List any approaches you intend to use for SRS verification.  This may
-  include ad hoc feedback from reviewers, like your classmates (like your
-  primary reviewer), or you may plan for something more rigorous/systematic.}
+• Describes the verification strategies for different project phases:
+SRS, Design, VnV, and Implementation.
 
-\wss{If you have a supervisor for the project, you shouldn't just say they will
-read over the SRS.  You should explain your structured approach to the review.
-Will you have a meeting?  What will you present?  What questions will you ask?
-Will you give them instructions for a task-based inspection?  Will you use your
-issue tracker?}
+• Details the roles and responsibilities of the Verification and
+Validation Team.
 
-\wss{Maybe create an SRS checklist?}
+• Includes plans for automated testing, validation tools, and software
+validation.
 
-\subsection{Design Verification Plan}
+3. System Tests
 
-\wss{Plans for design verification}
+• Verifies both functional and non-functional requirements at the system
+level.
 
-\wss{The review will include reviews by your classmates}
+• Defines test cases for acoustic stimulus processing, interactive
+visualization, and cross-platform compatibility.
 
-\wss{Create a checklists?}
+• Ensures the system behaves as expected through automated and manual
+testing.
 
-\subsection{Verification and Validation Plan Verification Plan}
+4. Unit Test Description
 
-\wss{The verification and validation plan is an artifact that should also be
-verified.  Techniques for this include review and mutation testing.}
+• Focuses on validating individual modules such as data preprocessing,
+TRF model computation, and chart rendering.
 
-\wss{The review will include reviews by your classmates}
+• Covers both functional and non-functional aspects with unit test
+cases.
 
-\wss{Create a checklists?}
+• Includes traceability analysis to ensure proper coverage of
+requirements.
 
-\subsection{Implementation Verification Plan}
-
-\wss{You should at least point to the tests listed in this document and the unit
-  testing plan.}
-
-\wss{In this section you would also give any details of any plans for static
-  verification of the implementation.  Potential techniques include code
-  walkthroughs, code inspection, static analyzers, etc.}
-
-\wss{The final class presentation in CAS 741 could be used as a code
-walkthrough.  There is also a possibility of using the final presentation (in
-CAS741) for a partial usability survey.}
-
-\subsection{Automated Testing and Verification Tools}
-
-\wss{What tools are you using for automated testing.  Likely a unit testing
-  framework and maybe a profiling tool, like ValGrind.  Other possible tools
-  include a static analyzer, make, continuous integration tools, test coverage
-  tools, etc.  Explain your plans for summarizing code coverage metrics.
-  Linters are another important class of tools.  For the programming language
-  you select, you should look at the available linters.  There may also be tools
-  that verify that coding standards have been respected, like flake9 for
-  Python.}
-
-\wss{If you have already done this in the development plan, you can point to
-that document.}
-
-\wss{The details of this section will likely evolve as you get closer to the
-  implementation.}
-
-\subsection{Software Validation Plan}
-
-\wss{If there is any external data that can be used for validation, you should
-  point to it here.  If there are no plans for validation, you should state that
-  here.}
-
-\wss{You might want to use review sessions with the stakeholder to check that
-the requirements document captures the right requirements.  Maybe task based
-inspection?}
-
-\wss{For those capstone teams with an external supervisor, the Rev 0 demo should 
-be used as an opportunity to validate the requirements.  You should plan on 
-demonstrating your project to your supervisor shortly after the scheduled Rev 0 demo.  
-The feedback from your supervisor will be very useful for improving your project.}
-
-\wss{For teams without an external supervisor, user testing can serve the same purpose 
-as a Rev 0 demo for the supervisor.}
-
-\wss{This section might reference back to the SRS verification section.}
-
-\section{System Tests}
-
-\wss{There should be text between all headings, even if it is just a roadmap of
-the contents of the subsections.}
-
-\subsection{Tests for Functional Requirements}
-
-\wss{Subsets of the tests may be in related, so this section is divided into
-  different areas.  If there are no identifiable subsets for the tests, this
-  level of document structure can be removed.}
-
-\wss{Include a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.}
-
-\subsubsection{Area of Testing1}
-
-\wss{It would be nice to have a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.  If a section
-  covers tests for input constraints, you should reference the data constraints
-  table in the SRS.}
-		
-\paragraph{Title for Test}
+This VnV plan provides a structured and comprehensive approach to
+verifying and validating Live Neuro, ensuring reliability, accuracy, and
+usability before deployment.
 
 \begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item ~
+  \hypertarget{general-information}{%
+  \section{General Information}\label{general-information}}
 
-\item{test-id1\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs.  Output is not how you
-are going to return the results of the test.  The output is the expected
-result.}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item ~
+    \hypertarget{summary}{%
+    \subsection{Summary}\label{summary}}
+  \end{enumerate}
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
+Live Neuro is an interactive neural data visualization tool designed to
+display EEG and MEG data through linked multidimensional charts. It
+supports continuous response analysis for acoustic and semantic stimuli.
+This plan aims to verify its functional correctness, interactivity,
+cross-platform compatibility, and user-friendliness.
 
-...
+\hypertarget{objectives}{%
+\subsection{Objectives}\label{objectives}}
 
-\subsection{Tests for Nonfunctional Requirements}
+\textbf{Primary Objectives:}
 
-\wss{The nonfunctional requirements for accuracy will likely just reference the
-  appropriate functional tests from above.  The test cases should mention
-  reporting the relative error for these tests.  Not all projects will
-  necessarily have nonfunctional requirements related to accuracy.}
+• Verify the implementation of functional requirements and
+non-functional requirements.
 
-\wss{For some nonfunctional tests, you won't be setting a target threshold for
-passing the test, but rather describing the experiment you will do to measure
-the quality for different inputs.  For instance, you could measure speed versus
-the problem size.  The output of the test isn't pass/fail, but rather a summary
-table or graph.}
+• Ensure that data visualization results meet scientific standards
+(NFR1).
 
-\wss{Tests related to usability could include conducting a usability test and
-  survey.  The survey will be in the Appendix.}
+• Validate cross-platform compatibility (Linux, Windows 10+, macOS).
 
-\wss{Static tests, review, inspections, and walkthroughs, will not follow the
-format for the tests given below.}
+\textbf{Non-Objectives:}
 
-\wss{If you introduce static tests in your plan, you need to provide details.
-How will they be done?  In cases like code (or document) walkthroughs, who will
-be involved? Be specific.}
+• Do not validate the internal implementation of third-party libraries
+(e.g., Matplotlib).
 
-\subsubsection{Area of Testing1}
-		
-\paragraph{Title for Test}
+• Do not conduct large-scale performance stress testing due to resource
+limitations.
+
+\hypertarget{challenge-level-and-extras}{%
+\subsection{Challenge Level and
+Extras}\label{challenge-level-and-extras}}
+
+\textbf{Challenge Level:}
+
+• Advanced (requires support for complex interactive charts and
+multi-platform adaptation).
+
+\textbf{Additional Content:}
+
+• User usability testing (feedback from users with a neuroscience
+background).
+
+• Static code analysis (using flake8 and pylint).
+
+\hypertarget{relevant-documentation}{%
+\subsection{Relevant Documentation}\label{relevant-documentation}}
+
+• \textbf{SRS Document}: Defines requirements and system models.
+
+• \textbf{User Manual}: Operation guide and test configuration
+instructions (to be supplemented).
 
 \begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item ~
+  \hypertarget{plan}{%
+  \section{Plan}\label{plan}}
 
-\item{test-id1\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
-
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item ~
+    \hypertarget{verification-and-validation-team}{%
+    \subsection{Verification and Validation
+    Team}\label{verification-and-validation-team}}
+  \end{enumerate}
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3261}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2308}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4431}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Member}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Role}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Responsibilities}
+\end{minipage} \\
+\midrule()
+\endhead
+Bo Liang & Project developer & Develop software \\
+Dr. Brodbeck & reviewer & Review structure of the project \\
+Ziyang Fang & Code reviewer & Performs static code analysis and unit
+test coverage \\
+\bottomrule()
+\end{longtable}
 
-...
+\hypertarget{srs-verification-plan}{%
+\subsection{SRS Verification Plan}\label{srs-verification-plan}}
 
-\subsection{Traceability Between Test Cases and Requirements}
+\textbf{Method:}
 
-\wss{Provide a table that shows which test cases are supporting which
-  requirements.}
+• \textbf{Structured Review} (based on SRS Section 8 traceability
+matrix).
 
-\section{Unit Test Description}
+\textbf{Steps:}
 
-\wss{This section should not be filled in until after the MIS (detailed design
-  document) has been completed.}
+1.Invite neuroscience researchers to review the main function of the
+tool.
 
-\wss{Reference your MIS (detailed design document) and explain your overall
-philosophy for test case selection.}  
+2. Use a checklist to evaluate the main part of the document including
 
-\wss{To save space and time, it may be an option to provide less detail in this section.  
-For the unit tests you can potentially layout your testing strategy here.  That is, you 
-can explain how tests will be selected for each module.  For instance, your test building 
-approach could be test cases for each access program, including one test for normal behaviour 
-and as many tests as needed for edge cases.  Rather than create the details of the input 
-and output here, you could point to the unit testing code.  For this to work, you code 
-needs to be well-documented, with meaningful names for all of the tests.}
+Completeness, Feasibility, Traceability
 
-\subsection{Unit Testing Scope}
+3. Reviewers will provide feedback through github Issue
 
-\wss{What modules are outside of the scope.  If there are modules that are
-  developed by someone else, then you would say here if you aren't planning on
-  verifying them.  There may also be modules that are part of your software, but
-  have a lower priority for verification than others.  If this is the case,
-  explain your rationale for the ranking of module importance.}
+4.Author will address all the issues and conduct a final review of the
+document
 
-\subsection{Tests for Functional Requirements}
+\hypertarget{design-verification-plan}{%
+\subsection{Design Verification Plan}\label{design-verification-plan}}
 
-\wss{Most of the verification will be through automated unit testing.  If
-  appropriate specific modules can be verified by a non-testing based
-  technique.  That can also be documented in this section.}
+\textbf{Method:}
 
-\subsubsection{Module 1}
+• Automated code test + Code Walkthrough + Design Document Review.
 
-\wss{Include a blurb here to explain why the subsections below cover the module.
-  References to the MIS would be good.  You will want tests from a black box
-  perspective and from a white box perspective.  Explain to the reader how the
-  tests were selected.}
+\textbf{Tools:}
+
+• Doxygen for generating module dependency diagrams, combined with
+design documents to clarify dependencies between different modules.
+
+\hypertarget{implementation-verification-plan}{%
+\subsection{Implementation Verification
+Plan}\label{implementation-verification-plan}}
+
+Unit Testing:
+
+• pyTest will be used as the main test tool and some other visualization
+libraries testing tool will be used too Such as compare\_ image function
+in matplolib testing
+
+• The Coverage goal ≥ 90\% (measured using pytest-cov).
+
+\textbf{Static Analysis:}
+
+• Use flake8 to check code syntax and clean it based on the instructions
+provided
+
+.• Use mypy as static type checker to checks type annotations to detect
+type errors without running the code.
+
+\hypertarget{automated-testing-and-verification-tools}{%
+\subsection{Automated Testing and Verification
+Tools}\label{automated-testing-and-verification-tools}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3557}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6443}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Tool}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Purpose}
+\end{minipage} \\
+\midrule()
+\endhead
+pytest & Functional and unit testing framework \\
+flake8 & check code style \\
+mypy & type annotation verification \\
+Matplotlib & Image baseline comparison (image\_comparison) \\
+GitHub Actions & Cross-platform CI/CD pipeline \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{software-validation-plan}{%
+\subsection{Software Validation Plan}\label{software-validation-plan}}
+
+\textbf{Method:User Acceptance Testing (UAT)}.
+
+\textbf{Steps:}
+
+1. Demonstrate core functionality to external supervisors (Rev 0
+presentation).
+
+2. Collect user feedback (usability survey in the appendix).
 
 \begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\item ~
+  \hypertarget{system-tests}{%
+  \section{System Tests}\label{system-tests}}
 
-\item{test-id1\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
-\item{...\\}
-    
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item ~
+    \hypertarget{tests-for-functional-requirements}{%
+    \subsection{Tests for Functional
+    Requirements}\label{tests-for-functional-requirements}}
+  \end{enumerate}
 \end{enumerate}
 
-\subsubsection{Module 2}
+\textbf{Test Case1:}
 
-...
+\textbf{FR}:the interactive data plots generated by Live Neuro should be
+exactly identical to original plots
 
-\subsection{Tests for Nonfunctional Requirements}
+\textbf{Input}: calculation result of TRF model
 
-\wss{If there is a module that needs to be independently assessed for
-  performance, those test cases can go here.  In some projects, planning for
-  nonfunctional tests of units will not be that relevant.}
+\textbf{Expected Output}: data plots generated by Live Neuro should be
+exactly identical
 
-\wss{These tests may involve collecting performance data from previously
-  mentioned functional tests.}
+to original plots
 
-\subsubsection{Module ?}
-		
-\begin{enumerate}
+\textbf{Verification Method}:image\_comparison method in matplotlib
+testing
 
-\item{test-id1\\}
+How test will be performed: this test will be automated by pytest
 
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
+\textbf{Test Case2：}
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
+\textbf{FR}:the output of LiveNeuro should be interactive between
+different plots
 
-\end{enumerate}
+\textbf{Input}: Selecting data points across linked charts.
 
-\subsubsection{Module ?}
+\textbf{Expected Output}: Other charts highlight corresponding points
+simultaneously.
 
-...
+\textbf{Verification Method}: Use mplcursors to trigger events and
+compare data in the Corresponding plot to the input data
 
-\subsection{Traceability Between Test Cases and Modules}
-
-\wss{Provide evidence that all of the modules have been considered.}
-				
-\bibliographystyle{plainnat}
-
-\bibliography{../../refs/References}
-
-\newpage
-
-\section{Appendix}
-
-This is where you can place additional information.
-
-\subsection{Symbolic Parameters}
-
-The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
-Their values are defined in this section for easy maintenance.
-
-\subsection{Usability Survey Questions?}
-
-\wss{This is a section that would be appropriate for some projects.}
-
-\newpage{}
-\section*{Appendix --- Reflection}
-
-\wss{This section is not required for CAS 741}
-
-The information in this section will be used to evaluate the team members on the
-graduate attribute of Lifelong Learning.
-
-\input{../Reflection.tex}
+How test will be performed: this test will be executed by pytest and
+manually
 
 \begin{enumerate}
-  \item What went well while writing this deliverable? 
-  \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-  \item What knowledge and skills will the team collectively need to acquire to
-  successfully complete the verification and validation of your project?
-  Examples of possible knowledge and skills include dynamic testing knowledge,
-  static testing knowledge, specific tool usage, Valgrind etc.  You should look to
-  identify at least one item for each team member.
-  \item For each of the knowledge areas and skills identified in the previous
-  question, what are at least two approaches to acquiring the knowledge or
-  mastering the skill?  Of the identified approaches, which will each team
-  member pursue, and why did they make this choice?
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item ~
+  \hypertarget{tests-for-nonfunctional-requirements}{%
+  \subsection{Tests for Nonfunctional
+  Requirements}\label{tests-for-nonfunctional-requirements}}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    \textbf{Area of Testing1}
+  \end{enumerate}
 \end{enumerate}
+
+\textbf{Test Case3}: Usability
+
+• \textbf{Category}: Non-functional, User-Centered, Manual Evaluation
+
+• \textbf{Initial Condition}: The Live Neuro application is fully
+operational and prepared for hands-on evaluation.
+
+• \textbf{Test Inputs/Conditions}:
+
+\begin{quote}
+• Participants engage with the software in a simulated neuroscience
+research workflow.
+
+• A structured usability survey (Appendix 6.2) is conducted, covering
+ease of interaction, visualization clarity, and feature intuitiveness.
+\end{quote}
+
+• \textbf{Expected Outcome}:
+
+\begin{quote}
+• Participants can efficiently navigate core functionalities with
+minimal guidance.
+
+• Survey responses highlight strengths and areas for enhancement.
+\end{quote}
+
+• \textbf{Execution Steps}:
+
+\begin{quote}
+1. Deploy Live Neuro to a group of neuroscience researchers and graduate
+students.
+
+2. Observe user behavior and gather feedback on usability pain points.
+
+3. Analyze survey data, identify usability trends, and refine the user
+interface accordingly.
+\end{quote}
+
+\textbf{Test Case4}: Maintainability
+
+• \textbf{Category}: Non-Functional, Code Reliability, Automated
+Validation
+
+• \textbf{Initial Condition}: The project contains distinct
+computational modules, each responsible for a separate functionality.
+
+• \textbf{Test Inputs/Conditions}:
+
+• Run an automated test coverage analysis using pytest-cov.
+
+• \textbf{Expected Outcome}:
+
+\begin{quote}
+• The overall test coverage remains above a predefined threshold
+(≥90\%).
+
+• Any uncovered sections of code are identified and targeted for
+additional tests.
+\end{quote}
+
+• \textbf{Execution Steps}:
+
+\begin{quote}
+1. Execute all existing test cases with coverage tracking enabled.
+
+2. Generate a detailed report showing per-module and per-function
+coverage statistics.
+
+3. Identify weakly tested components and extend test coverage
+accordingly.
+\end{quote}
+
+Test Case5: Portability
+
+• \textbf{Category}: Non-Functional, Deployment Readiness, Manual \&
+Automated Testing
+
+• \textbf{Initial Condition}: The Live Neuro source code is
+version-controlled and ready for multi-platform testing.
+
+• \textbf{Test Inputs/Conditions}:
+
+\begin{quote}
+• Attempt to install, build, and execute the software on Linux (Ubuntu
+22.04), Windows 11, and macOS Ventura.
+\end{quote}
+
+• \textbf{Expected Outcome}:
+
+\begin{quote}
+• The software compiles without errors and runs smoothly on all tested
+platforms.
+
+• Platform-specific discrepancies (if any) are documented and addressed.
+\end{quote}
+
+• \textbf{Execution Steps}:
+
+\begin{quote}
+1. Configure test environments across different operating systems.
+
+2. Build and execute Live Neuro, ensuring its core functionalities
+(e.g., data preprocessing, EEG/MEG visualization) behave consistently.
+
+3. Log and analyze any platform-dependent issues, optimizing
+cross-platform performance as needed.
+\end{quote}
+
+Test Case6: Reusability
+
+• \textbf{Category}: Non-Functional, Code Design Evaluation, Manual
+Review
+
+• \textbf{Initial Condition}: Live Neuro's codebase consists of distinct
+functional components (e.g., data handling, signal processing,
+interactive visualization).
+
+• \textbf{Test Inputs/Conditions}:
+
+• Review module separation and cross-component dependencies.
+
+• \textbf{Expected Outcome}:
+
+\begin{quote}
+• The software architecture follows clear separation of concerns, with
+reusable components structured for extensibility.
+\end{quote}
+
+• \textbf{Execution Steps}:
+
+\begin{quote}
+1. Analyze the code structure, identifying modules that can be
+independently reused or extended.
+
+2. Assess whether core computational functions are generalizable for
+broader neuroscience research applications.
+
+3. Document reusability strengths and suggest refactoring where
+necessary to improve modularity.
+\end{quote}
+
+\hypertarget{traceability-between-test-cases-and-requirements}{%
+\subsection{Traceability Between Test Cases and
+Requirements}\label{traceability-between-test-cases-and-requirements}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Test Case}
+\end{quote}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Covered Requirements}
+\end{quote}
+\end{minipage} \\
+\midrule()
+\endhead
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Test Case1}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+R1
+\end{quote}
+\end{minipage} \\
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Test Case2}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+R2
+\end{quote}
+\end{minipage} \\
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Test Case3}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+NFR1
+\end{quote}
+\end{minipage} \\
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Test Case4}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+NFR2
+\end{quote}
+\end{minipage} \\
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Test Case5}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+NFR3
+\end{quote}
+\end{minipage} \\
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Test Case6}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+NFR4
+\end{quote}
+\end{minipage} \\
+\bottomrule()
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\item ~
+  \hypertarget{unit-test-description}{%
+  \section{Unit Test Description}\label{unit-test-description}}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item ~
+    \hypertarget{unit-testing-scope}{%
+    \subsection{Unit Testing Scope}\label{unit-testing-scope}}
+  \end{enumerate}
+\end{enumerate}
+
+\textbf{Included Modules:}
+
+• data visualization.
+
+\textbf{Excluded Modules:}
+
+• Native Matplotlib functions (assumed verified).
+
+\hypertarget{tests-for-functional-requirements-1}{%
+\subsection{Tests for Functional
+Requirements}\label{tests-for-functional-requirements-1}}
+
+\textbf{UT-F1:} \textbf{Interactive Visualization Sync}
+
+\begin{quote}
+• \textbf{Objective}: Ensure multi-chart linking updates correctly when
+a user selects data points.
+
+• \textbf{Test Type}: Functional, Automated
+
+• \textbf{Test Input}: User selects a data point in one chart.
+
+• \textbf{Expected Output}: The corresponding data point is highlighted
+in all linked charts.
+\end{quote}
+
+\hypertarget{tests-for-nonfunctional-requirements-1}{%
+\subsection{Tests for Nonfunctional
+Requirements}\label{tests-for-nonfunctional-requirements-1}}
+
+\textbf{UT-NF1: Usability -- Interface Clarity and User Experience}
+
+\begin{quote}
+• \textbf{Objective}: Ensure tooltips, labels, and messages are clear
+and helpful.
+
+• \textbf{Test Type}: Non-Functional, Manual Inspection
+
+• \textbf{Test Input}: Verify UI components like tooltips, axis labels,
+and error messages.
+
+• \textbf{Expected Output}:
+
+• All UI elements provide relevant and accurate feedback.
+
+• User interactions result in expected system responses.
+\end{quote}
+
+\textbf{UT-NF2: Maintainability -- Code Readability and Structure}
+
+\begin{quote}
+• \textbf{Objective}: Ensure the codebase follows maintainable coding
+practices.
+
+• \textbf{Test Type}: Non-Functional, Static Analysis
+
+• \textbf{Test Input}: Run Flake8 and Pylint on the project.
+
+• \textbf{Expected Output}: No major code quality issues detected.
+\end{quote}
+
+\textbf{UT-NF3: Maintainability -- Test Coverage}
+
+\begin{quote}
+• \textbf{Objective}: Ensure each module has sufficient test coverage.
+
+• \textbf{Test Type}: Non-Functional, Automated
+
+• \textbf{Test Input}: Run pytest with coverage tracking.
+
+• \textbf{Expected Output}: Test coverage is at least \textbf{90\%}.
+\end{quote}
+
+\textbf{UT-NF4: Portability -- Multi-Platform Compatibility}
+
+\begin{quote}
+• \textbf{Objective}: Verify the software runs on Linux, Windows, and
+macOS.
+
+• \textbf{Test Type}: Non-Functional, Automated
+
+• \textbf{Test Input}: Detect OS type and verify execution.
+
+• \textbf{Expected Output}: Live Neuro runs successfully on all
+platforms.
+\end{quote}
+
+\textbf{UT-NF5: Reusability -- Module Independence}
+
+\begin{quote}
+• \textbf{Objective}: Ensure that major components are modular and
+reusable in other projects.
+
+• \textbf{Test Type}: Non-Functional, Manual Review
+
+• \textbf{Test Input}: Check for modularity in different code files.
+
+• \textbf{Expected Output}:
+
+• Modules should not have unnecessary dependencies.
+
+• Core functions should be easily extractable and reusable.
+\end{quote}
+
+\hypertarget{traceability-between-test-cases-and-modules}{%
+\subsection{Traceability Between Test Cases and
+Modules}\label{traceability-between-test-cases-and-modules}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Test Case}
+\end{quote}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Covered Module}
+\end{quote}
+\end{minipage} \\
+\midrule()
+\endhead
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{UT-F1}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+R1.R2
+\end{quote}
+\end{minipage} \\
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{UT-NF1}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+NF1
+\end{quote}
+\end{minipage} \\
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{UT-NF2}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+NF2
+\end{quote}
+\end{minipage} \\
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{UT-NF3}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+NF2
+\end{quote}
+\end{minipage} \\
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{UT-NF4}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+NF3
+\end{quote}
+\end{minipage} \\
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+\textbf{UT-NF5}
+\end{quote}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+NF4
+\end{quote}
+\end{minipage} \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{usability-survey-questionnaire}{%
+\section{Usability Survey
+Questionnaire}\label{usability-survey-questionnaire}}
+
+\textbf{Section 1: General Experience}
+
+1. How easy was it to install and set up Live Neuro?
+
+• ☐ \textbf{1} - Very difficult
+
+• ☐ \textbf{2} - Somewhat difficult
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Somewhat easy
+
+• ☐ \textbf{5} - Very easy
+
+2. How intuitive was the user interface?
+
+• ☐ \textbf{1} - Very confusing
+
+• ☐ \textbf{2} - Somewhat confusing
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Somewhat intuitive
+
+• ☐ \textbf{5} - Very intuitive
+
+3. Were you able to complete basic tasks (e.g., loading data,
+visualizing neural activity) without external help?
+
+• ☐ \textbf{1} - No, I could not complete the tasks
+
+• ☐ \textbf{2} - No, I needed significant assistance
+
+• ☐ \textbf{3} - Yes, but I struggled
+
+• ☐ \textbf{4} - Yes, but with minor difficulties
+
+• ☐ \textbf{5} - Yes, without any difficulty
+
+\textbf{Section 2: Visualization and Interaction}
+
+4. How clear and informative were the generated EEG/MEG visualizations?
+
+• ☐ \textbf{1} - Very unclear
+
+• ☐ \textbf{2} - Somewhat unclear
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Somewhat clear
+
+• ☐ \textbf{5} - Very clear
+
+5. Were the interactive features (e.g., zooming, selecting data points,
+multi-chart linking) responsive and easy to use?
+
+• ☐ \textbf{1} - Very unresponsive and difficult to use
+
+• ☐ \textbf{2} - Somewhat unresponsive
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Somewhat responsive and easy to use
+
+• ☐ \textbf{5} - Very smooth and intuitive
+
+6. Did the software provide sufficient feedback when interacting with
+the visualizations (e.g., tooltips, highlights, error messages)?
+
+• ☐ \textbf{1} - No feedback at all
+
+• ☐ \textbf{2} - Some feedback, but often unclear
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Mostly clear feedback
+
+• ☐ \textbf{5} - Very clear and helpful feedback
+
+\textbf{Section 3: Performance and Reliability}
+
+7. How would you rate the speed of data processing and visualization?
+
+• ☐ \textbf{1} - Extremely slow, unusable
+
+• ☐ \textbf{2} - Slow but functional
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Acceptable speed
+
+• ☐ \textbf{5} - Very fast
+
+8. Did you experience any crashes, errors, or unexpected behaviors?
+
+• ☐ \textbf{1} - Very frequent crashes/issues
+
+• ☐ \textbf{2} - Frequent minor issues
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Rare minor issues
+
+• ☐ \textbf{5} - No issues at all
+
+\textbf{Section 4: Cross-Platform Compatibility}
+
+9. How well did Live Neuro perform on your operating system?
+
+• ☐ \textbf{1} - Did not work at all
+
+• ☐ \textbf{2} - Many issues, barely usable
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Mostly functional with minor issues
+
+• ☐ \textbf{5} - Fully functional without problems
+
+10. Did you encounter any platform-specific issues?
+
+• ☐ \textbf{1} - Major problems, software unusable
+
+• ☐ \textbf{2} - Significant issues but still usable
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Minor platform differences
+
+• ☐ \textbf{5} - No platform-related issues
+
+\textbf{Section 5: Documentation and Support}
+
+11. How helpful was the provided documentation (e.g., user guide, API
+reference)?
+
+• ☐ \textbf{1} - Not helpful at all
+
+• ☐ \textbf{2} - Somewhat unhelpful
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Somewhat helpful
+
+• ☐ \textbf{5} - Very helpful
+
+12. What is your level of confidence in using Live Neuro after reading
+the documentation?
+
+• ☐ \textbf{1} - Not confident at all
+
+• ☐ \textbf{2} - Slightly confident
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Mostly confident
+
+• ☐ \textbf{5} - Fully confident
+
+\textbf{Section 6: Overall Satisfaction \& Suggestions}
+
+13. How satisfied are you with Live Neuro overall?
+
+• ☐ \textbf{1} - Very dissatisfied
+
+• ☐ \textbf{2} - Somewhat dissatisfied
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Somewhat satisfied
+
+• ☐ \textbf{5} - Very satisfied
+
+14. Would you recommend Live Neuro to other neuroscience researchers?
+
+• ☐ \textbf{1} - Definitely not
+
+• ☐ \textbf{2} - Probably not
+
+• ☐ \textbf{3} - Neutral
+
+• ☐ \textbf{4} - Probably yes
+
+• ☐ \textbf{5} - Definitely yes
+
+15. What features or improvements would you like to see in future
+versions? \emph{(Open-ended)}
+
+• \textbf{Your response:}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 \end{document}
