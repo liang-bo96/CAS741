@@ -53,8 +53,7 @@ urlcolor=cyan          % color of external links
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+March 17 & 1.0 & Initial Draft\\
 \bottomrule
 \end{tabularx}
 
@@ -62,9 +61,8 @@ Date 2 & 1.1 & Notes\\
 
 \section{Symbols, Abbreviations and Acronyms}
 
-See SRS Documentation at \wss{give url}
+See SRS Documentation at \href{https://github.com/liang-bo96/CAS741/blob/main/docs/SRS/SRS.pdf}{SRS}
 
-\wss{Also add any additional symbols, abbreviations or acronyms}
 
 \newpage
 
@@ -76,40 +74,31 @@ See SRS Documentation at \wss{give url}
 
 \section{Introduction}
 
-The following document details the Module Interface Specifications for
-\wss{Fill in your project name and description}
-
-Complementary documents include the System Requirement Specifications
-and Module Guide.  The full documentation and implementation can be
-found at \url{...}.  \wss{provide the url for your repo}
+This document specifies the interfaces for modules in the Live Neuro system, an interactive neural data visualization tool. It complements the
+\href{https://github.com/liang-bo96/CAS741/blob/main/docs/SRS/SRS.pdf}{SRS}
+and \href{https://github.com/liang-bo96/CAS741/blob/main/docs/Design/SoftArchitecture/MG.pdf}{MG}, with full implementation details available at
+\href{https://github.com/liang-bo96/CAS741}{ GitHub Repository}.
 
 \section{Notation}
 
-\wss{You should describe your notation.  You can use what is below as
-  a starting point.}
 
-The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
-with the addition that template modules have been adapted from
-\cite{GhezziEtAl2003}.  The mathematical notation comes from Chapter 3 of
-\citet{HoffmanAndStrooper1995}.  For instance, the symbol := is used for a
-multiple assignment statement and conditional rules follow the form $(c_1
-\Rightarrow r_1 | c_2 \Rightarrow r_2 | ... | c_n \Rightarrow r_n )$.
-
-The following table summarizes the primitive data types used by \progname. 
+The following table summarizes the primitive data types used by \progname.
 
 \begin{center}
 \renewcommand{\arraystretch}{1.2}
-\noindent 
-\begin{tabular}{l l p{7.5cm}} 
-\toprule 
-\textbf{Data Type} & \textbf{Notation} & \textbf{Description}\\ 
+\noindent
+\begin{tabular}{l l p{7.5cm}}
+\toprule
+\textbf{Data Type} & \textbf{Notation} & \textbf{Description}\\
 \midrule
-character & char & a single symbol or digit\\
+String & $\mathbb{S}$ & a character string \\
+data type dictionary & $\mathbb{D}$ & a storage type for KV structures \\
+bool & $\mathbb{B}$ &  Boolean data type, which can hold one of two values: either true or false \\
 integer & $\mathbb{Z}$ & a number without a fractional component in (-$\infty$, $\infty$) \\
 natural number & $\mathbb{N}$ & a number without a fractional component in [1, $\infty$) \\
 real & $\mathbb{R}$ & any number in (-$\infty$, $\infty$)\\
 \bottomrule
-\end{tabular} 
+\end{tabular}
 \end{center}
 
 \noindent
@@ -126,26 +115,23 @@ The following table is taken directly from the Module Guide document for this pr
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+\begin{tabular}{p{0.3\textwidth} p{0.5\textwidth}p{0.1\textwidth}}
 \toprule
-\textbf{Level 1} & \textbf{Level 2}\\
+\textbf{Level 1} & \textbf{Level 2}& \textbf{Module ID}\\
 \midrule
 
-{Hardware-Hiding} & ~ \\
+{Hardware-Hiding Module} &  Hardware-Hiding Module
+ & M1 \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding} & Input Parameters\\
-& Output Format\\
-& Output Verification\\
-& Temperature ODEs\\
-& Energy Equations\\ 
-& Control Module\\
-& Specification Parameters Module\\
+\multirow{3}{0.3\textwidth}{Behaviour-Hiding Module}
+& Input Format Module & M2\\
+& Data Processing Module & M3\\
+& Visualization Module & M4\\
+
 \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision} & {Sequence Data Structure}\\
-& ODE Solver\\
-& Plotting\\
+\multirow{1}{0.3\textwidth}{Software Decision Module} & TRF Calculation Module & M5\\
 \bottomrule
 
 \end{tabular}
@@ -153,26 +139,73 @@ The following table is taken directly from the Module Guide document for this pr
 \label{TblMH}
 \end{table}
 
+
 \newpage
 ~\newpage
 
-\section{MIS of \wss{Module Name}} \label{Module} \wss{Use labels for
-  cross-referencing}
-
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+\section{MIS of Hardware-Hiding Module(M1)}
 
 \subsection{Module}
-
-\wss{Short name for the module}
+M1: OS Abstraction Layer
 
 \subsection{Uses}
+
+\item Directly interacts with OS APIs (e.g., file I/O, hardware drivers).
 
 
 \subsection{Syntax}
 
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{4cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+readFile & $\mathbb{S}$ (file path) & Sequence & FileNotFoundError \\
+savePlot & plot data & file(.jpeg) & SavePlotError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{Environment Variables}
+
+File system, display hardware.
+\subsubsection{Assumptions}
+OS compatibility (Linux/Windows/macOS)
+
+\subsubsection{Access Routine Semantics}
+
+\begin{itemize}
+\item readFile(): Reads neural data from disk, returns a sequence of $\mathbb{R}$ numbers.
+
+
+\item savePlot(): Renders visualization output to screen or file.
+
+
+\end{itemize}
+
+
+
+
+\section{MIS of Input Format Module}
+
+\subsection{Module}
+Multi-Format MEG/EEG Data Parser
+
+\subsection{Uses}
+
+\item M1 (readFile for raw data loading).
+
+\subsection{Syntax}
+
 \subsubsection{Exported Constants}
+
+supported formats = [EDF, FIF, BrainVision](supported data formats).\\
+max channels = 256(maximum allowed channels per dataset).
+
 
 \subsubsection{Exported Access Programs}
 
@@ -181,7 +214,9 @@ The following table is taken directly from the Module Guide document for this pr
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-\wss{accessProg} & - & - & - \\
+load edf() & $\mathbb{S}$ (EDF file path) & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$[]> & EDFFileError \\
+load fif() & $\mathbb{S}$ (FIF file path) & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$[]> & FIFFileError \\
+load brainvision() & $\mathbb{S}$ (.vhdr file path) & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$[]> & VHDRFileError \\
 \hline
 \end{tabular}
 \end{center}
@@ -190,42 +225,184 @@ The following table is taken directly from the Module Guide document for this pr
 
 \subsubsection{State Variables}
 
-\wss{Not all modules will have state variables.  State variables give the module
-  a memory.}
+\begin{itemize}
+\item currentFormat: $\mathbb{S}$(last detected data format, e.g., "FIF").
+
+
+\item metadataCache: $\mathbb{D}$(cached metadata from parsed files).
+
+
+\end{itemize}
+
 
 \subsubsection{Environment Variables}
 
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-  when the module has external interaction with the environment, such as for a
-  device driver, screen interface, keyboard, file, etc.}
 
+\subsubsection{Access Routine Semantics}
+\begin{itemize}
+  \item load edf():
+    \subitem Output:
+        \subsubitem data: Time-series array of shape[channels × samples].
+    \subitem Exception:
+        \subsubitem EDFHeaderError: Invalid EDF header structure.
+    \subitem Implementation: Uses eelbrain for EDF parsing.
+  \item load fif():
+    \subitem Output:
+        \subsubitem data: MEG/EEG sensor data.
+    \subitem Exception:
+        \subsubitem FIFFileError: FIF file version mismatch or missing data tags.
+    \subitem Implementation: Relies on mne-python library.
+  \item load brainvision():
+    \subitem Output:
+        \subsubitem data: EEG data segmented by markers
+    \subitem Exception:
+        \subsubitem VHDRParseError: Inconsistent header fields in.vhdr file.
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+\begin{itemize}
+\item parse edf header(): Extracts EDF header fields and validates integrity.\\
+\item align brainvision files(): Synchronizes.vhdr,.vmrk, and.eeg data.
+\end{itemize}
+
+\section{MIS of Data Processing Module}
+
+\subsection{Module}
+
+Statistical Preprocessing and Validation\\
+Primary Function: Validates input data integrity and applies statistical preprocessing to neural signals.
+\subsection{Uses}
+
+\begin{itemize}
+\item M2(Input Format Module): Receives parsed raw data (e.g., MEG/EEG time-series).
+
+
+\item M5(TRF Calculation Module): Provides preprocessed data for dipole current computation.
+
+
+\end{itemize}
+
+
+
+\subsection{Syntax}
+
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+validate input & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$[]> & $\mathbb{B}$ & InvalidDataError \\
+compute statistics & $\mathbb{R}$[] & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$> & NaNError \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+\item validatedSignals: $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$[]>(cached validated data).
+
+
+\item baselineStats: $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$>(mean and std of reference signals).
+
+
+\end{itemize}
+
+\subsubsection{Access Routine Semantics}
+\begin{itemize}
+  \item validate input(raw data: $\mathbb{D}$):
+    \subitem Validation Steps:
+        \subsubitem Check if raw data[data] is of type $\mathbb{R}$[] and non-empty.
+        \subsubitem Ensure no NaN or infinite values in the signal.
+    \subitem Output:
+        \subsubitem Returns True if validation passes.
+    \subitem Exceptions:
+        \subsubitem InvalidDataError: Non-numeric values or mismatched channel counts.
+    \item compute statistics($\mathbb{R}$[]):
+    \subitem Output:
+        \subsubitem mean, std, min, max and other statistical information
+    \subitem Exceptions:
+        \subsubitem NaNError if signal contains invalid values after preprocessing
+\end{itemize}
+
+
+\section{MIS of Visualization Module}
+
+\subsection{Module}
+
+Interactive Neuro-imaging Module
+\subsection{Uses}
+
+M1 (writePlot), M3 (processed data), M5 (TRF results)
+
+
+\subsection{Syntax}
+
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+plot & List<$\mathbb{R}$[]> (dipole currents), List<$\mathbb{S}$>(plot type), $\mathbb{S}$(interaction type) & void & Plotting Error \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+\begin{itemize}
+\item activePlots: $\mathbb{D}$<PlotID, PlotData> (metadata for open plots).
+
+
+\item linkedViews: Set<PlotID>(plots synchronized via linkPlots).
+
+
+\end{itemize}
+
+
+\subsubsection{Environment Variables}
+
+GPU acceleration (enabled via plotly.graph\_objects and nilearn.plotting)
 \subsubsection{Assumptions}
 
-\wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
 
 \subsubsection{Access Routine Semantics}
 
-\noindent \wss{accessProg}():
 \begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
+\item renderCorticalMap():
+
+\begin{itemize}
+\item \textit{Output}: Generates brain activation map using plotly.graph\_objects and nilearn.plotting
+
+
+\item \textit{Exceptions}: Plotting Error
+
+
 \end{itemize}
 
-\wss{A module without environment variables or state variables is unlikely to
-  have a state transition.  In this case a state transition can only occur if
-  the module is changing the state of another module.}
+\end{itemize}
 
-\wss{Modules rarely have both a transition and an output.  In most cases you
-  will have one or the other.}
+
 
 \subsubsection{Local Functions}
 
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-  They are not necessarily something that is going to be implemented
-  explicitly.  Even if they are implemented, they are not exported; they only
-  have local scope.}
+\begin{itemize}
+\item \_updateLinkedAxes(): Propagates axis changes to all linked plots.
+
+
+\end{itemize}
 
 \newpage
 
@@ -236,35 +413,20 @@ The following table is taken directly from the Module Guide document for this pr
 
 \section{Appendix} \label{Appendix}
 
-\wss{Extra information if required}
+\subsection{ Dependencies}
+\begin{itemize}
+\item Plotly: Used for interactive HTML5 visualizations (zooming, panning, tooltips).
 
-\newpage{}
 
-\section*{Appendix --- Reflection}
+\item Nilearn: Handles neuroimaging-specific rendering (glass brain plots).
 
-\wss{Not required for CAS 741 projects}
 
-The information in this section will be used to evaluate the team members on the
-graduate attribute of Problem Analysis and Design.
+\end{itemize}
+\subsection{Performance Notes}
+\begin{itemize}
+\item GPU acceleration is optional but recommended for real-time interaction with large datasets (>10⁶ samples).
 
-\input{../../Reflection.tex}
 
-\begin{enumerate}
-  \item What went well while writing this deliverable? 
-  \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-  \item Which of your design decisions stemmed from speaking to your client(s)
-  or a proxy (e.g. your peers, stakeholders, potential users)? For those that
-  were not, why, and where did they come from?
-  \item While creating the design doc, what parts of your other documents (e.g.
-  requirements, hazard analysis, etc), it any, needed to be changed, and why?
-  \item What are the limitations of your solution?  Put another way, given
-  unlimited resources, what could you do to make the project better? (LO\_ProbSolutions)
-  \item Give a brief overview of other design solutions you considered.  What
-  are the benefits and tradeoffs of those other designs compared with the chosen
-  design?  From all the potential options, why did you select the documented design?
-  (LO\_Explores)
-\end{enumerate}
-
+\end{itemize}
 
 \end{document}
