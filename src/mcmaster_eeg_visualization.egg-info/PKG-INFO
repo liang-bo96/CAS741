@@ -1,0 +1,28 @@
+Metadata-Version: 2.4
+Name: mcmaster-eeg-visualization
+Version: 0.1.0
+Summary: EEG data visualization and analysis tools
+Author: McMaster EEG Visualization Team
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: numpy>=1.21.0
+Requires-Dist: scipy>=1.7.0
+Requires-Dist: scikit-learn>=0.24.0
+Requires-Dist: mne>=0.24.0
+Requires-Dist: plotly>=5.18.0
+Requires-Dist: dash>=2.14.0
+Requires-Dist: pandas>=1.5.0
+Requires-Dist: pywavelets>=1.1.1
+Dynamic: author
+Dynamic: classifier
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
