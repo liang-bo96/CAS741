@@ -1,4 +1,7 @@
 % THIS DOCUMENT IS TAILORED TO REQUIREMENTS FOR SCIENTIFIC COMPUTING.  IT SHOULDN'T
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL oldSRS.tex   Thu Apr 10 15:45:16 2025
+%DIF ADD SRS.tex      Thu Apr 10 15:44:59 2025
 % BE USED FOR NON-SCIENTIFIC COMPUTING PROJECTS
 \documentclass[12pt]{article}
 
@@ -85,7 +88,7 @@
 \newpage
 \noindent \rule{\textwidth}{0.5mm}
 
-\paragraph{RefName: } \textbf{#2} \phantomsection 
+\paragraph{RefName: } \textbf{#2} \phantomsection
 \label{#2}
 
 \paragraph{Label:} #3
@@ -125,13 +128,101 @@
 \noindent \rule{\textwidth}{0.5mm}
 
 }
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}} %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF AMSMATHULEM PREAMBLE %DIF PREAMBLE
+\makeatletter %DIF PREAMBLE
+\let\sout@orig\sout %DIF PREAMBLE
+\renewcommand{\sout}[1]{\ifmmode\text{\sout@orig{\ensuremath{#1}}}\else\sout@orig{#1}\fi} %DIF PREAMBLE
+\makeatother %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+\lstset{extendedchars=\true,inputencoding=utf8}
+
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 
 \title{Software Requirements Specification for \progname: Live Neuro}
 \author{\authname}
 \date{\today}
-	
+
 \maketitle
 
 ~\newpage
@@ -148,8 +239,8 @@
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 Feb 3, 2025 & 1.0 & Initial Draft\\
-Apr 9, 2025 & 1.1 & update based on feedback\\
-%Date 2 & 1.1 & Notes\\
+\DIFaddbegin \DIFadd{Apr 9, 2025 }& \DIFadd{1.1 }& \DIFadd{update based on feedback}\\
+\DIFaddend %Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
 
@@ -175,43 +266,19 @@ description of the unit and the SI name.
 ~\newline
 
 \renewcommand{\arraystretch}{1.2}
-%\begin{table}[ht]
-%
-%\caption{Table of Units}
-  \noindent \begin{tabular}{l l l} 
-    \toprule		
-    \textbf{symbol} & \textbf{unit} & \textbf{SI}\\
-    \midrule 
-    \si s & time & second\\
-%    \si j & dipole current vector & ampere and angle with the coordinate axis. \\
-    \si m & length & meter\\
-%    \si{\celsius} & temperature & centigrade\\
-    \si db & sound & decibel\\
-    \si cm & Electric dipole moment & Coulomb metre
-\\
-%    \si{\watt} & power & watt (W = \si{\joule\per\second})\\
-    \bottomrule
-  \end{tabular}
-% end: no diff  %	\caption{Provide a caption}
-%\end{table}
-
-%\plt{Only include the units that your SRS actually uses.}
-%
-%\plt{Derived units, like newtons, pascal, etc, should show their derivation
-%    (the units they are derived from) if their constituent units are in the
-%    table of units (that is, if the units they are derived from are used in the
-%    document).  For instance, the derivation of pascals as
-%    $\si{\pascal}=\si{\newton\per\square\meter}$ is shown if newtons and m are
-%    both in the table.  The derivations of newtons would not be shown if kg and
-%    s are not both in the table.}
-
-%\plt{The symbol for units named after people use capital letters, but the name
-%  of the unit itself uses lower case.  For instance, pascals use the symbol Pa,
-%  watts use the symbol W, teslas use the symbol T, newtons use the symbol N,
-%  etc.  The one exception to this is degree Celsius.  Details on writing metric
-%  units can be found on the
-%  \href{https://www.nist.gov/pml/weights-and-measures/writing-metric-units}
-%  {NIST} web-page.}
+\begin{table}[ht]
+\caption{Table of Units}
+\begin{tabular}{l l l}
+\toprule
+\textbf{symbol} & \textbf{unit} & \textbf{SI}\\
+\midrule
+\si{s} & time & second\\
+\si{m} & length & meter\\
+\si{db} & sound & decibel\\
+\si{cm} & Electric dipole moment & Coulomb metre\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Table of Symbols}
 
@@ -221,32 +288,27 @@ transfer literature and with existing documentation for solar water heating
 systems.  The symbols are listed in alphabetical order.
 
 \renewcommand{\arraystretch}{1.2}
-%\noindent \begin{tabularx}{1.0\textwidth}{l l X}
-\noindent \begin{longtable*}{l l p{12cm}} \toprule
-\textbf{symbol} & \textbf{unit} & \textbf{description}\\
-\midrule 
-%$A_C$ & \si[per-mode=symbol] {\square\metre} & coil surface area
-%\\
-%$A_\text{in}$ & \si[per-mode=symbol] {\square\metre} & surface area over
-%which heat is transferred in
-%\\
-$e_t$ & db & speech envelope\\
-$m$ & N/A & total number of dipole sources\\
-$j$ & C•m & Dipole Moment\\
-$v_t$ & C•m & background Dipole Moment\\
-
+\begin{table}[ht]
+\caption{Table of Symbols}
+\begin{tabular}{l l l}
+\toprule
+\textbf{symbol} & \textbf{description} & \textbf{units}\\
+\midrule
+$t$ & time & \si{s}\\
+$m$ & length & \si{m}\\
+$db$ & sound & \si{db}\\
+$cm$ & Electric dipole moment & \si{cm}\\
 \bottomrule
-\end{longtable*}
-\plt{Use your problems actual symbols.  The si package is a good idea to use for
-  units.}
+\end{tabular}
+\end{table}
 
 \subsection{Abbreviations and Acronyms}
 
 \renewcommand{\arraystretch}{1.2}% begin: no diff
-\begin{tabular}{l l} 
-  \toprule		
+\begin{tabular}{l l}
+  \toprule
   \textbf{symbol} & \textbf{description}\\
-  \midrule 
+  \midrule
   A & Assumption\\
   DD & Data Definition\\
   GD & General Definition\\
@@ -259,26 +321,50 @@ $v_t$ & C•m & background Dipole Moment\\
   \progname{} & interactive data visualization tool linking multiple data plots together\\
   TM & Theoretical Model\\
   \bottomrule
-\end{tabular}\\
-%\subsection{Mathematical Notation}
-%
-%%\plt{This section is optional, but should be included for projects that make use
-%%  of notation to convey mathematical information.  For instance, if typographic
-%%  conventions (like bold face font) are used to distinguish matrices, this
-%%  should be stated here.  If symbols are used to show mathematical operations,
-%%  these should be summarized here.  In some cases the easiest way to summarize
-%%  the notation is to point to a text or other source that explains the
-%%  notation.}
-%%
-%%\plt{This section was added to the template because some students use very
-%%  domain specific notation.  This notation will not be readily understandable to
-%%  people outside of your domain.  It should be explained.}
-%
-\newpage
-%
-%\pagenumbering{arabic}
+\end{tabular}%DIF <  end: no diff\\
+\DIFdelbegin \subsection{\DIFdel{Mathematical Notation}}
+%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+%DIFDELCMD <
 
-%\plt{This SRS template is based on \citet{SmithAndLai2005, SmithEtAl2007,
+%DIFDELCMD < %%%
+%DIF < \plt{This section is optional, but should be included for projects that make use
+%DIF <   of notation to convey mathematical information.  For instance, if typographic
+%DIF <   conventions (like bold face font) are used to distinguish matrices, this
+%DIF <   should be stated here.  If symbols are used to show mathematical operations,
+%DIF <   these should be summarized here.  In some cases the easiest way to summarize
+%DIF <   the notation is to point to a text or other source that explains the
+%DIF <   notation.}
+\DIFdelend \DIFaddbegin \\
+%DIF > \subsection{Mathematical Notation}
+\DIFaddend %
+%DIF < \plt{This section was added to the template because some students use very
+%DIF <   domain specific notation.  This notation will not be readily understandable to
+%DIF <   people outside of your domain.  It should be explained.}
+\DIFdelbegin %DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdelend %DIF > %\plt{This section is optional, but should be included for projects that make use
+%DIF > %  of notation to convey mathematical information.  For instance, if typographic
+%DIF > %  conventions (like bold face font) are used to distinguish matrices, this
+%DIF > %  should be stated here.  If symbols are used to show mathematical operations,
+%DIF > %  these should be summarized here.  In some cases the easiest way to summarize
+%DIF > %  the notation is to point to a text or other source that explains the
+%DIF > %  notation.}
+%DIF > %
+%DIF > %\plt{This section was added to the template because some students use very
+%DIF > %  domain specific notation.  This notation will not be readily understandable to
+%DIF > %  people outside of your domain.  It should be explained.}
+%DIF >
+\newpage
+%DIF >
+%DIF > \pagenumbering{arabic}
+
+\DIFdelbegin %DIFDELCMD < \pagenumbering{arabic}
+%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdelend %\plt{This SRS template is based on \citet{SmithAndLai2005, SmithEtAl2007,
 %  SmithAndKoothoor2016}.  It will get you started.  You should not modify the
 %  section headings, without first discussing the change with the course
 %  instructor.  Modification means you are not following the template, which
@@ -302,14 +388,36 @@ $v_t$ & C•m & background Dipole Moment\\
 %  reference document.  It is generally read in an ad hoc order, as the need
 %  arises.  For writing an SRS, and for reading one for the first time, the
 %  suggested order of sections is:
-%\begin{itemize}
-%\item Goal Statement
-%\item Instance Models
-%\item Requirements
-%\item Introduction
-%\item Specific System Description
-%\end{itemize}
-%}
+\DIFdelbegin %DIFDELCMD < \begin{itemize}
+\begin{itemize}%DIFAUXCMD
+%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Goal Statement
+}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Instance Models
+}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Requirements
+}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Introduction
+}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Specific System Description
+}
+\end{itemize}%DIFAUXCMD
+%DIFDELCMD < \end{itemize}
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelend %DIF > \begin{itemize}
+%DIF > \item Goal Statement
+%DIF > \item Instance Models
+%DIF > \item Requirements
+%DIF > \item Introduction
+%DIF > \item Specific System Description
+%DIF > \end{itemize}
+%DIF > }
 
 %\plt{Guiding principles for the SRS document:
 %\begin{itemize}
@@ -344,19 +452,21 @@ $v_t$ & C•m & background Dipole Moment\\
 
 \section{Introduction}
 Neuron data based on brain activity is often complex and multi-sourced. To clearly describe the
-activity of different neurons, multidimensional data is typically required. Live Neuro - an interactive data
+activity of different neurons, multidimensional data is typically required. \DIFdelbegin \DIFdel{An }\DIFdelend \DIFaddbegin \DIFadd{Live Neuro - an }\DIFaddend interactive data
 visualization tool is particularly useful for effectively presenting these data, allowing users to
 explore and understand the relationships and transformations between different data points.
 
 \subsection{Purpose of Document}
 
 The following section provides an overview of the Software Requirements Specification  (SRS)  for
-the interactive neural data visualization tool.The developed program will be referred to as “Live Neuro”
-based on the original, manually created version and the purpose of this program is to serve as a basic data
+the interactive neural data visualization tool.The developed program will be referred to as \DIFdelbegin \DIFdel{"Live Neuro, "
+}\DIFdelend \DIFaddbegin \DIFadd{"Live Neuro"
+}\DIFaddend based on the original, manually created version \DIFdelbegin \DIFdel{. }\DIFdelend \DIFaddbegin \DIFadd{and the purpose of this program is to serve as a basic data
 visualization foundation module in Eelbrain, making all neuro-related plots interactive within jupyter notebook,
 which is not currently available in Eelbrain
+}
 
-This section explains the purpose of this
+\DIFaddend This section explains the purpose of this
 document, the scope of the requirements, the characteristics of the intended reader, and the
 organization of the document.
 
@@ -370,7 +480,7 @@ organization of the document.
 %  purpose of the SRS, including communication, planning for the design stage,
 %  etc.}
 
-\subsection{Scope of Requirements} 
+\subsection{Scope of Requirements}
 
 The scope of requirements include the whole stimuli-response process neural data
 and the interactive data visualization
@@ -394,7 +504,7 @@ and the interactive data visualization
 \subsection{Characteristics of Intended Reader} \label{sec_IntendedReader}
 
 Reviewers of this documentation should have an undergraduate-level understanding
-of math and undergraduate school level understanding of neuro science
+of \DIFdelbegin \DIFdel{mathmatics and high }\DIFdelend \DIFaddbegin \DIFadd{math and undergraduate }\DIFaddend school level understanding of neuro science
  The users of \progname{} Neuro can have a lower level of expertise,
 as explained in (Section~\ref{SecUserCharacteristics})
 %\plt{This section summarizes the skills and knowledge of the readers of the
@@ -415,10 +525,11 @@ as explained in (Section~\ref{SecUserCharacteristics})
 \subsection{Organization of Document}
 
 The organization of this document follows the template for an SRS for scientific
-computing software proposed by \href{https://dl.acm.org/doi/10.1145/2532352.2532353}{koothoor2013},
-\href{https://www.yeastgenome.org/reference/S000136399}{smithEtAl2007}
-, and \href{https://ieeexplore.ieee.org/document/7839470}{smithKoothoor2016}
-. The presentation follows the standard pattern of presenting
+computing software proposed by \DIFdelbegin \DIFdel{koothoor2013,
+smithLai2005, smithEtAl2007, and smithKoothoor2016}\DIFdelend \DIFaddbegin \href{https://dl.acm.org/doi/10.1145/2532352.2532353}{\DIFadd{koothoor2013}}\DIFadd{,
+}\href{https://www.yeastgenome.org/reference/S000136399}{\DIFadd{smithEtAl2007}}
+\DIFadd{, and }\href{https://ieeexplore.ieee.org/document/7839470}{\DIFadd{smithKoothoor2016}}
+\DIFaddend . The presentation follows the standard pattern of presenting
 goals, theories, definitions, and assumptions. For readers that would like a more
 bottom up approach, they can start reading the instance models and trace back to
 find any additional information they require.
@@ -468,7 +579,7 @@ the software, the user in this case. A rectangle represents the software system 
 \begin{center}
  \includegraphics[width=1\textwidth]{SRS1}
 \caption{System Context}
-\label{Fig_SystemContext} 
+\label{Fig_SystemContext}
 \end{center}
 \end{figure}
 
@@ -492,8 +603,8 @@ the software, the user in this case. A rectangle represents the software system 
 \item \progname{} Responsibilities:
 \begin{itemize}
 \item Detect data type mismatch, such as a string of characters instead of a floating point number
-\item Determine if the inputs satisfy the required software constraints, excluding invalid or corrupt data from analysis
-\item Calculate the required outputs
+\item Determine if the inputs satisfy the required software constraints\DIFaddbegin \DIFadd{, excluding invalid or corrupt data from analysis
+}\DIFaddend \item Calculate the required outputs
 \end{itemize}
 
 \end{itemize}
@@ -509,9 +620,10 @@ the software, the user in this case. A rectangle represents the software system 
 
 \subsection{User Characteristics} \label{SecUserCharacteristics}
 
-The end user of \progname{} should have an understanding of Neuro Science including the basic
+The end user of \progname{} should have an understanding of \DIFdelbegin \DIFdel{undergraduate mathmatics
+and computer science }\DIFdelend \DIFaddbegin \DIFadd{Neuro Science including the basic
 neuro data structure and neuro science analysis algorithm
-%\plt{This section summarizes the knowledge/skills expected of the user.
+}\DIFaddend %\plt{This section summarizes the knowledge/skills expected of the user.
 %  Measuring usability, which is often a required non-function requirement,
 %  requires knowledge of a typical user.  As mentioned above, the user is a
 %  different role from the ``intended reader,'' as given in
@@ -522,8 +634,8 @@ neuro data structure and neuro science analysis algorithm
 
 \subsection{System Constraints}
 
-The project should be developed under the plot module of Eelbrain, and the basic visualization fundamental Library should be
-Plotly or any other Library with interactive function in jupyter notebook.
+\DIFdelbegin \DIFdel{There are no system constraints}\DIFdelend \DIFaddbegin \DIFadd{The project should be developed under the plot module of Eelbrain, and the basic visualization fundamental Library should be
+Plotly or any other Library with interactive function in jupyter notebook}\DIFaddend .
 
 %\plt{System constraints differ from other type of requirements because they
 %  limit the developers' options in the system design and they identify how the
@@ -562,10 +674,12 @@ easier to correctly understand the requirements:
 
 \begin{itemize}
 
-\item dipole: In neuroscience, a dipole refers to a pair of opposite electrical charges (positive and negative)
+\item \DIFdelbegin \DIFdel{//todo
+}\DIFdelend \DIFaddbegin \DIFadd{dipole: In neuroscience, a dipole refers to a pair of opposite electrical charges (positive and negative)
 that are separated by a small distance, typically generated by neuron activity.
+}
 
-\end{itemize}
+\DIFaddend \end{itemize}
 
 \subsubsection{Physical System Description} \label{sec_phySystDescrip}
 
@@ -586,12 +700,12 @@ that are separated by a small distance, typically generated by neuron activity.
 %physical entity.  They can be conceptual.  This is particularly important when
 %the documentation is for a numerical method. }
 
-The physical system of \progname{}, as shown in Figure 2,
+The physical system of \progname{}, as shown in \DIFdelbegin \DIFdel{Figure2}\DIFdelend \DIFaddbegin \DIFadd{Figure 2}\DIFaddend ,
 includes the following elements:
 
 \begin{itemize}
 
-\item[PS:] Arrows in the Figure 2 are neuronal current dipole, representing the intensity of neuronal activity
+\item[PS:] \DIFdelbegin \DIFdel{Current Dipoles can be used to measure the }\DIFdelend \DIFaddbegin \DIFadd{Arrows in the Figure 2 are neuronal current dipole, representing the }\DIFaddend intensity of neuronal activity
 
 \end{itemize}
 
@@ -618,18 +732,19 @@ includes the following elements:
 %  (Section~\ref{Sec_pd}).  A goal is a functional objective the system under
 %  consideration should achieve. Goals provide criteria for sufficient
 %  completeness of a requirements specification and for requirements
-%  pertinence. Goals will be refined in Section “Instanced Models”
+%  pertinence. Goals will be refined in Section "Instanced Models"
 %  (Section~\ref{sec_instance}). Large and complex goals should be decomposed
 %  into smaller sub-goals.  The goals are written abstractly, with a minimal
 %  amount of technical language.  They should be understandable by non-domain
 %  experts.}
 
-\noindent Given the Neuro Data, the goal statements are:
+\noindent Given the \DIFdelbegin \DIFdel{Acoustic Stimuli and Semantics Stimuli}\DIFdelend \DIFaddbegin \DIFadd{Neuro Data}\DIFaddend , the goal statements are:
 
 \begin{itemize}
 
-\item[GS1:]Implement multidimensional neural data visualization
-\item[GS2:]Link Interactive neural data plots together
+\item[GS1:]\DIFdelbegin \DIFdel{Predicted MEG/EEG data }\DIFdelend \DIFaddbegin \DIFadd{Implement multidimensional neural data visualization
+}\DIFaddend \item[GS2:]\DIFaddbegin \DIFadd{Link }\DIFaddend Interactive neural data \DIFdelbegin \DIFdel{visualization plots }\DIFdelend \DIFaddbegin \DIFadd{plots together
+}\DIFaddend
 
 \end{itemize}
 
@@ -722,135 +837,76 @@ change [LC], in which the respective assumption is used.
 
   \item[A\refstepcounter{assumpnum}\theassumpnum:] The Stimulus data is continuous
   \item[A\refstepcounter{assumpnum}\theassumpnum:] The neuron data is complete
-%  \plt{Short description of each assumption.  Each assumption
-%    should have a meaningful label.  Use cross-references to identify the
-%    appropriate traceability to TM, GD, DD etc., using commands like dref, ddref
-%    etc.  Each assumption should be atomic - that is, there should not be an
-%    explicit (or implicit) ``and'' in the text of an assumption.}
 
 \end{itemize}
 
 \subsubsection{Theoretical Models}\label{sec_theoretical}
 
-%\plt{Theoretical models are sets of abstract mathematical equations or axioms
-%  for solving the problem described in Section ``Physical System Description''
-%  (Section~\ref{sec_phySystDescrip}). Examples of theoretical models are
-%  physical laws, constitutive equations, relevant conversion factors, etc.}
-%
-%\plt{Optionally the theory section could be divided into subsections to provide
-%more structure and improve understandability and reusability.  Potential
-%subsections include the following: Context theories, background theories, helper
-%theories, generic theories, problem specific theories, final theories and
-%rationale theories.}
-
-This section focuses on the general equations and laws that \progname{} is based
-on.
-%\plt{Modify the examples below for your problem, and add additional models
-%  as appropriate.}
+This section focuses on the general equations and laws that \progname{} is based on.
 
 ~\newline
 
 \noindent
 \deftheory
-% #2 refname of theory
 {TM:1}
-% #3 label
 {Neural stimulation-response model}
-% #4 equation
 {
-
 ${j}_{m, t, i}=f_{i}\left(e_{t}, e_{t-1}, \cdots, e_{1}\right)+v_{m, t, i}$
-
 }
-% #5 description
 {
-  The above equation gives Neural stimulation-response model, where ${{j}_{m, t, i}}$
-is the dipole current $j$ of source $m$, at time $t$, in the i-th direction.${v_{m, t, i}} $ is the background
-activities of source m, at time t, in the i-th direction ${f_{i}\left(e_{t}, e_{t-1}, \cdots, e_{1}\right)}$
-is the stimulus-driven component $e_{t}$ is the speech envelop driven by acoustic and semantics stimuli.
-
+  The above equation gives Neural stimulation-response model, where ${j}_{m, t, i}$
+is the dipole current $j$ of source $m$, at time $t$, in the i-th direction. ${v_{m, t, i}}$ is the background
+activities of source m, at time t, in the i-th direction. ${f_{i}\left(e_{t}, e_{t-1}, \cdots, e_{1}\right)}$
+is the stimulus-driven component. $e_{t}$ is the speech envelop driven by acoustic and semantics stimuli.
 }
-% #6 Notes
 {
 None.
 }
-% #7 Source
 {
   \url{https://doi.org/10.1016/j.neuroimage.2020.116528}
 }
-% #8 Referenced by
 {
   GD\ref{GD1},
-IM\ref{IM1}
+  IM\ref{IM1}
 }
-% #9 Preconditions
 {
 None
 }
-% #1 derivation - not applicable by default
 {}
-
-%\plt{``Ref.\ By'' is used repeatedly with the different types of information.
-%  This stands for Referenced By.  It means that the models, definitions and
-%  assumptions listed reference the current model, definition or assumption.
-%  This information is given for traceability.  Ref. By provides a pointer in the
-%  opposite direction to what we commonly do.  You still need to have a reference
-%  in the other direction pointing to the current model, definition or
-%  assumption.  As an example, if TM1 is referenced by GD2, that means that GD2 will
-%  explicitly include a reference to TM1.}
 
 ~\newline
 
 \subsubsection{General Definitions}\label{sec_gendef}
 
-%\plt{General Definitions (GDs) are a refinement of one or more TMs, and/or of
-%  other GDs.  The GDs are less abstract than the TMs.  Generally the reduction
-%  in abstraction is possible through invoking (using/referencing) Assumptions.
-%  For instance, the TM could be Newton's Law of Cooling stated abstracting.  The
-%  GD could take the general law and apply it to get a 1D equation.}
-
-This section collects the laws and equations that will be used in building the
-instance models.
-
-%\plt{Some projects may not have any content for this section, but the section
-%  heading should be kept.}  \plt{Modify the examples below for your problem, and
-%  add additional definitions as appropriate.}
+This section collects the laws and equations that will be used in building the instance models.
 
 ~\newline
 
 \noindent
 \begin{minipage}{\textwidth}
-\renewcommand*{\arraystretch}{1.5}% begin: no diff
+\renewcommand*{\arraystretch}{1.5}
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
 \rowcolor[gray]{0.9}
-Number& GD\refstepcounter{defnum}\thedefnum \label{GD1}\\
+Number & GD\refstepcounter{defnum}\thedefnum \label{GD1} \\
 \hline
 Label & Cortical Dipole Moment\\
 \hline
-% Units&$MLt^{-3}T^0$\\
-% \hline
-SI Units&\ nAm \\
+SI Units & nAm \\
 \hline
-Equation&$f_i(e_t,e_{t-1},\cdots,e_1)=\sum_{l=0}^{L-1}\tau_{m,i,l}e_{t-l}=(\boldsymbol{\tau}_{m,i})^\top\mathbf{e}_t,i\in\{R,A,S\},$  \\
+Equation & $f_i(e_t,e_{t-1},\cdots,e_1)=\sum_{l=0}^{L-1}\tau_{m,i,l}e_{t-l}=(\boldsymbol{\tau}_{m,i})^\top\mathbf{e}_t,i\in\{R,A,S\},$  \\
 \hline
-Description &
-$\tau_{m,i}$
-can be thought of as a matrix corresponding to the activity of dipole
-source m along the coordinate axis determined by i.The length of the
+Description & $\tau_{m,i}$ can be thought of as a matrix corresponding to the activity of dipole
+source m along the coordinate axis determined by i. The length of the
 filter L is typically determined by a priori assumptions on the effective
-integration window of the underlying neural process.
-
-\\
-
-\\
+integration window of the underlying neural process. \\
 \hline
-  Source & \url{https://doi.org/10.1016/j.neuroimage.2020.116528} \\
-  \hline
-  Ref.\ By & \ddref{FluxCoil}\\
-  \hline
+Source & \url{https://doi.org/10.1016/j.neuroimage.2020.116528} \\
+\hline
+Ref.\ By & \ddref{FluxCoil} \\
+\hline
 \end{tabular}
-% end: no diff\end{minipage}\\
+\end{minipage}\\
 
 %\subsubsection*{Detailed derivation of simplified rate of change of temperature}
 %
@@ -878,7 +934,7 @@ models. The dimension of each quantity is also given.
 ~\newline
 
 \noindent
-\begin{minipage}{\textwidth}
+%\begin{minipage}{\textwidth}
 \renewcommand*{\arraystretch}{1.5}% begin: no diff
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
@@ -891,48 +947,24 @@ Symbol &$\tau_{m,i}$\\
 \hline
 % Units& $Mt^{-3}$\\
 % \hline
-  SI Units &N/A\\
+  SI Units &\DIFdelbegin \DIFdel{Float}\DIFdelend \DIFaddbegin \DIFadd{N/A}\DIFaddend \\
   \hline
   Equation&$\tau_{m,i}:=[\tau_{m,i,0},\tau_{m,i,1}\cdotp\cdotp\cdotp,\tau_{m,i,L-1}]^\top$\\
   \hline
-  Description & 
-                $\tau_{m,i}$ can be thought of as a matrix corresponding to the activity of dipole
+  Description &
+                $\tau_{m,i}$ can be thought of as a \DIFdelbegin \DIFdel{TRF }\DIFdelend \DIFaddbegin \DIFadd{matrix }\DIFaddend corresponding to the activity of dipole
 source m along the coordinate axis determined by i.
   \\
   \hline
   Sources& \url{https://doi.org/10.1016/j.neuroimage.2020.116528} \\
   \hline
-  Ref.\ By & \iref{IM1}\\
+  Ref.\ By & \DIFdelbegin \DIFdel{\iref{ewat}}\DIFdelend \DIFaddbegin \DIFadd{\iref{IM1}}\DIFaddend \\
   \hline
 \end{tabular}
-% end: no diff%\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
-%\hline
-%\rowcolor[gray]{0.9}
-%Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{FluxCoil}\\
-%\hline
-%Label& \bf temporal response
-%functions\\
-%\hline
-%Symbol &\tau_m\\
-%\hline
-%% Units& $Mt^{-3}$\\
-%% \hline
-%  SI Units & Integer\\
-%  \hline
-%  Equation&$\tau_m:=[\tau_{m,R},\tau_{m,A},\tau_{m,S}]\in\mathbb{R}^{L\times3}$\\
-%  \hline
-%  Description &
-%                $\tau_m:=[\tau_{m,R},\tau_{m,A},\tau_{m,S}]\in\mathbb{R}^{L\times3}$
-%are vector-valued TRFs at each source m, capturing the linear processing of the
-%stimuli at the cortical level.
-%  \\
-%  \hline
-%  Sources& \url{https://doi.org/10.1016/j.neuroimage.2020.116528}\\
-%  \hline
-%  Ref.\ By & \iref{ewat}\\
-%  \hline
-%\end{tabular}
-% end: no diff\end{minipage}\\
+%DIF <  end: no diff
+\DIFdelbegin %DIFDELCMD < \end{minipage}\\
+%DIFDELCMD < %%%
+\DIFdelend %DIF >  end: no diff\end{minipage}\\
 
 %\subsubsection{Data Types}\label{sec_datatypes}
 
@@ -957,7 +989,7 @@ source m along the coordinate axis determined by i.
 ~\newline
 
 \noindent
-\begin{minipage}{\textwidth}
+%\begin{minipage}{\textwidth}
 \renewcommand*{\arraystretch}{1.5}
 %\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 %  \hline
@@ -972,9 +1004,12 @@ source m along the coordinate axis determined by i.
 %  Sources & Citation here, if the type is borrowed from another source\\
 %  \hline
 %\end{tabular}
-% end: no diff\end{minipage}\\
+%DIF <  end: no diff
+\DIFdelbegin %DIFDELCMD < \end{minipage}\\
+%DIFDELCMD < %%%
+\DIFdelend %DIF >  end: no diff\end{minipage}\\
 
-\subsubsection{Instance Models} \label{sec_instance}    
+\subsubsection{Instance Models} \label{sec_instance}
 
 %\plt{The motivation for this section is to reduce the problem defined in
 %  ``Physical System Description'' (Section~\ref{sec_phySystDescrip}) to one
@@ -982,9 +1017,9 @@ source m along the coordinate axis determined by i.
 %  GDs.  This section should remain abstract.  The SRS should specify the
 %  requirements without considering the implementation.}
 
-This section transforms the problem defined in Section~\ref{Sec_pd} into 
-one which is expressed in mathematical terms. It uses concrete symbols defined 
-in Section~\ref{sec_datadef} to replace the abstract symbols in the models 
+This section transforms the problem defined in Section~\ref{Sec_pd} into
+one which is expressed in mathematical terms. It uses concrete symbols defined
+in Section~\ref{sec_datadef} to replace the abstract symbols in the models
 identified in Sections~\ref{sec_theoretical} and~\ref{sec_gendef}.
 
 %The goals \plt{reference your goals} are solved by \plt{reference your instance
@@ -997,12 +1032,13 @@ identified in Sections~\ref{sec_theoretical} and~\ref{sec_gendef}.
 %Instance Model 1
 
 \noindent
-\begin{minipage}{\textwidth}
+%\begin{minipage}{\textwidth}
 \renewcommand*{\arraystretch}{1.5}% begin: no diff
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
   \hline
   \rowcolor[gray]{0.9}
-  Number& IM\refstepcounter{instnum}\theinstnum \label{IM1}\\
+  Number& IM\refstepcounter{instnum}\theinstnum \DIFdelbegin %DIFDELCMD < \label{ewat}%%%
+\DIFdelend \DIFaddbegin \label{IM1}\DIFaddend \\
   \hline
   Label& \bf get neural dipole current \\
   \hline
@@ -1016,10 +1052,17 @@ identified in Sections~\ref{sec_theoretical} and~\ref{sec_gendef}.
    $m^{\mathrm{th}}$ neural current dipole of time 3 in the Right direction\\
   \\
   \hline
-  Sources& \url{https://doi.org/10.1016/j.neuroimage.2020.116528} \\
+  Sources& \DIFdelbegin \DIFdel{Citation here }\DIFdelend \DIFaddbegin \url{https://doi.org/10.1016/j.neuroimage.2020.116528} \DIFaddend \\
   \hline
-\end{tabular}
-% end: no diff\end{minipage}\\
+\DIFdelbegin \DIFdel{Ref.\ By }%DIFDELCMD < & %%%
+\DIFdel{\iref{epcm}}%DIFDELCMD < \\
+%DIFDELCMD <   \hline
+%DIFDELCMD < %%%
+\DIFdelend \end{tabular}
+%DIF <  end: no diff
+\DIFdelbegin %DIFDELCMD < \end{minipage}\\
+%DIFDELCMD < %%%
+\DIFdelend %DIF >  end: no diff\end{minipage}\\
 
 %~\newline
 
@@ -1029,7 +1072,7 @@ identified in Sections~\ref{sec_theoretical} and~\ref{sec_gendef}.
 %  where the derivation cannot be described under the Description field, it will
 %  be necessary to include this subsection.}
 
-\subsubsection{Input Data Constraints} \label{sec_DataConstraints}    
+\subsubsection{Input Data Constraints} \label{sec_DataConstraints}
 
 Table~\ref{TblInputVar} shows the data constraints on the input output
 variables.  The column for physical constraints gives the physical limitations
@@ -1043,23 +1086,42 @@ provides an estimate of the confidence with which the physical quantities can be
 measured.  This information would be part of the input if one were performing an
 uncertainty quantification exercise.
 
-The specification parameters in below\\
+The specification parameters in \DIFdelbegin \DIFdel{Table~\ref{TblInputVar} are listed in
+Table~\ref{TblSpecParams}.
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \DIFadd{below}\\
 \\
 \centering
-Table 1 $Input $  $variable$
-\begin{table}[!h]
+\DIFadd{Table 1 $Input $  $variable$
+}\DIFaddend \begin{table}[!h]
+\DIFdelbeginFL %DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Input Variables}} %DIFAUXCMD
+%DIFDELCMD < \label{TblInputVar}
+%DIFDELCMD <   \renewcommand{\arraystretch}{1.2}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL
 
 
 \renewcommand{\tablename}{Tbl.}
 
 
-\noindent \begin{longtable*}{l l l l c} 
+\DIFaddendFL \noindent \begin{longtable*}{l l l l c}
   \toprule
   \textbf{Var} & \textbf{Physical Constraints} & \textbf{Software Constraints} &
                              \textbf{Typical Value} & \textbf{Uncertainty}\\
-  \midrule 
-%  $e_t$ & $e_t > 0$ & $e_t \leq e_t{\text{max}}$ & 20 dB{\metre} & 80\%
-%\\
+  \midrule
+\DIFdelbeginFL \DIFdelFL{$e_t$ }%DIFDELCMD < & %%%
+\DIFdelFL{$e_t > 0$ }%DIFDELCMD < & %%%
+\DIFdelFL{$e_t \leq e_t{\text{max}}$ }%DIFDELCMD < & %%%
+\DIFdelFL{20 dB}%DIFDELCMD < {\metre} & %%%
+\DIFdelFL{80\%
+}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelendFL %DIF >   $e_t$ & $e_t > 0$ & $e_t \leq e_t{\text{max}}$ & 20 dB{\metre} & 80\%
+%DIF > \\
 %  $j_{m,t}$ & $j_{m,t} > 0$ & $ j_{m,t} \leq j_{m,t}{\text{max}}$ & 90nAm {\metre} & 20\%
 %  \\
   $v_{m,t}$ & $v_{m,t} > 0$ & $ v_{m,t} \leq v_{m,t}{\text{max}}$ & 11nAm {\metre} & 10\%
@@ -1067,20 +1129,37 @@ Table 1 $Input $  $variable$
   \bottomrule
 \end{longtable*}
 \end{table}
-\noindent
+\DIFdelbegin %DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdelend \noindent
 \begin{description}
-%\item[(*)] \plt{you might need to add some notes or clarifications}
+\DIFdelbegin %DIFDELCMD < \item[(*)] \plt{you might need to add some notes or clarifications}
+\item[\DIFdel{(*)}]%DIFAUXCMD
+%DIFDELCMD < %%%
+\DIFdelend %DIF > \item[(*)] \plt{you might need to add some notes or clarifications}
 \end{description}
-\centering
-Table 2 $Specification $  $Parameter$  $Values$
-\begin{table}[!h]
-%\caption{Specification Parameter Values} \label{TblSpecParams}
+\DIFdelbegin %DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \centering
+\DIFadd{Table 2 $Specification $  $Parameter$  $Values$
+}\DIFaddend \begin{table}[!h]
+\DIFdelbeginFL %DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Specification Parameter Values}} %DIFAUXCMD
+%DIFDELCMD < \label{TblSpecParams}
+%DIFDELCMD < %%%
+\DIFdelendFL %DIF > \caption{Specification Parameter Values} \label{TblSpecParams}
 \renewcommand{\arraystretch}{1.2}
-\noindent \begin{longtable*}{l l} 
+\noindent \begin{longtable*}{l l}
   \toprule
   \textbf{Var} & \textbf{Value} \\
-  \midrule 
-%  $e_t{\text{max}}$ & 60 dB  \\
+  \midrule
+\DIFdelbeginFL \DIFdelFL{$e_t{\text{max}}$ }%DIFDELCMD < & %%%
+\DIFdelFL{60 dB  }%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelendFL %DIF >   $e_t{\text{max}}$ & 60 dB  \\
 %  $j_{m,t}{\text{max}}$ & 100 nAm\\
   $v_{m,t}{\text{max}}$ & 20 nAm \\
   \bottomrule
@@ -1113,8 +1192,11 @@ Table 2 $Specification $  $Parameter$  $Values$
 %\plt{This section is not for test cases or techniques for verification and
 %  validation.  Those topics will be addressed in the Verification and Validation
 %  plan.}
-\newpage
-\section{Requirements}
+\DIFdelbegin %DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \newpage
+\DIFaddend \section{Requirements}
 
 %\plt{The requirements refine the goal statement.  They will make heavy use of
 %  references to the instance models.}
@@ -1127,19 +1209,46 @@ qualities that the software is expected to exhibit.
 
 \noindent \begin{itemize}
 
-%\item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] Acoustic stimuli must be continuous
-%\item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] Acoustic stimuli can be converted to speech envelope
-%
-%%\plt{Requirements
-%%    for the inputs that are supplied by the user.  This information has to be
-%%    explicit.}
-%
-%%\item[R\refstepcounter{reqnum}\thereqnum \label{R_OutputInputs}:]
-%%\plt{It isn't
-%%    always required, but often echoing the inputs as part of the output is a
-%%    good idea.}
-%
-%\item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] Calculation result of TRF model has no error
+\DIFdelbegin %DIFDELCMD < \item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] %%%
+\item[\DIFdel{R}%DIFDELCMD < \refstepcounter{reqnum}\thereqnum \label{R_Inputs}%%%
+\DIFdel{:}]%DIFAUXCMD
+\DIFdel{Acoustic stimuli must be continuous
+}%DIFDELCMD < \item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] %%%
+\item[\DIFdel{R}%DIFDELCMD < \refstepcounter{reqnum}\thereqnum \label{R_Inputs}%%%
+\DIFdel{:}]%DIFAUXCMD
+\DIFdel{Acoustic stimuli can be converted to speech envelope
+}%DIFDELCMD <
+
+%DIFDELCMD < %%%
+%DIF < \plt{Requirements
+%DIF <     for the inputs that are supplied by the user.  This information has to be
+%DIF <     explicit.}
+%DIFDELCMD <
+
+%DIFDELCMD < %%%
+%DIF < \item[R\refstepcounter{reqnum}\thereqnum \label{R_OutputInputs}:]
+%DIF < \plt{It isn't
+%DIF <     always required, but often echoing the inputs as part of the output is a
+%DIF <     good idea.}
+%DIFDELCMD <
+
+%DIFDELCMD < \item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] %%%
+\item[\DIFdel{R}%DIFDELCMD < \refstepcounter{reqnum}\thereqnum \label{R_Calculate}%%%
+\DIFdel{:}]%DIFAUXCMD
+\DIFdel{Calculation result of TRF model has no error
+}\DIFdelend %DIF > \item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] Acoustic stimuli must be continuous
+%DIF > \item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] Acoustic stimuli can be converted to speech envelope
+%DIF >
+%DIF > %\plt{Requirements
+%DIF > %    for the inputs that are supplied by the user.  This information has to be
+%DIF > %    explicit.}
+%DIF >
+%DIF > %\item[R\refstepcounter{reqnum}\thereqnum \label{R_OutputInputs}:]
+%DIF > %\plt{It isn't
+%DIF > %    always required, but often echoing the inputs as part of the output is a
+%DIF > %    good idea.}
+%DIF >
+%DIF > \item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] Calculation result of TRF model has no error
 %\plt{Calculation
 %    related requirements.}
 
@@ -1148,11 +1257,13 @@ identical to original plots
 %  \plt{Verification related requirements.}
 
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_Output}:]
-The output of the software should consist of multiple data visualizations that are interconnected, with linked data interactions,
+\DIFdelbegin \DIFdel{the output of LiveNeuro should be interactive between different plots
+}\DIFdelend \DIFaddbegin \DIFadd{The output of the software should consist of multiple data visualizations that are interconnected, with linked data interactions,
 and can be controlled interactively via mouse input.
+}
 
 
-\end{itemize}
+\DIFaddend \end{itemize}
 %
 %\plt{Every IM should map to at least one requirement, but not every requirement
 %  has to map to a corresponding IM.}
@@ -1179,13 +1290,15 @@ and can be controlled interactively via mouse input.
 \noindent \begin{itemize}
 
 \item[NFR\refstepcounter{nfrnum}\thenfrnum \label{NFR_Accuracy}:]
+\DIFaddbegin
 
-The generated data visualizations should not only accurately represent the underlying data but also adhere to the standards of scientific
-rigor, including clarity, reproducibility, and interpretability. They must effectively convey key patterns, relationships, and trends in a
+\DIFaddend The generated data \DIFdelbegin \DIFdel{charts should accurately reflect the specifics of the data and meet }\DIFdelend \DIFaddbegin \DIFadd{visualizations should not only accurately represent the underlying data but also adhere to }\DIFaddend the standards of scientific
+\DIFdelbegin \DIFdel{research. }\DIFdelend \DIFaddbegin \DIFadd{rigor, including clarity, reproducibility, and interpretability. They must effectively convey key patterns, relationships, and trends in a
 manner that facilitates meaningful analysis and supports evidence-based conclusions.
+}
 
 
-%  \textbf{Accuracy}
+\DIFaddend %  \textbf{Accuracy}
 %\plt{Characterize the accuracy by giving the context/use for
 %    the software.  Maybe something like, ``The accuracy of the computed
 %    solutions should meet the level needed for $<$engineering or scientific
@@ -1196,10 +1309,11 @@ manner that facilitates meaningful analysis and supports evidence-based conclusi
 \item[NFR\refstepcounter{nfrnum}\thenfrnum \label{NFR_Usability}:]
  Users with knowledge of neuro science and computer science, as described in Section~\ref{SecUserCharacteristics},
   should be able to successfully use the software with minimal training.
-The interface and functionality are designed to align with the interdisciplinary skill sets of such users, enabling them to efficiently perform data analysis and visualization tasks without the need for extensive onboarding or technical assistance.
+\DIFaddbegin \DIFadd{The interface and functionality are designed to align with the interdisciplinary skill sets of such users, enabling them to efficiently perform data analysis and visualization tasks without the need for extensive onboarding or technical assistance.
+}
 
 
-%\textbf{Usability}
+\DIFaddend %\textbf{Usability}
 %  \plt{Characterize the usability by giving the context/use for the software.
 %    You should likely reference the user characteristics section.  The level of
 %    usability achieved by the software shall be described following the
@@ -1217,7 +1331,7 @@ The effort required to make any of the likely
 %    at the end of the report.}
 
 \item[NFR\refstepcounter{nfrnum}\thenfrnum \label{NFR_Portability}:]
-LiveNeuro shall run on Linus Windows 10+ and MacOS operating system
+LiveNeuro shall run on Linus \DIFdelbegin \DIFdel{,}\DIFdelend Windows 10+ and MacOS operating system
 %  \textbf{Portability} \plt{This NFR is easier to write than the others.  The
 %    systems that \progname{} should run on should be listed here.  When possible
 %    the specific versions of the potential operating environments should be
@@ -1236,43 +1350,47 @@ LiveNeuro shall run on Linus Windows 10+ and MacOS operating system
 %should be provided for scope decisions, modelling decisions, assumptions and
 %typical values.}
 
-\section{Use Cases}
+\DIFaddbegin \section{\DIFadd{Use Cases}}
 
 
 
 
 
 
-\subsection{UC01: Load Neuro Data for Visualization}
+\subsection{\DIFadd{UC01: Load Neuro Data for Visualization}}
 
 
-\textbf{Actors:} Researcher \\
+\textbf{\DIFadd{Actors:}} \DIFadd{Researcher }\\
 
 
-\textbf{Description:} The user loads a dataset containing neural recordings into the tool for visualization. \\
+\textbf{\DIFadd{Description:}} \DIFadd{The user loads a dataset containing neural recordings into the tool for visualization. }\\
 
 
-\textbf{Preconditions:} The user has a valid data file in the supported format. \\
+\textbf{\DIFadd{Preconditions:}} \DIFadd{The user has a valid data file in the supported format. }\\
 
 
-\textbf{Postconditions:} Data is loaded and visible in the visualization plots. \\
+\textbf{\DIFadd{Postconditions:}} \DIFadd{Data is loaded and visible in the visualization plots. }\\
 
 
-\textbf{Basic Flow:}
+\textbf{\DIFadd{Basic Flow:}}
 
 
 \begin{enumerate}
 
-\item User clicks the "Load Data" button.
+\item \DIFadd{User clicks the "Load Data" button.
+}
 
 
- \item System opens a file selection dialog.
+ \item \DIFadd{System opens a file selection dialog.
+}
 
 
- \item User selects a valid neuro data file.
+ \item \DIFadd{User selects a valid neuro data file.
+}
 
 
-\item System loads and displays the data in multiple synchronized plots.
+\item \DIFadd{System loads and displays the data in multiple synchronized plots.
+}
 
 
 \end{enumerate}
@@ -1282,31 +1400,33 @@ LiveNeuro shall run on Linus Windows 10+ and MacOS operating system
 
 
 
-\subsection{UC02: Interactive Selection on Plot A Highlights Related Data in Plot B}
+\subsection{\DIFadd{UC02: Interactive Selection on Plot A Highlights Related Data in Plot B}}
 
 
-\textbf{Actors:} Researcher \\
+\textbf{\DIFadd{Actors:}} \DIFadd{Researcher }\\
 
 
-\textbf{Description:} The user selects a region in one plot to highlight corresponding data in another plot. \\
+\textbf{\DIFadd{Description:}} \DIFadd{The user selects a region in one plot to highlight corresponding data in another plot. }\\
 
 
-\textbf{Preconditions:} Data is already loaded and visualized. \\
+\textbf{\DIFadd{Preconditions:}} \DIFadd{Data is already loaded and visualized. }\\
 
 
-\textbf{Postconditions:} The selected data segment is highlighted across related plots. \\
+\textbf{\DIFadd{Postconditions:}} \DIFadd{The selected data segment is highlighted across related plots. }\\
 
 
-\textbf{Basic Flow:}
+\textbf{\DIFadd{Basic Flow:}}
 
 
 \begin{enumerate}
 
 
- \item User selects a region in Plot A using mouse drag or click.
+ \item \DIFadd{User selects a region in Plot A using mouse drag or click.
+}
 
 
- \item System identifies related data points in Plot B.
+ \item \DIFadd{System identifies related data points in Plot B.
+}
 
 
 \end{enumerate}
@@ -1316,34 +1436,37 @@ LiveNeuro shall run on Linus Windows 10+ and MacOS operating system
 
 
 
-\subsection{UC03: Filter Data Based on Time Range}
+\subsection{\DIFadd{UC03: Filter Data Based on Time Range}}
 
 
-\textbf{Actors:} Researcher \\
+\textbf{\DIFadd{Actors:}} \DIFadd{Researcher }\\
 
 
-\textbf{Description:} The user filters the visualized data to focus on a specific time interval or brain region. \\
+\textbf{\DIFadd{Description:}} \DIFadd{The user filters the visualized data to focus on a specific time interval or brain region. }\\
 
 
-\textbf{Preconditions:} Data is loaded and plots are visible. \\
+\textbf{\DIFadd{Preconditions:}} \DIFadd{Data is loaded and plots are visible. }\\
 
 
-\textbf{Postconditions:} Only data matching the filter criteria is shown in plots. \\
+\textbf{\DIFadd{Postconditions:}} \DIFadd{Only data matching the filter criteria is shown in plots. }\\
 
 
-\textbf{Basic Flow:}
+\textbf{\DIFadd{Basic Flow:}}
 
 
 \begin{enumerate}
 
 
- \item User opens filter panel.
+ \item \DIFadd{User opens filter panel.
+}
 
 
-\item User inputs desired time range.
+\item \DIFadd{User inputs desired time range.
+}
 
 
-\item System filters and updates plots to reflect criteria.
+\item \DIFadd{System filters and updates plots to reflect criteria.
+}
 
 
 \end{enumerate}
@@ -1353,49 +1476,53 @@ LiveNeuro shall run on Linus Windows 10+ and MacOS operating system
 
 
 
-\subsection{UC04: Export Customized Visualizations as Image or Report}
+\subsection{\DIFadd{UC04: Export Customized Visualizations as Image or Report}}
 
 
-\textbf{Actors:} Researcher \\
+\textbf{\DIFadd{Actors:}} \DIFadd{Researcher }\\
 
 
-\textbf{Description:} The user exports the current view or a report of visualized data for documentation or sharing. \\
+\textbf{\DIFadd{Description:}} \DIFadd{The user exports the current view or a report of visualized data for documentation or sharing. }\\
 
 
-\textbf{Preconditions:} A data visualization is active. \\
+\textbf{\DIFadd{Preconditions:}} \DIFadd{A data visualization is active. }\\
 
 
-\textbf{Postconditions:} The visualization is saved as an image or included in a report file. \\
+\textbf{\DIFadd{Postconditions:}} \DIFadd{The visualization is saved as an image or included in a report file. }\\
 
 
-\textbf{Basic Flow:}
+\textbf{\DIFadd{Basic Flow:}}
 
 
 \begin{enumerate}
 
 
- \item User clicks "Export" button.
+ \item \DIFadd{User clicks "Export" button.
+}
 
 
-\item System provides export options (image, PDF report).
+\item \DIFadd{System provides export options (image, PDF report).
+}
 
 
- \item User selects format and destination.
+ \item \DIFadd{User selects format and destination.
+}
 
 
- \item System saves the file.
+ \item \DIFadd{System saves the file.
+}
 
 
 \end{enumerate}
 
 
 
-\section{Likely Changes}    
+\DIFaddend \section{Likely Changes}
 
 \noindent \begin{itemize}
 
 \item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:]
-The interactive method(mouse clicking, dragging, zooming etc.) may be modified or added according to the real needs
+The interactive method\DIFaddbegin \DIFadd{(mouse clicking, dragging, zooming etc.) }\DIFaddend may be modified or added according to the real needs
 \item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:]
 The supported plotting function may increase
 %\plt{Give
@@ -1403,7 +1530,7 @@ The supported plotting function may increase
 
 \end{itemize}
 
-\section{Unlikely Changes}    
+\section{Unlikely Changes}
 
 \noindent \begin{itemize}
 
@@ -1439,22 +1566,42 @@ the assumptions.
 
 \begin{table}[h!]
 \centering% begin: no diff
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline & A1 & A2 & \begin{tabular}{c}
+\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{|c|c|c|c|c|c|c|c|}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{tabular}{|c|c|c|c|c|c|}
+\DIFaddendFL \hline & A1 & A2 & \DIFdelbeginFL \DIFdelFL{A3 }%DIFDELCMD < & %%%
+\DIFdelFL{A4 }%DIFDELCMD < & %%%
+\DIFdelendFL \begin{tabular}{c}
 TM4.2.2
-\end{tabular} & DD1 & IM1 \\
-\hline A1 & & & & & \\
-\hline A2 & & & & & \\
-%\hline A3 & & & & & & & \\
-%\hline A4 & & & & & & & \\
-\hline \begin{tabular}{c}
+\end{tabular} %DIF <  end: no diff & DD1 & IM1 \\
+\DIFdelbeginFL %DIFDELCMD < \hline %%%
+\DIFdelFL{A1 }\DIFdelendFL & \DIFaddbeginFL \DIFaddFL{DD1 }\DIFaddendFL & \DIFdelbeginFL %DIFDELCMD < & & & & & %%%
+\DIFdelendFL \DIFaddbeginFL \DIFaddFL{IM1 }\DIFaddendFL \\
+\hline \DIFdelbeginFL \DIFdelFL{A2 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{A1 }\DIFaddendFL & & & & & \DIFdelbeginFL %DIFDELCMD < & & %%%
+\DIFdelendFL \\
+\hline \DIFdelbeginFL \DIFdelFL{A3 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{A2 }\DIFaddendFL & & & & & \DIFdelbeginFL %DIFDELCMD < & & %%%
+\DIFdelendFL \\
+%DIF > \hline A3 & & & & & & & \\
+%DIF > \hline A4 & & & & & & & \\
+\hline \DIFdelbeginFL \DIFdelFL{A4 }%DIFDELCMD < & & & & & & & \\
+%DIFDELCMD < \hline %%%
+\DIFdelendFL \begin{tabular}{c}
 TM4.2.2
-\end{tabular} & X & X  & & & \\
-\hline DD1 & X & X  & & & \\
-\hline IM1 & X & X & X & X & \\
+\end{tabular} %DIF <  end: no diff & X & X & X & X & & & \\
+\DIFdelbeginFL %DIFDELCMD < \hline %%%
+\DIFdelFL{DD1 }\DIFdelendFL & X & X  & & & \DIFaddbeginFL \\
+\hline \DIFaddFL{DD1 }& \DIFaddendFL X & \DIFaddbeginFL \DIFaddFL{X  }\DIFaddendFL & \DIFaddbeginFL & & \DIFaddendFL \\
+\hline IM1 & X & X & X & X & \DIFdelbeginFL \DIFdelFL{X }%DIFDELCMD < & %%%
+\DIFdelFL{X }%DIFDELCMD < & %%%
+\DIFdelendFL \\
 \hline
 \end{tabular}
-% end: no diff\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
+%DIF <  end: no diff
+\DIFdelbeginFL %DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Traceability Matrix Showing the Connections Between Items of Different Sections}}
+%DIFAUXCMD
+\DIFdelendFL %DIF >  end: no diff\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
 \label{Table:trace}
 \end{table}
 
@@ -1462,16 +1609,42 @@ TM4.2.2
 \begin{table}[h!]
 \centering% begin: no diff
 \begin{tabular}{|c|c|c|c|c|c|c|}
-\hline & IM1 & R1 & R2 \\
-\hline IM1 & & $X$ &  \\
-\hline R1 & $X$ & & $X$ \\
-\hline R2 & $X$ & $X$ &  \\
-%\hline R3 & $X$ & & $X$ & & $X$ & \\
-%\hline R4 & $X$ & & & $X$ & & \\
-%\hline R5 & & & & & & \\
+\hline & IM1 & R1 & R2 \DIFdelbeginFL %DIFDELCMD < & %%%
+\DIFdelFL{R3 }%DIFDELCMD < & %%%
+\DIFdelFL{R4 }%DIFDELCMD < & %%%
+\DIFdelFL{R5 }\DIFdelendFL \\
+\hline IM1 & & $X$ &  \DIFdelbeginFL \DIFdelFL{$X$ }%DIFDELCMD < & %%%
+\DIFdelFL{$X$ }%DIFDELCMD < & %%%
+\DIFdelFL{$X$ }%DIFDELCMD < & %%%
+\DIFdelendFL \\
+\hline R1 & $X$ & & $X$ \DIFdelbeginFL %DIFDELCMD < & & & %%%
+\DIFdelendFL \\
+\hline R2 & $X$ & $X$ &  \DIFdelbeginFL %DIFDELCMD < & %%%
+\DIFdelFL{$X$ }%DIFDELCMD < & & %%%
+\DIFdelendFL \\
+%DIF > \hline R3 & $X$ & & $X$ & & $X$ & \\
+%DIF > \hline R4 & $X$ & & & $X$ & & \\
+%DIF > \hline R5 & & & & & & \\
 \hline
-\end{tabular}
-% end: no diff\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
+\DIFdelbeginFL \DIFdelFL{R3 }%DIFDELCMD < & %%%
+\DIFdelFL{$X$ }%DIFDELCMD < & & %%%
+\DIFdelFL{$X$ }%DIFDELCMD < & & %%%
+\DIFdelFL{$X$ }%DIFDELCMD < & \\
+%DIFDELCMD < \hline %%%
+\DIFdelFL{R4 }%DIFDELCMD < & %%%
+\DIFdelFL{$X$ }%DIFDELCMD < & & & %%%
+\DIFdelFL{$X$ }%DIFDELCMD < & & \\
+%DIFDELCMD < \hline %%%
+\DIFdelFL{R5 }%DIFDELCMD < & & & & & & \\
+%DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdelendFL \end{tabular}
+%DIF <  end: no diff
+\DIFdelbeginFL %DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Traceability Matrix Showing the Connections Between Items of Different Sections}}
+%DIFAUXCMD
+\DIFdelendFL %DIF >  end: no diff\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
 \label{Table:trace}
 \end{table}
 %\section*{Appendix --- Reflection}
@@ -1496,7 +1669,9 @@ TM4.2.2
 %\iref{I_HPCM}    & & X& X& & & & X& X& X& & X& & \\
 %\hline
 %\end{tabular}
-% end: no diff%\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
+%DIF <  end: no diff
+%DIF < \caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
+%DIF >  end: no diff%\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
 %\label{Table:trace}
 %\end{table}
 %
@@ -1523,7 +1698,9 @@ TM4.2.2
 %\rref{R_timeMeltEnd}   & & X& & & & & \\
 %\hline
 %\end{tabular}
-% end: no diff%\caption{Traceability Matrix Showing the Connections Between Requirements and Instance Models}
+%DIF <  end: no diff
+%DIF < \caption{Traceability Matrix Showing the Connections Between Requirements and Instance Models}
+%DIF >  end: no diff%\caption{Traceability Matrix Showing the Connections Between Requirements and Instance Models}
 %\label{Table:R_trace}
 %\end{table}
 
@@ -1585,11 +1762,12 @@ NeuroImage,
 Volume 211,
 2020,
 116528,
-ISSN 1053-8119,\\
+ISSN 1053-8119,\DIFaddbegin \\
+\DIFaddend
 
-Gramfort, A., Luessi, M., Larson, E., Engemann, D. A., Strohmeier, D., Brodbeck, C., ... & Hämäläinen, M. (2013). MEG and EEG data analysis with MNE-Python.Frontiers in Neuroinformatics 7, 267.
-\\Gramfort, A., Luessi, M., Larson, E., Engemann, D.A., Strohmeier, D., Brodbeck, C., Parkkonen, L. and Hämäläinen, M.S., 2014. MNE software for processing MEG and EEG data. \textit{neuroimage}, \textit{86}, pp.446-460.
-%%\bibliographystyle {plainnat}
+\DIFaddbegin \DIFadd{Gramfort, A., Luessi, M., Larson, E., Engemann, D. A., Strohmeier, D., Brodbeck, C., ... }& \DIFadd{Hämäläinen, M. (2013). MEG and EEG data analysis with MNE-Python.Frontiers in Neuroinformatics 7, 267.
+}\\\DIFadd{Gramfort, A., Luessi, M., Larson, E., Engemann, D.A., Strohmeier, D., Brodbeck, C., Parkkonen, L. and Hämäläinen, M.S., 2014. MNE software for processing MEG and EEG data. }\textit{\DIFadd{neuroimage}}\DIFadd{, }\textit{\DIFadd{86}}\DIFadd{, pp.446-460.
+}\DIFaddend %%\bibliographystyle {plainnat}
 \bibliographystyle {plainnat}
 \bibliography {../refs/References}
 

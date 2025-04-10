@@ -85,7 +85,7 @@
 \newpage
 \noindent \rule{\textwidth}{0.5mm}
 
-\paragraph{RefName: } \textbf{#2} \phantomsection 
+\paragraph{RefName: } \textbf{#2} \phantomsection
 \label{#2}
 
 \paragraph{Label:} #3
@@ -131,7 +131,7 @@
 \title{Software Requirements Specification for \progname: Live Neuro}
 \author{\authname}
 \date{\today}
-	
+
 \maketitle
 
 ~\newpage
@@ -148,7 +148,6 @@
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 Feb 3, 2025 & 1.0 & Initial Draft\\
-Apr 9, 2025 & 1.1 & update based on feedback\\
 %Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
@@ -176,23 +175,20 @@ description of the unit and the SI name.
 
 \renewcommand{\arraystretch}{1.2}
 %\begin{table}[ht]
-%
-%\caption{Table of Units}
-  \noindent \begin{tabular}{l l l} 
-    \toprule		
+  \noindent \begin{tabular}{l l l}
+    \toprule
     \textbf{symbol} & \textbf{unit} & \textbf{SI}\\
-    \midrule 
-    \si s & time & second\\
+    \midrule
+    \si t & time & second\\
 %    \si j & dipole current vector & ampere and angle with the coordinate axis. \\
-    \si m & length & meter\\
+    \si r & location & meter\\
 %    \si{\celsius} & temperature & centigrade\\
-    \si db & sound & decibel\\
-    \si cm & Electric dipole moment & Coulomb metre
-\\
+    \si e & sound & decibel\\
 %    \si{\watt} & power & watt (W = \si{\joule\per\second})\\
     \bottomrule
   \end{tabular}
-% end: no diff  %	\caption{Provide a caption}
+% end: no diff
+  %	\caption{Provide a caption}
 %\end{table}
 
 %\plt{Only include the units that your SRS actually uses.}
@@ -224,16 +220,16 @@ systems.  The symbols are listed in alphabetical order.
 %\noindent \begin{tabularx}{1.0\textwidth}{l l X}
 \noindent \begin{longtable*}{l l p{12cm}} \toprule
 \textbf{symbol} & \textbf{unit} & \textbf{description}\\
-\midrule 
+\midrule
 %$A_C$ & \si[per-mode=symbol] {\square\metre} & coil surface area
 %\\
 %$A_\text{in}$ & \si[per-mode=symbol] {\square\metre} & surface area over
 %which heat is transferred in
 %\\
 $e_t$ & db & speech envelope\\
-$m$ & N/A & total number of dipole sources\\
-$j$ & C•m & Dipole Moment\\
-$v_t$ & C•m & background Dipole Moment\\
+$m$ & integer & total number of dipole sources\\
+$j$ & nAm & Dipole Moment\\
+$v_t$ & nAm & brain background activities\\
 
 \bottomrule
 \end{longtable*}
@@ -243,10 +239,10 @@ $v_t$ & C•m & background Dipole Moment\\
 \subsection{Abbreviations and Acronyms}
 
 \renewcommand{\arraystretch}{1.2}% begin: no diff
-\begin{tabular}{l l} 
-  \toprule		
+\begin{tabular}{l l}
+  \toprule
   \textbf{symbol} & \textbf{description}\\
-  \midrule 
+  \midrule
   A & Assumption\\
   DD & Data Definition\\
   GD & General Definition\\
@@ -259,24 +255,25 @@ $v_t$ & C•m & background Dipole Moment\\
   \progname{} & interactive data visualization tool linking multiple data plots together\\
   TM & Theoretical Model\\
   \bottomrule
-\end{tabular}\\
-%\subsection{Mathematical Notation}
+\end{tabular}
+% end: no diff\\
+\subsection{Mathematical Notation}
+
+%\plt{This section is optional, but should be included for projects that make use
+%  of notation to convey mathematical information.  For instance, if typographic
+%  conventions (like bold face font) are used to distinguish matrices, this
+%  should be stated here.  If symbols are used to show mathematical operations,
+%  these should be summarized here.  In some cases the easiest way to summarize
+%  the notation is to point to a text or other source that explains the
+%  notation.}
 %
-%%\plt{This section is optional, but should be included for projects that make use
-%%  of notation to convey mathematical information.  For instance, if typographic
-%%  conventions (like bold face font) are used to distinguish matrices, this
-%%  should be stated here.  If symbols are used to show mathematical operations,
-%%  these should be summarized here.  In some cases the easiest way to summarize
-%%  the notation is to point to a text or other source that explains the
-%%  notation.}
-%%
-%%\plt{This section was added to the template because some students use very
-%%  domain specific notation.  This notation will not be readily understandable to
-%%  people outside of your domain.  It should be explained.}
-%
+%\plt{This section was added to the template because some students use very
+%  domain specific notation.  This notation will not be readily understandable to
+%  people outside of your domain.  It should be explained.}
+
 \newpage
-%
-%\pagenumbering{arabic}
+
+\pagenumbering{arabic}
 
 %\plt{This SRS template is based on \citet{SmithAndLai2005, SmithEtAl2007,
 %  SmithAndKoothoor2016}.  It will get you started.  You should not modify the
@@ -302,14 +299,14 @@ $v_t$ & C•m & background Dipole Moment\\
 %  reference document.  It is generally read in an ad hoc order, as the need
 %  arises.  For writing an SRS, and for reading one for the first time, the
 %  suggested order of sections is:
-%\begin{itemize}
-%\item Goal Statement
-%\item Instance Models
-%\item Requirements
-%\item Introduction
-%\item Specific System Description
-%\end{itemize}
-%}
+\begin{itemize}
+\item Goal Statement
+\item Instance Models
+\item Requirements
+\item Introduction
+\item Specific System Description
+\end{itemize}
+}
 
 %\plt{Guiding principles for the SRS document:
 %\begin{itemize}
@@ -344,19 +341,15 @@ $v_t$ & C•m & background Dipole Moment\\
 
 \section{Introduction}
 Neuron data based on brain activity is often complex and multi-sourced. To clearly describe the
-activity of different neurons, multidimensional data is typically required. Live Neuro - an interactive data
+activity of different neurons, multidimensional data is typically required. An interactive data
 visualization tool is particularly useful for effectively presenting these data, allowing users to
 explore and understand the relationships and transformations between different data points.
 
 \subsection{Purpose of Document}
 
 The following section provides an overview of the Software Requirements Specification  (SRS)  for
-the interactive neural data visualization tool.The developed program will be referred to as “Live Neuro”
-based on the original, manually created version and the purpose of this program is to serve as a basic data
-visualization foundation module in Eelbrain, making all neuro-related plots interactive within jupyter notebook,
-which is not currently available in Eelbrain
-
-This section explains the purpose of this
+the interactive neural data visualization tool. The developed program will be referred to as "Live Neuro, "
+based on the original, manually created version. This section explains the purpose of this
 document, the scope of the requirements, the characteristics of the intended reader, and the
 organization of the document.
 
@@ -370,7 +363,7 @@ organization of the document.
 %  purpose of the SRS, including communication, planning for the design stage,
 %  etc.}
 
-\subsection{Scope of Requirements} 
+\subsection{Scope of Requirements}
 
 The scope of requirements include the whole stimuli-response process neural data
 and the interactive data visualization
@@ -394,7 +387,7 @@ and the interactive data visualization
 \subsection{Characteristics of Intended Reader} \label{sec_IntendedReader}
 
 Reviewers of this documentation should have an undergraduate-level understanding
-of math and undergraduate school level understanding of neuro science
+of mathmatics and high school level understanding of neuro science
  The users of \progname{} Neuro can have a lower level of expertise,
 as explained in (Section~\ref{SecUserCharacteristics})
 %\plt{This section summarizes the skills and knowledge of the readers of the
@@ -415,10 +408,8 @@ as explained in (Section~\ref{SecUserCharacteristics})
 \subsection{Organization of Document}
 
 The organization of this document follows the template for an SRS for scientific
-computing software proposed by \href{https://dl.acm.org/doi/10.1145/2532352.2532353}{koothoor2013},
-\href{https://www.yeastgenome.org/reference/S000136399}{smithEtAl2007}
-, and \href{https://ieeexplore.ieee.org/document/7839470}{smithKoothoor2016}
-. The presentation follows the standard pattern of presenting
+computing software proposed by koothoor2013, smithLai2005, smithEtAl2007, and
+smithKoothoor2016. The presentation follows the standard pattern of presenting
 goals, theories, definitions, and assumptions. For readers that would like a more
 bottom up approach, they can start reading the instance models and trace back to
 find any additional information they require.
@@ -468,7 +459,7 @@ the software, the user in this case. A rectangle represents the software system 
 \begin{center}
  \includegraphics[width=1\textwidth]{SRS1}
 \caption{System Context}
-\label{Fig_SystemContext} 
+\label{Fig_SystemContext}
 \end{center}
 \end{figure}
 
@@ -492,7 +483,7 @@ the software, the user in this case. A rectangle represents the software system 
 \item \progname{} Responsibilities:
 \begin{itemize}
 \item Detect data type mismatch, such as a string of characters instead of a floating point number
-\item Determine if the inputs satisfy the required software constraints, excluding invalid or corrupt data from analysis
+\item Determine if the inputs satisfy the required software constraints
 \item Calculate the required outputs
 \end{itemize}
 
@@ -509,8 +500,8 @@ the software, the user in this case. A rectangle represents the software system 
 
 \subsection{User Characteristics} \label{SecUserCharacteristics}
 
-The end user of \progname{} should have an understanding of Neuro Science including the basic
-neuro data structure and neuro science analysis algorithm
+The end user of \progname{} should have an understanding of undergraduate mathmatics
+and computer science
 %\plt{This section summarizes the knowledge/skills expected of the user.
 %  Measuring usability, which is often a required non-function requirement,
 %  requires knowledge of a typical user.  As mentioned above, the user is a
@@ -522,8 +513,7 @@ neuro data structure and neuro science analysis algorithm
 
 \subsection{System Constraints}
 
-The project should be developed under the plot module of Eelbrain, and the basic visualization fundamental Library should be
-Plotly or any other Library with interactive function in jupyter notebook.
+There are no system constraints.
 
 %\plt{System constraints differ from other type of requirements because they
 %  limit the developers' options in the system design and they identify how the
@@ -562,9 +552,7 @@ easier to correctly understand the requirements:
 
 \begin{itemize}
 
-\item dipole: In neuroscience, a dipole refers to a pair of opposite electrical charges (positive and negative)
-that are separated by a small distance, typically generated by neuron activity.
-
+\item //todo
 \end{itemize}
 
 \subsubsection{Physical System Description} \label{sec_phySystDescrip}
@@ -586,12 +574,12 @@ that are separated by a small distance, typically generated by neuron activity.
 %physical entity.  They can be conceptual.  This is particularly important when
 %the documentation is for a numerical method. }
 
-The physical system of \progname{}, as shown in Figure 2,
+The physical system of \progname{}, as shown in Figure2,
 includes the following elements:
 
 \begin{itemize}
 
-\item[PS:] Arrows in the Figure 2 are neuronal current dipole, representing the intensity of neuronal activity
+\item[PS:] Current Dipoles can be used to measure the intensity of neuronal activity
 
 \end{itemize}
 
@@ -624,12 +612,12 @@ includes the following elements:
 %  amount of technical language.  They should be understandable by non-domain
 %  experts.}
 
-\noindent Given the Neuro Data, the goal statements are:
+\noindent Given the Acoustic Stimuli and Semantics Stimuli, the goal statements are:
 
 \begin{itemize}
 
-\item[GS1:]Implement multidimensional neural data visualization
-\item[GS2:]Link Interactive neural data plots together
+\item[GS1:] Predicted MEG/EEG data
+\item[GS2:] Interactive neural data visualization plots
 
 \end{itemize}
 
@@ -721,7 +709,9 @@ change [LC], in which the respective assumption is used.
 \begin{itemize}
 
   \item[A\refstepcounter{assumpnum}\theassumpnum:] The Stimulus data is continuous
+  \item[A\refstepcounter{assumpnum}\theassumpnum:] The tester is focused.
   \item[A\refstepcounter{assumpnum}\theassumpnum:] The neuron data is complete
+  \item[A\refstepcounter{assumpnum}\theassumpnum:] The neuron data has no noise or noise has been removed
 %  \plt{Short description of each assumption.  Each assumption
 %    should have a meaningful label.  Use cross-references to identify the
 %    appropriate traceability to TM, GD, DD etc., using commands like dref, ddref
@@ -753,21 +743,21 @@ on.
 \noindent
 \deftheory
 % #2 refname of theory
-{TM:1}
+{TM:NSM}
 % #3 label
 {Neural stimulation-response model}
 % #4 equation
 {
 
-${j}_{m, t, i}=f_{i}\left(e_{t}, e_{t-1}, \cdots, e_{1}\right)+v_{m, t, i}$
+$\boldsymbol{j}_{m, t, i}=f_{i}\left(e_{t}, e_{t-1}, \cdots, e_{1}\right)+v_{m, t, i}$
 
 }
 % #5 description
 {
-  The above equation gives Neural stimulation-response model, where ${{j}_{m, t, i}}$
-is the dipole current $j$ of source $m$, at time $t$, in the i-th direction.${v_{m, t, i}} $ is the background
-activities of source m, at time t, in the i-th direction ${f_{i}\left(e_{t}, e_{t-1}, \cdots, e_{1}\right)}$
-is the stimulus-driven component $e_{t}$ is the speech envelop driven by acoustic and semantics stimuli.
+  The above equation gives Neural stimulation-response model, where ${\boldsymbol{j}_{m, t, i}}$
+is The dipole current j of source m, at time t, in the i-th direction.${v_{m, t, i}} $ is the background
+activities of source m, at time t, in the i-th direction.${f_{i}\left(e_{t}, e_{t-1}, \cdots, e_{1}\right)}$
+is the stimulus-driven component.$e_{t}$ is the speech envelop driven by acoustic and semantics stimuli
 
 }
 % #6 Notes
@@ -780,8 +770,7 @@ None.
 }
 % #8 Referenced by
 {
-  GD\ref{GD1},
-IM\ref{IM1}
+  \dref{ROCT}
 }
 % #9 Preconditions
 {
@@ -824,7 +813,7 @@ instance models.
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
 \rowcolor[gray]{0.9}
-Number& GD\refstepcounter{defnum}\thedefnum \label{GD1}\\
+Number& GD\refstepcounter{defnum}\thedefnum \label{NL}\\
 \hline
 Label & Cortical Dipole Moment\\
 \hline
@@ -836,9 +825,9 @@ Equation&$f_i(e_t,e_{t-1},\cdots,e_1)=\sum_{l=0}^{L-1}\tau_{m,i,l}e_{t-l}=(\bold
 \hline
 Description &
 $\tau_{m,i}$
-can be thought of as a matrix corresponding to the activity of dipole
+can be thought of as a TRF corresponding to the activity of dipole
 source m along the coordinate axis determined by i.The length of the
-filter L is typically determined by a priori assumptions on the effective
+lter L is typically determined by a priori assumptions on the effective
 integration window of the underlying neural process.
 
 \\
@@ -847,10 +836,11 @@ integration window of the underlying neural process.
 \hline
   Source & \url{https://doi.org/10.1016/j.neuroimage.2020.116528} \\
   \hline
-  Ref.\ By & \ddref{FluxCoil}\\
+  Ref.\ By & \ddref{FluxCoil}, \ddref{FluxPCM}\\
   \hline
 \end{tabular}
-% end: no diff\end{minipage}\\
+% end: no diff
+\end{minipage}\\
 
 %\subsubsection*{Detailed derivation of simplified rate of change of temperature}
 %
@@ -891,21 +881,22 @@ Symbol &$\tau_{m,i}$\\
 \hline
 % Units& $Mt^{-3}$\\
 % \hline
-  SI Units &N/A\\
+  SI Units &Float\\
   \hline
   Equation&$\tau_{m,i}:=[\tau_{m,i,0},\tau_{m,i,1}\cdotp\cdotp\cdotp,\tau_{m,i,L-1}]^\top$\\
   \hline
-  Description & 
-                $\tau_{m,i}$ can be thought of as a matrix corresponding to the activity of dipole
+  Description &
+                $\tau_{m,i}$ can be thought of as a TRF corresponding to the activity of dipole
 source m along the coordinate axis determined by i.
   \\
   \hline
   Sources& \url{https://doi.org/10.1016/j.neuroimage.2020.116528} \\
   \hline
-  Ref.\ By & \iref{IM1}\\
+  Ref.\ By & \iref{ewat}\\
   \hline
 \end{tabular}
-% end: no diff%\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
+% end: no diff
+%\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 %\hline
 %\rowcolor[gray]{0.9}
 %Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{FluxCoil}\\
@@ -932,7 +923,8 @@ source m along the coordinate axis determined by i.
 %  Ref.\ By & \iref{ewat}\\
 %  \hline
 %\end{tabular}
-% end: no diff\end{minipage}\\
+% end: no diff
+\end{minipage}\\
 
 %\subsubsection{Data Types}\label{sec_datatypes}
 
@@ -972,9 +964,10 @@ source m along the coordinate axis determined by i.
 %  Sources & Citation here, if the type is borrowed from another source\\
 %  \hline
 %\end{tabular}
-% end: no diff\end{minipage}\\
+% end: no diff
+\end{minipage}\\
 
-\subsubsection{Instance Models} \label{sec_instance}    
+\subsubsection{Instance Models} \label{sec_instance}
 
 %\plt{The motivation for this section is to reduce the problem defined in
 %  ``Physical System Description'' (Section~\ref{sec_phySystDescrip}) to one
@@ -982,9 +975,9 @@ source m along the coordinate axis determined by i.
 %  GDs.  This section should remain abstract.  The SRS should specify the
 %  requirements without considering the implementation.}
 
-This section transforms the problem defined in Section~\ref{Sec_pd} into 
-one which is expressed in mathematical terms. It uses concrete symbols defined 
-in Section~\ref{sec_datadef} to replace the abstract symbols in the models 
+This section transforms the problem defined in Section~\ref{Sec_pd} into
+one which is expressed in mathematical terms. It uses concrete symbols defined
+in Section~\ref{sec_datadef} to replace the abstract symbols in the models
 identified in Sections~\ref{sec_theoretical} and~\ref{sec_gendef}.
 
 %The goals \plt{reference your goals} are solved by \plt{reference your instance
@@ -1002,7 +995,7 @@ identified in Sections~\ref{sec_theoretical} and~\ref{sec_gendef}.
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
   \hline
   \rowcolor[gray]{0.9}
-  Number& IM\refstepcounter{instnum}\theinstnum \label{IM1}\\
+  Number& IM\refstepcounter{instnum}\theinstnum \label{ewat}\\
   \hline
   Label& \bf get neural dipole current \\
   \hline
@@ -1016,10 +1009,13 @@ identified in Sections~\ref{sec_theoretical} and~\ref{sec_gendef}.
    $m^{\mathrm{th}}$ neural current dipole of time 3 in the Right direction\\
   \\
   \hline
-  Sources& \url{https://doi.org/10.1016/j.neuroimage.2020.116528} \\
+  Sources& Citation here \\
+  \hline
+  Ref.\ By & \iref{epcm}\\
   \hline
 \end{tabular}
-% end: no diff\end{minipage}\\
+% end: no diff
+\end{minipage}\\
 
 %~\newline
 
@@ -1029,7 +1025,7 @@ identified in Sections~\ref{sec_theoretical} and~\ref{sec_gendef}.
 %  where the derivation cannot be described under the Description field, it will
 %  be necessary to include this subsection.}
 
-\subsubsection{Input Data Constraints} \label{sec_DataConstraints}    
+\subsubsection{Input Data Constraints} \label{sec_DataConstraints}
 
 Table~\ref{TblInputVar} shows the data constraints on the input output
 variables.  The column for physical constraints gives the physical limitations
@@ -1043,23 +1039,19 @@ provides an estimate of the confidence with which the physical quantities can be
 measured.  This information would be part of the input if one were performing an
 uncertainty quantification exercise.
 
-The specification parameters in below\\
-\\
-\centering
-Table 1 $Input $  $variable$
+The specification parameters in Table~\ref{TblInputVar} are listed in
+Table~\ref{TblSpecParams}.
+
 \begin{table}[!h]
-
-
-\renewcommand{\tablename}{Tbl.}
-
-
-\noindent \begin{longtable*}{l l l l c} 
+  \caption{Input Variables} \label{TblInputVar}
+  \renewcommand{\arraystretch}{1.2}
+\noindent \begin{longtable*}{l l l l c}
   \toprule
   \textbf{Var} & \textbf{Physical Constraints} & \textbf{Software Constraints} &
                              \textbf{Typical Value} & \textbf{Uncertainty}\\
-  \midrule 
-%  $e_t$ & $e_t > 0$ & $e_t \leq e_t{\text{max}}$ & 20 dB{\metre} & 80\%
-%\\
+  \midrule
+  $e_t$ & $e_t > 0$ & $e_t \leq e_t{\text{max}}$ & 20 dB{\metre} & 80\%
+\\
 %  $j_{m,t}$ & $j_{m,t} > 0$ & $ j_{m,t} \leq j_{m,t}{\text{max}}$ & 90nAm {\metre} & 20\%
 %  \\
   $v_{m,t}$ & $v_{m,t} > 0$ & $ v_{m,t} \leq v_{m,t}{\text{max}}$ & 11nAm {\metre} & 10\%
@@ -1067,20 +1059,20 @@ Table 1 $Input $  $variable$
   \bottomrule
 \end{longtable*}
 \end{table}
+
 \noindent
 \begin{description}
-%\item[(*)] \plt{you might need to add some notes or clarifications}
+\item[(*)] \plt{you might need to add some notes or clarifications}
 \end{description}
-\centering
-Table 2 $Specification $  $Parameter$  $Values$
+
 \begin{table}[!h]
-%\caption{Specification Parameter Values} \label{TblSpecParams}
+\caption{Specification Parameter Values} \label{TblSpecParams}
 \renewcommand{\arraystretch}{1.2}
-\noindent \begin{longtable*}{l l} 
+\noindent \begin{longtable*}{l l}
   \toprule
   \textbf{Var} & \textbf{Value} \\
-  \midrule 
-%  $e_t{\text{max}}$ & 60 dB  \\
+  \midrule
+  $e_t{\text{max}}$ & 60 dB  \\
 %  $j_{m,t}{\text{max}}$ & 100 nAm\\
   $v_{m,t}{\text{max}}$ & 20 nAm \\
   \bottomrule
@@ -1113,7 +1105,7 @@ Table 2 $Specification $  $Parameter$  $Values$
 %\plt{This section is not for test cases or techniques for verification and
 %  validation.  Those topics will be addressed in the Verification and Validation
 %  plan.}
-\newpage
+
 \section{Requirements}
 
 %\plt{The requirements refine the goal statement.  They will make heavy use of
@@ -1127,19 +1119,19 @@ qualities that the software is expected to exhibit.
 
 \noindent \begin{itemize}
 
-%\item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] Acoustic stimuli must be continuous
-%\item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] Acoustic stimuli can be converted to speech envelope
-%
-%%\plt{Requirements
-%%    for the inputs that are supplied by the user.  This information has to be
-%%    explicit.}
-%
-%%\item[R\refstepcounter{reqnum}\thereqnum \label{R_OutputInputs}:]
-%%\plt{It isn't
-%%    always required, but often echoing the inputs as part of the output is a
-%%    good idea.}
-%
-%\item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] Calculation result of TRF model has no error
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] Acoustic stimuli must be continuous
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] Acoustic stimuli can be converted to speech envelope
+
+%\plt{Requirements
+%    for the inputs that are supplied by the user.  This information has to be
+%    explicit.}
+
+%\item[R\refstepcounter{reqnum}\thereqnum \label{R_OutputInputs}:]
+%\plt{It isn't
+%    always required, but often echoing the inputs as part of the output is a
+%    good idea.}
+
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] Calculation result of TRF model has no error
 %\plt{Calculation
 %    related requirements.}
 
@@ -1147,11 +1139,7 @@ qualities that the software is expected to exhibit.
 identical to original plots
 %  \plt{Verification related requirements.}
 
-\item[R\refstepcounter{reqnum}\thereqnum \label{R_Output}:]
-The output of the software should consist of multiple data visualizations that are interconnected, with linked data interactions,
-and can be controlled interactively via mouse input.
-
-
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Output}:] the output of LiveNeuro should be interactive between different plots
 \end{itemize}
 %
 %\plt{Every IM should map to at least one requirement, but not every requirement
@@ -1179,12 +1167,7 @@ and can be controlled interactively via mouse input.
 \noindent \begin{itemize}
 
 \item[NFR\refstepcounter{nfrnum}\thenfrnum \label{NFR_Accuracy}:]
-
-The generated data visualizations should not only accurately represent the underlying data but also adhere to the standards of scientific
-rigor, including clarity, reproducibility, and interpretability. They must effectively convey key patterns, relationships, and trends in a
-manner that facilitates meaningful analysis and supports evidence-based conclusions.
-
-
+The generated data charts should accurately reflect the specifics of the data and meet the standards of scientific research.
 %  \textbf{Accuracy}
 %\plt{Characterize the accuracy by giving the context/use for
 %    the software.  Maybe something like, ``The accuracy of the computed
@@ -1196,9 +1179,6 @@ manner that facilitates meaningful analysis and supports evidence-based conclusi
 \item[NFR\refstepcounter{nfrnum}\thenfrnum \label{NFR_Usability}:]
  Users with knowledge of neuro science and computer science, as described in Section~\ref{SecUserCharacteristics},
   should be able to successfully use the software with minimal training.
-The interface and functionality are designed to align with the interdisciplinary skill sets of such users, enabling them to efficiently perform data analysis and visualization tasks without the need for extensive onboarding or technical assistance.
-
-
 %\textbf{Usability}
 %  \plt{Characterize the usability by giving the context/use for the software.
 %    You should likely reference the user characteristics section.  The level of
@@ -1217,7 +1197,7 @@ The effort required to make any of the likely
 %    at the end of the report.}
 
 \item[NFR\refstepcounter{nfrnum}\thenfrnum \label{NFR_Portability}:]
-LiveNeuro shall run on Linus Windows 10+ and MacOS operating system
+LiveNeuro shall run on Linus,Windows 10+ and MacOS operating system
 %  \textbf{Portability} \plt{This NFR is easier to write than the others.  The
 %    systems that \progname{} should run on should be listed here.  When possible
 %    the specific versions of the potential operating environments should be
@@ -1236,166 +1216,12 @@ LiveNeuro shall run on Linus Windows 10+ and MacOS operating system
 %should be provided for scope decisions, modelling decisions, assumptions and
 %typical values.}
 
-\section{Use Cases}
-
-
-
-
-
-
-\subsection{UC01: Load Neuro Data for Visualization}
-
-
-\textbf{Actors:} Researcher \\
-
-
-\textbf{Description:} The user loads a dataset containing neural recordings into the tool for visualization. \\
-
-
-\textbf{Preconditions:} The user has a valid data file in the supported format. \\
-
-
-\textbf{Postconditions:} Data is loaded and visible in the visualization plots. \\
-
-
-\textbf{Basic Flow:}
-
-
-\begin{enumerate}
-
-\item User clicks the "Load Data" button.
-
-
- \item System opens a file selection dialog.
-
-
- \item User selects a valid neuro data file.
-
-
-\item System loads and displays the data in multiple synchronized plots.
-
-
-\end{enumerate}
-
-
-
-
-
-
-\subsection{UC02: Interactive Selection on Plot A Highlights Related Data in Plot B}
-
-
-\textbf{Actors:} Researcher \\
-
-
-\textbf{Description:} The user selects a region in one plot to highlight corresponding data in another plot. \\
-
-
-\textbf{Preconditions:} Data is already loaded and visualized. \\
-
-
-\textbf{Postconditions:} The selected data segment is highlighted across related plots. \\
-
-
-\textbf{Basic Flow:}
-
-
-\begin{enumerate}
-
-
- \item User selects a region in Plot A using mouse drag or click.
-
-
- \item System identifies related data points in Plot B.
-
-
-\end{enumerate}
-
-
-
-
-
-
-\subsection{UC03: Filter Data Based on Time Range}
-
-
-\textbf{Actors:} Researcher \\
-
-
-\textbf{Description:} The user filters the visualized data to focus on a specific time interval or brain region. \\
-
-
-\textbf{Preconditions:} Data is loaded and plots are visible. \\
-
-
-\textbf{Postconditions:} Only data matching the filter criteria is shown in plots. \\
-
-
-\textbf{Basic Flow:}
-
-
-\begin{enumerate}
-
-
- \item User opens filter panel.
-
-
-\item User inputs desired time range.
-
-
-\item System filters and updates plots to reflect criteria.
-
-
-\end{enumerate}
-
-
-
-
-
-
-\subsection{UC04: Export Customized Visualizations as Image or Report}
-
-
-\textbf{Actors:} Researcher \\
-
-
-\textbf{Description:} The user exports the current view or a report of visualized data for documentation or sharing. \\
-
-
-\textbf{Preconditions:} A data visualization is active. \\
-
-
-\textbf{Postconditions:} The visualization is saved as an image or included in a report file. \\
-
-
-\textbf{Basic Flow:}
-
-
-\begin{enumerate}
-
-
- \item User clicks "Export" button.
-
-
-\item System provides export options (image, PDF report).
-
-
- \item User selects format and destination.
-
-
- \item System saves the file.
-
-
-\end{enumerate}
-
-
-
-\section{Likely Changes}    
+\section{Likely Changes}
 
 \noindent \begin{itemize}
 
 \item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:]
-The interactive method(mouse clicking, dragging, zooming etc.) may be modified or added according to the real needs
+The interactive method may be modified or added according to the real needs
 \item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:]
 The supported plotting function may increase
 %\plt{Give
@@ -1403,7 +1229,7 @@ The supported plotting function may increase
 
 \end{itemize}
 
-\section{Unlikely Changes}    
+\section{Unlikely Changes}
 
 \noindent \begin{itemize}
 
@@ -1439,22 +1265,25 @@ the assumptions.
 
 \begin{table}[h!]
 \centering% begin: no diff
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline & A1 & A2 & \begin{tabular}{c}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline & A1 & A2 & A3 & A4 & \begin{tabular}{c}
 TM4.2.2
-\end{tabular} & DD1 & IM1 \\
-\hline A1 & & & & & \\
-\hline A2 & & & & & \\
-%\hline A3 & & & & & & & \\
-%\hline A4 & & & & & & & \\
+\end{tabular}
+% end: no diff & DD1 & IM1 \\
+\hline A1 & & & & & & & \\
+\hline A2 & & & & & & & \\
+\hline A3 & & & & & & & \\
+\hline A4 & & & & & & & \\
 \hline \begin{tabular}{c}
 TM4.2.2
-\end{tabular} & X & X  & & & \\
-\hline DD1 & X & X  & & & \\
-\hline IM1 & X & X & X & X & \\
+\end{tabular}
+% end: no diff & X & X & X & X & & & \\
+\hline DD1 & X & X & & & X & & \\
+\hline IM1 & X & X & X & X & X & X & \\
 \hline
 \end{tabular}
-% end: no diff\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
+% end: no diff
+\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
 \label{Table:trace}
 \end{table}
 
@@ -1462,16 +1291,17 @@ TM4.2.2
 \begin{table}[h!]
 \centering% begin: no diff
 \begin{tabular}{|c|c|c|c|c|c|c|}
-\hline & IM1 & R1 & R2 \\
-\hline IM1 & & $X$ &  \\
-\hline R1 & $X$ & & $X$ \\
-\hline R2 & $X$ & $X$ &  \\
-%\hline R3 & $X$ & & $X$ & & $X$ & \\
-%\hline R4 & $X$ & & & $X$ & & \\
-%\hline R5 & & & & & & \\
+\hline & IM1 & R1 & R2 & R3 & R4 & R5 \\
+\hline IM1 & & $X$ & $X$ & $X$ & $X$ & \\
+\hline R1 & $X$ & & $X$ & & & \\
+\hline R2 & $X$ & $X$ & & $X$ & & \\
+\hline R3 & $X$ & & $X$ & & $X$ & \\
+\hline R4 & $X$ & & & $X$ & & \\
+\hline R5 & & & & & & \\
 \hline
 \end{tabular}
-% end: no diff\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
+% end: no diff
+\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
 \label{Table:trace}
 \end{table}
 %\section*{Appendix --- Reflection}
@@ -1496,7 +1326,8 @@ TM4.2.2
 %\iref{I_HPCM}    & & X& X& & & & X& X& X& & X& & \\
 %\hline
 %\end{tabular}
-% end: no diff%\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
+% end: no diff
+%\caption{Traceability Matrix Showing the Connections Between Items of Different Sections}
 %\label{Table:trace}
 %\end{table}
 %
@@ -1523,7 +1354,8 @@ TM4.2.2
 %\rref{R_timeMeltEnd}   & & X& & & & & \\
 %\hline
 %\end{tabular}
-% end: no diff%\caption{Traceability Matrix Showing the Connections Between Requirements and Instance Models}
+% end: no diff
+%\caption{Traceability Matrix Showing the Connections Between Requirements and Instance Models}
 %\label{Table:R_trace}
 %\end{table}
 
@@ -1585,10 +1417,8 @@ NeuroImage,
 Volume 211,
 2020,
 116528,
-ISSN 1053-8119,\\
+ISSN 1053-8119,
 
-Gramfort, A., Luessi, M., Larson, E., Engemann, D. A., Strohmeier, D., Brodbeck, C., ... & Hämäläinen, M. (2013). MEG and EEG data analysis with MNE-Python.Frontiers in Neuroinformatics 7, 267.
-\\Gramfort, A., Luessi, M., Larson, E., Engemann, D.A., Strohmeier, D., Brodbeck, C., Parkkonen, L. and Hämäläinen, M.S., 2014. MNE software for processing MEG and EEG data. \textit{neuroimage}, \textit{86}, pp.446-460.
 %%\bibliographystyle {plainnat}
 \bibliographystyle {plainnat}
 \bibliography {../refs/References}
