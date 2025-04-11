@@ -375,24 +375,31 @@ plot & List<$\mathbb{R}$[]> (dipole currents), List<$\mathbb{S}$>(plot type), $\
 \subsubsection{Environment Variables}
 
 GPU acceleration (enabled via plotly.graph\_objects and nilearn.plotting)
-\subsubsection{Assumptions}
 
 
-\subsubsection{Access Routine Semantics}
 
+\subsubsection{Access Routine: Semantics}
+
+\noindent\textbf{Syntax:}
 \begin{itemize}
-\item renderCorticalMap():
-
-\begin{itemize}
-\item \textit{Output}: Generates brain activation map using plotly.graph\_objects and nilearn.plotting
-
-
-\item \textit{Exceptions}: Plotting Error
-
-
+  \item \texttt{plot(data: List<R[]>}, \texttt{plotTypes: List<String>}, \texttt{interactionMode: String})
 \end{itemize}
 
+\noindent\textbf{Valid \texttt{plotTypes} values (case-insensitive):}
+\begin{itemize}
+  \item \texttt{"time\_series"} – Renders time vs amplitude plots for each channel.
+  \item \texttt{"glass\_brain"} – Displays brain activity using anatomical projections (e.g., with \texttt{nilearn}).
+  \item \texttt{"topomap"} – Sensor-space topographic activation maps.
 \end{itemize}
+
+\noindent\textbf{Valid \texttt{interactionMode} values:}
+\begin{itemize}
+  \item \texttt{"zoom"} – Enables scroll and drag-based zooming.
+  \item \texttt{"drag"} – Enable click and drag plots
+  \item \texttt{"click"} – Enable click in data plots
+\end{itemize}
+
+
 
 
 
