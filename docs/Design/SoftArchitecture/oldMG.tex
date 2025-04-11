@@ -47,7 +47,6 @@
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 March 17 2025 & 1.0 & initial draft\\
-Apr 11 2025 & 1.1 & modify\\
 \bottomrule
 \end{tabularx}
 
@@ -188,8 +187,6 @@ actually be implemented.
 \item [\refstepcounter{mnum} \mthemnum \label{m4}:] Visualization Module
 \item [\refstepcounter{mnum} \mthemnum \label{m5}:] TRF Calculation Module
 \end{description}
-
-the GUI is provided by the Dash Library in Visualization module, so we don't need an independent GUI module
 
 \begin{table}[h!]
 \centering
@@ -350,11 +347,9 @@ The system follows a layered architecture where lower-level modules (hardware an
 
 \section{User Interfaces}
 
-Live Neuro provides a user interface with features:
+Live Neuro provides a user interface with features such as:
 
 \begin{itemize}
-    \item Data loading from disk
-    \item Data preprocessing and filtering
 \item Data plotting of MEG/EEG data
 
 
@@ -362,8 +357,6 @@ Live Neuro provides a user interface with features:
 
 
 \item Linking between multiple plots.
-
-
 
 
 \end{itemize}
