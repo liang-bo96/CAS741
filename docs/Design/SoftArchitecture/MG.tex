@@ -262,7 +262,7 @@ The system is divided into the following modules:
 
 \begin{description}
 \item[Secrets:]Data format transformations.
-\item[Services:]Converts raw input into structured data for processing.
+\item[Services:]Provides a unified interface for loading neuroimaging datasets from local or remote file systems. Supports reading standardized formats  (.fif)  via library wrappers. Wrap Python libraries like mne, numpy, or pandas while shielding higher-level modules from direct I/O code.
 \item[Implemented By:] Live Neuro.
 \item[Type of Module:] Library
 \end{description}
@@ -271,7 +271,7 @@ The system is divided into the following modules:
 
 \begin{description}
 \item[Secrets:]Data Processing and Statistical index calculation
-\item[Services:]Validates inputs, applies Statistical preprocessing.
+\item[Services:]Validates structure and format of incoming data  (FIF, NumPy arrays)  Checks for missing values, corrupted content, or structural inconsistencies Preprocesses and transforms raw input  (e.g.,  filtering, normalization) Raises meaningful errors or warnings when validation fails
 \item[Implemented By:] Live Neuro(NumPy/Pandas).
 \item[Type of Module:] Library
 \end{description}
