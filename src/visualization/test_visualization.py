@@ -7,10 +7,10 @@ import mne
 import pandas as pd
 
 
-from .topo_plotter import plot_topo
-from .time_series_plotter import TimeSeriesPlotter
-from .glassbrain_plotter import GlassBrainPlotter
-from .butterfly_plotter import plot_butterfly
+from src.visualization.topo_plotter import plot_topo
+from src.visualization.time_series_plotter import TimeSeriesPlotter
+from src.visualization.glassbrain_plotter import GlassBrainPlotter
+from src.visualization.butterfly_plotter import plot_butterfly
 
 
 class TestVisualization(unittest.TestCase):
