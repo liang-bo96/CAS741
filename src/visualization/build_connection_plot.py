@@ -439,16 +439,15 @@ class BrainViewerConnection:
         )
 
     def run_server(self, debug: bool = True):
-        """Run the Dash server on a random available port."""
+        """Run the Dash server."""
+        print(f"Starting server on port: {self.port}")
         try:
-            print(f"Starting server on port: {self.port}")
-            self.app.run_server(debug=debug, port=self.port)
+            self.app.run(debug=debug, port=self.port)
         except Exception as e:
-            print(f"Failed to start on port {self.port}. Error: {e}")
-            # Try with a new port if the first one fails
+            print(f"Failed to start on port {self.port}. Error: {str(e)}")
             self.port = find_free_port()
             print(f"Retrying with port: {self.port}")
-            self.app.run_server(debug=debug, port=self.port)
+            self.app.run(debug=debug, port=self.port)
 
 
 # Example usage

@@ -15,8 +15,11 @@ A Python package for visualizing and analyzing EEG data using modern visualizati
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/liang-bo96/mcmaster-eeg-visualization.git
-cd mcmaster-eeg-visualization
+# Remove existing directory if it exists
+rm -rf CAS741
+# Clone the repository
+git clone git@github.com:liang-bo96/CAS741.git
+cd CAS741
 ```
 
 2. Run the installation script:
@@ -24,15 +27,26 @@ cd mcmaster-eeg-visualization
 ./install.sh
 ```
 
-3. Activate the virtual environment:
+3. Install additional required package:
+```bash
+pip install nilearn
+```
+
+4. Activate the virtual environment:
 ```bash
 source venv/bin/activate
+```
+
+4. To automatically run the visualization function after activating the virtual environment, add the following to your shell's configuration file (e.g., ~/.bashrc, ~/.zshrc, etc.):
+```bash
+# Run EEG visualization after activating virtual environment
+python src/visualization/build_connection_plot.py
 ```
 
 ## Project Structure
 
 ```
-mcmaster-eeg-visualization/
+CAS741/
 ├── src/
 │   ├── input_format/      # Data loading and preprocessing
 │   │   ├── data_loader.py     # Functions for loading EEG data
