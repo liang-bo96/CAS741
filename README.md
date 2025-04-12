@@ -94,12 +94,7 @@ topo_plot = plot_topography(data)
 glass_brain = plot_glassbrain(data)
 ```
 
-## Testing
 
-Run the test suite:
-```bash
-python -m pytest
-```
 
 ## Contributing
 

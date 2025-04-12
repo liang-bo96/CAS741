@@ -7,7 +7,7 @@ from scipy import stats
 import mne
 from typing import Dict, Any
 
-from statistical_analyzer import compute_statistics
+from .statistical_analyzer import compute_statistics
 
 class TestDataProcessing(unittest.TestCase):
     """Test cases for data processing module."""
