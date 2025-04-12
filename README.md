@@ -26,21 +26,28 @@ cd CAS741
 ```bash
 ./install.sh
 ```
-
-3. Install additional required package:
-```bash
-pip install nilearn
-```
-
-4. Activate the virtual environment:
+3. Activate the virtual environment:
 ```bash
 source venv/bin/activate
 ```
 
-4. To automatically run the visualization function after activating the virtual environment, add the following to your shell's configuration file (e.g., ~/.bashrc, ~/.zshrc, etc.):
+4. Install additional required package:
+```bash
+pip install nilearn==0.11.0
+```
+
+
+
+5. To automatically run the visualization function after activating the virtual environment, add the following to your shell's configuration file (e.g., ~/.bashrc, ~/.zshrc, etc.):
 ```bash
 # Run EEG visualization after activating virtual environment
 python src/visualization/build_connection_plot.py
+```
+
+6. you can see the running result in terminal, just click the address, you will see the plotting result in browser
+```
+Starting server on port: 64406(a random port)
+Dash is running on http://127.0.0.1:64406/
 ```
 
 ## Project Structure
@@ -86,8 +93,6 @@ butterfly_plot = plot_butterfly(data)
 topo_plot = plot_topography(data)
 glass_brain = plot_glassbrain(data)
 ```
-### Building Connection
-visualization.build_connection_plot.main()
 
 ## Testing
 
