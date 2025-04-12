@@ -1,5 +1,7 @@
 # McMaster EEG Visualization Project
 
+[![Python Tests](https://github.com/liang-bo96/CAS741/actions/workflows/python-tests.yml/badge.svg)](https://github.com/liang-bo96/CAS741/actions/workflows/python-tests.yml)
+
 A Python package for visualizing and analyzing EEG data using modern visualization techniques.
 
 ## Features
@@ -94,7 +96,32 @@ topo_plot = plot_topography(data)
 glass_brain = plot_glassbrain(data)
 ```
 
+## Continuous Integration
 
+This project uses GitHub Actions for continuous integration. Every commit to the main or master branch, as well as every pull request, triggers the test suite to run automatically.
+
+### CI/CD Pipeline Features
+
+- Automatic test execution using pytest
+- Code coverage reporting
+- Integration with Codecov for coverage visualization
+- Testing across different Python versions
+
+### Status
+
+The current status of the CI pipeline is shown by the badge at the top of this README. Click on it to see detailed test reports.
+
+### Running Tests Manually
+
+To run the tests and generate coverage reports locally:
+
+```bash
+# Run all tests
+python -m pytest src
+
+# Run with coverage report
+python -m pytest src --cov=src
+```
 
 ## Contributing
 
