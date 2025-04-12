@@ -6,4 +6,4 @@ plotly>=5.18.0
 dash>=2.14.0
 pandas>=1.5.0
 pywavelets>=1.1.1 
-nilearn>=0.10.0
+nilearn>=0.11.0
