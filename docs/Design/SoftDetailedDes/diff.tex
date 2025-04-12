@@ -1,0 +1,1014 @@
+\documentclass[12pt, titlepage]{article}
+%DIF LATEXDIFF DIFFERENCE FILE
+
+
+
+\usepackage{amsmath, mathtools}
+
+\usepackage[round]{natbib}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{xr}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{xfrac}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[section]{placeins}
+\usepackage{caption}
+\usepackage{fullpage}
+
+\hypersetup{
+bookmarks=true,     % show bookmarks bar?
+colorlinks=true,       % false: boxed links; true: colored links
+linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+citecolor=blue,      % color of links to bibliography
+filecolor=magenta,  % color of file links
+urlcolor=cyan          % color of external links
+}
+
+\usepackage{array}
+
+\externaldocument{../../SRS/SRS}
+
+\input{../../Comments}
+\input{../../Common}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+
+\title{Module Interface Specification for \progname{}}
+
+\author{\authname}
+
+\date{\today}
+
+\maketitle
+
+\pagenumbering{roman}
+
+\section{Revision History}
+
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+March 17 & 1.0 & Initial Draft\\
+\DIFaddbegin \DIFadd{Apr 11 }& \DIFadd{1.1 }& \DIFadd{Modify}\\
+\DIFaddend \bottomrule
+\end{tabularx}
+
+~\newpage
+
+\section{Symbols, Abbreviations and Acronyms}
+
+See SRS Documentation at \href{https://github.com/liang-bo96/CAS741/blob/main/docs/SRS/SRS.pdf}{SRS}
+
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Introduction}
+
+This document specifies the interfaces for modules in the Live Neuro system, an interactive neural data visualization tool. It complements the
+\href{https://github.com/liang-bo96/CAS741/blob/main/docs/SRS/SRS.pdf}{SRS}
+and \href{https://github.com/liang-bo96/CAS741/blob/main/docs/Design/SoftArchitecture/MG.pdf}{MG}, with full implementation details available at
+\href{https://github.com/liang-bo96/CAS741}{ GitHub Repository}.
+
+\section{Notation}
+
+
+The following table summarizes the primitive data types used by \progname.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\noindent
+\begin{tabular}{l l p{7.5cm}}
+\toprule
+\textbf{Data Type} & \textbf{Notation} & \textbf{Description}\\
+\midrule
+String & $\mathbb{S}$ & a character string \\
+\DIFdelbegin \DIFdel{data type dictionary }\DIFdelend \DIFaddbegin \DIFadd{Dict}[\DIFadd{str, Any}]
+ \DIFaddend & $\mathbb{D}$ & a storage type for KV structures \\
+bool & $\mathbb{B}$ &  Boolean data type, which can hold one of two values: either true or false \\
+integer & $\mathbb{Z}$ & a number without a fractional component in (-$\infty$, $\infty$) \\
+natural number & $\mathbb{N}$ & a number without a fractional component in [1, $\infty$) \\
+real & $\mathbb{R}$ & any number in (-$\infty$, $\infty$)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The specification of \progname \ uses some derived data types: sequences, strings, and
+tuples. Sequences are lists filled with elements of the same data type. Strings
+are sequences of characters. Tuples contain a list of values, potentially of
+different types. In addition, \progname \ uses functions, which
+are defined by the data types of their inputs and outputs. Local functions are
+described by giving their type signature followed by their specification.
+
+\section{Module Decomposition}
+
+The following table is taken directly from the Module Guide document for this project.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{p{0.3\textwidth} p{0.5\textwidth}p{0.1\textwidth}}
+\toprule
+\textbf{Level 1} & \textbf{Level 2}& \textbf{Module ID}\\
+\midrule
+
+{Hardware-Hiding Module} &  Hardware-Hiding Module
+ & M1 \\
+\midrule
+
+\multirow{3}{0.3\textwidth}{Behaviour-Hiding Module}
+& Input Format Module & M2\\
+& Data Processing Module & M3\\
+& Visualization Module & M4\\
+
+\midrule
+
+\multirow{1}{0.3\textwidth}{Software Decision Module} & TRF Calculation Module & M5\\
+\bottomrule
+
+\end{tabular}
+\caption{Module Hierarchy}
+\label{TblMH}
+\end{table}
+
+
+\newpage
+~\newpage
+
+\section{MIS of Hardware-Hiding Module(M1)}
+
+\subsection{Module}
+M1: OS Abstraction Layer
+
+\subsection{Uses}
+
+\item Directly interacts with OS APIs (e.g., file I/O, hardware drivers).
+
+
+\subsection{Syntax}
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{4cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+readFile & $\mathbb{S}$ (file path) & Sequence & FileNotFoundError \\
+savePlot & plot data & file(.jpeg) & SavePlotError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{Environment Variables}
+
+File \DIFdelbegin \DIFdel{system, display hardware}\DIFdelend \DIFaddbegin \DIFadd{system-fs, display hardware-dh}\DIFaddend .
+\subsubsection{Assumptions}
+OS compatibility (Linux/Windows/macOS)
+
+\subsubsection{Access Routine Semantics}
+
+\begin{itemize}
+\item readFile(): Reads neural data from disk, returns a sequence of \DIFdelbegin \DIFdel{$\mathbb{R}$ numbers}\DIFdelend \DIFaddbegin \DIFadd{characters}\DIFaddend .
+
+
+\item savePlot(): Renders visualization output to screen or file \DIFaddbegin \DIFadd{under .}\DIFaddend .\DIFaddbegin \DIFadd{/visualization/output.
+}\DIFaddend
+
+
+\end{itemize}
+
+\DIFaddbegin \newpage
+
+
+\DIFaddend \section{MIS of Input Format Module}
+
+\subsection{Module}
+Multi-Format MEG/EEG Data Parser
+
+\subsection{Uses}
+
+\item M1 (readFile for raw data loading).
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+
+supported formats = [EDF, FIF\DIFdelbegin \DIFdel{, BrainVision}\DIFdelend ] (supported data formats).\\
+max channels = 256 (maximum allowed channels per dataset).
+
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+load edf() & $\mathbb{S}$ (EDF file path) & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$[]> & EDFFileError \\
+load fif() & $\mathbb{S}$ (FIF file path) & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$[]> & FIFFileError \\
+load brainvision() & $\mathbb{S}$ (.vhdr file path) & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$[]> & VHDRFileError \\
+\hline
+\end{tabular}
+\end{center}
+
+\DIFaddbegin \textbf{\DIFadd{Notation Explanation:}}
+
+
+\begin{itemize}
+
+
+ \item \texttt{\DIFadd{$\mathbb{R}$}[]} \DIFadd{– a one-dimensional array of real numbers (e.g., one EEG channel)
+}
+
+
+\end{itemize}
+
+
+
+\DIFaddend \subsection{Semantics}
+
+\subsubsection{State Variables}
+
+\begin{itemize}
+\item currentFormat: $\mathbb{S}$(last detected data format, e.g., \DIFdelbegin \DIFdel{"FIF")}\DIFdelend \DIFaddbegin \DIFadd{FIF(enum type))}\DIFaddend .
+
+
+
+\DIFaddbegin \begin{itemize}
+\DIFaddend \item
+\DIFdelbegin \DIFdel{metadataCache:
+$\mathbb{D}$(cached metadata from parsed files ).
+}\DIFdelend \DIFaddbegin \DIFadd{Stores the most recently detected data format.
+}\DIFaddend
+
+
+\DIFaddbegin \DIFadd{FormatType is an }\textbf{\DIFadd{enumerated type}} \DIFadd{with the following values:
+}
+
+
+
+
+\begin{itemize}
+\item
+\DIFadd{FIF
+}
+
+
+
+\item
+\DIFadd{EDF
+}
+
+
+
+\DIFaddend \end{itemize}
+
+
+
+
+\DIFaddbegin \end{itemize}
+
+
+
+
+
+\end{itemize}
+
+
+\DIFaddend \subsubsection{Environment Variables}
+
+
+
+
+\DIFdelbegin \subsubsection{\DIFdel{Access Routine Semantics}}
+%DIFAUXCMD
+\addtocounter{subsubsection}{-1}%DIFAUXCMD
+\DIFdelend \begin{itemize}
+\item
+\DIFdelbegin \DIFdel{load edf(}\DIFdelend \DIFaddbegin \textbf{\DIFadd{DATA PATH: String}}\textbf{}
+
+
+\DIFadd{Path to the directory where data files are stored.
+}
+
+
+\DIFadd{This value can be passed explicitly or set using an environment variable (e.g., LIVE NEURO DATA PATH}\DIFaddend )\DIFaddbegin \DIFadd{.
+}
+
+
+
+\end{itemize}
+
+
+
+
+\subsubsection{\DIFadd{Access Routine Semantics}}
+\begin{itemize}
+
+
+
+
+\subsubsection*{\textbf{\DIFadd{load\_edf(filepath: String)}}
+
+
+
+
+
+\begin{itemize}
+\item
+\textbf{\DIFadd{Purpose}}\DIFadd{: Loads data from an EDF (European Data Format) file and returns EEG time-series data.
+}
+
+
+
+\item
+\textbf{\DIFadd{Input}}\DIFadd{:
+}
+
+
+
+
+\begin{itemize}
+\item
+\DIFadd{filepath: Path to the .edf file as a string.
+}
+
+
+
+\end{itemize}
+
+
+
+
+\item
+\textbf{\DIFadd{Output}}\DIFaddend :
+\DIFdelbegin %DIFDELCMD < \subitem %%%
+\DIFdel{Output: }%DIFDELCMD < \subsubitem %%%
+\DIFdel{data: Time-series array of shape}\DIFdelend \DIFaddbegin
+
+
+
+
+\begin{itemize}
+\item
+\DIFadd{data: A data Dict}\DIFaddend [\DIFdelbegin \DIFdel{channels × samples}\DIFdelend \DIFaddbegin \DIFadd{String : array}\DIFaddend ]
+\DIFdelbegin \DIFdel{.
+    }%DIFDELCMD < \subitem %%%
+\DIFdel{Exception:
+}%DIFDELCMD < \subsubitem %%%
+\DIFdel{EDFHeaderError: Invalid EDF header structure.
+}%DIFDELCMD < \subitem %%%
+\DIFdel{Implementation: Uses eelbrain for EDF parsing.}\DIFdelend \DIFaddbegin
+
+
+
+\end{itemize}
+
+
+
+
+\DIFaddend \item
+\DIFdelbegin \DIFdel{load fif()
+:
+    }%DIFDELCMD < \subitem %%%
+\DIFdel{Output:
+        }%DIFDELCMD < \subsubitem %%%
+\DIFdel{data: }\DIFdelend \DIFaddbegin \textbf{\DIFadd{Exceptions}}\DIFadd{:
+}
+
+
+
+
+\begin{itemize}
+\item
+\DIFadd{EDFFileError: Raised if the EDF file is malformed or unsupported.
+}
+
+
+
+\end{itemize}
+
+
+
+
+\item
+\textbf{\DIFadd{Implementation Detail}}\DIFadd{: Uses mne.io.read\_raw\_edf()
+}
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\subsubsection*{\textbf{\DIFadd{load\_fif(filepath: String) → mne.io.Raw}}}
+
+
+
+
+
+\begin{itemize}
+\item
+\textbf{\DIFadd{Purpose}}\DIFadd{: Loads }\DIFaddend MEG/EEG sensor data \DIFaddbegin \DIFadd{from an MNE .fif file}\DIFaddend .
+\DIFdelbegin %DIFDELCMD < \subitem %%%
+\DIFdel{Exception:
+        }%DIFDELCMD < \subsubitem %%%
+\DIFdel{FIFFileError: FIF fileversion mismatch or missing data tags.
+}%DIFDELCMD < \subitem %%%
+\DIFdel{Implementation:
+Relies on mne-python library.
+  }\DIFdelend \DIFaddbegin
+
+
+
+\DIFaddend \item
+\DIFdelbegin \DIFdel{load brainvision(): }%DIFDELCMD < \subitem %%%
+\DIFdel{Output:
+        }%DIFDELCMD < \subsubitem %%%
+\DIFdel{data: EEG data segmented by markers
+    }%DIFDELCMD < \subitem %%%
+\DIFdel{Exception:
+        }%DIFDELCMD < \subsubitem %%%
+\DIFdel{VHDRParseError: Inconsistent header fields in.vhdr file .
+}\DIFdelend \DIFaddbegin \textbf{\DIFadd{Input}}\DIFadd{:
+}
+
+
+
+
+\begin{itemize}
+\item
+\DIFadd{filepath: Path to the .fif file as a string.
+}
+
+
+
+\DIFaddend \end{itemize}
+
+
+
+
+\DIFdelbegin \subsubsection{\DIFdel{Local Functions}}
+%DIFAUXCMD
+\addtocounter{subsubsection}{-1}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \item
+\textbf{\DIFadd{Output}}\DIFadd{:
+}
+
+
+
+
+\DIFaddend \begin{itemize}
+\item
+\DIFdelbegin \DIFdel{parse edf header(): Extracts EDF header fields and validates integrity.
+}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \DIFadd{data: A Raw object from the mne library.
+}
+
+
+
+\end{itemize}
+
+
+
+
+\DIFaddend \item
+\DIFdelbegin \DIFdel{align brainvision files():
+Synchronizes.vhdr, .vmrk, and.
+eeg data.}\DIFdelend \DIFaddbegin \textbf{\DIFadd{Exceptions}}\DIFadd{:
+}
+
+
+
+
+\begin{itemize}
+\item
+\DIFadd{FIFFileError: Raised for version mismatch, file corruption, or missing tags.
+}
+
+
+
+\DIFaddend \end{itemize}
+
+
+
+
+\DIFaddbegin \item
+\textbf{\DIFadd{Implementation Detail}}\DIFadd{: Calls mne.io.read\_raw\_fif().
+}
+
+
+
+\end{itemize}
+
+
+
+
+\end{itemize}
+
+
+
+
+\DIFaddend \section{MIS of Data Processing Module}
+
+\subsection{Module}
+
+Statistical Preprocessing and Validation\\
+Primary Function: Validates input data integrity and applies statistical preprocessing to neural signals.
+\subsection{Uses}
+
+\begin{itemize}
+\item M2(Input Format Module): Receives parsed raw data (e.g., MEG/EEG time-series).
+
+
+\item M5(TRF Calculation Module): Provides preprocessed data for dipole current computation.
+
+
+\end{itemize}
+
+
+
+\subsection{Syntax}
+
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+validate input & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$[]> & $\mathbb{B}$ & InvalidDataError \\
+compute statistics & $\mathbb{R}$[] & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$> & NaNError \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\DIFaddbegin \DIFadd{Although input validation could technically be performed immediately after data is loaded, we intentionally separate the }\textbf{\DIFadd{validation logic}} \DIFadd{into its own module for reasons of }\textbf{\DIFadd{modularity}}\DIFadd{, }\textbf{\DIFadd{reusability}}\DIFadd{, and }\textbf{\DIFadd{maintainability}}\DIFadd{.
+}
+
+
+\DIFadd{Specifically:
+}
+
+
+\begin{itemize}
+\item
+\textbf{\DIFadd{Validation is not only for file loading}}\DIFadd{: In many use cases, data may come from }\textbf{\DIFadd{non-file sources}}\DIFadd{, such as the }\textbf{\DIFadd{internet}}\DIFadd{, }\textbf{\DIFadd{APIs}}\DIFadd{, or }\textbf{\DIFadd{in-memory structures}}\DIFadd{. Centralizing validation ensures consistency across all entry points.
+}
+
+\item
+\textbf{\DIFadd{Validation rules evolve}}\DIFadd{: Scientific or clinical datasets may have }\textbf{\DIFadd{changing standards}} \DIFadd{or }\textbf{\DIFadd{conditional rules}}\DIFadd{. Keeping validation separate allows updates to these rules }\textbf{\DIFadd{without modifying the loader}} \DIFadd{or tightly coupled modules.
+}
+
+\item
+\textbf{\DIFadd{Cleaner architecture}}\DIFadd{: Following the }\textbf{\DIFadd{Single Responsibility Principle}}\DIFadd{, the file-loading module focuses purely on parsing and decoding data formats (e.g., EDF, FIF), while the validation module handles semantic correctness and integrity.
+}
+
+\item
+\textbf{\DIFadd{Testing and reuse}}\DIFadd{: A standalone validation module can be tested independently and reused in }\textbf{\DIFadd{preprocessing pipelines}}\DIFadd{, }\textbf{\DIFadd{live data streaming}}\DIFadd{, or even }\textbf{\DIFadd{user-uploaded data checks}}\DIFadd{.
+}
+
+\end{itemize}
+
+
+
+
+
+\DIFadd{Therefore, validation is performed in a }\textbf{\DIFadd{later module}}\DIFadd{, after the raw data is loaded, to support broader use cases and maintain long-term flexibility of the system.
+}
+
+\DIFaddend \subsection{Semantics}
+
+\subsubsection{State Variables}
+\DIFaddbegin
+
+
+
+\subsubsection*{\textbf{\DIFadd{validatedSignals}}}
+
+
+
+
+
+\DIFaddend \begin{itemize}
+\item
+\DIFdelbegin \DIFdel{validatedSignals: $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$}%DIFDELCMD < []%%%
+\DIFdel{>(cached validated data)
+.
+}\DIFdelend \DIFaddbegin \textbf{\DIFadd{Initial State}}\DIFadd{: None
+}\DIFaddend
+
+
+
+\item
+\DIFdelbegin \DIFdel{baselineStats:
+$\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$>(mean and std of reference signals).
+}\DIFdelend \DIFaddbegin \textbf{\DIFadd{Updated By}}\DIFadd{: validate\_input(data)
+}\DIFaddend
+
+
+
+\DIFaddbegin \item
+\textbf{\DIFadd{Transition}}\DIFadd{:
+}
+
+
+
+
+\begin{itemize}
+\item
+\DIFadd{If data passes validation, validatedSignals ← data
+}
+
+
+
+\item
+\DIFadd{If validation fails, validatedSignals remains unchanged
+}
+
+
+
+\DIFaddend \end{itemize}
+
+
+
+
+\DIFaddbegin \end{itemize}
+
+
+
+
+
+
+
+
+\subsubsection*{\textbf{\DIFadd{baselineStats}}}
+
+
+
+
+
+\begin{itemize}
+\item
+\textbf{\DIFadd{Initial State}}\DIFadd{: None
+}
+
+
+
+\item
+\textbf{\DIFadd{Updated By}}\DIFadd{: compute\_statistics(data)
+}
+
+
+
+\item
+\textbf{\DIFadd{Transition}}\DIFadd{:
+}
+
+
+
+
+\begin{itemize}
+\item
+\DIFadd{Computes mean and standard deviation from data
+}
+
+
+
+\item
+\DIFadd{Sets baselineStats ← }{\DIFadd{mean: μ, std: σ}}
+
+
+
+\item
+\DIFadd{If data contains invalid values (e.g., NaN), raises NaNError, and baselineStats remains unchanged
+}
+
+
+
+\end{itemize}
+
+
+
+
+\end{itemize}
+
+
+
+
+
+
+\DIFaddend \subsubsection{Access Routine Semantics}
+\begin{itemize}
+  \item validate input(raw data: $\mathbb{D}$):
+    \subitem Validation Steps:
+        \subsubitem Check if raw data[data] is of type $\mathbb{R}$[] and non-empty.
+        \subsubitem Ensure no NaN or infinite values in the signal.
+    \subitem Output:
+        \subsubitem Returns True if validation passes.
+    \subitem Exceptions:
+        \subsubitem InvalidDataError: Non-numeric values or mismatched channel counts.
+    \item compute statistics($\mathbb{R}$[]):
+    \subitem Output:
+        \subsubitem mean, std, min, max and other statistical information
+    \subitem Exceptions:
+        \subsubitem NaNError if signal contains invalid values after preprocessing
+\end{itemize}
+
+
+\section{MIS of Visualization Module}
+
+\subsection{Module}
+
+Interactive Neuro-imaging Module
+\subsection{Uses}
+
+M1 (writePlot), M3 (processed data), M5 (TRF results)
+
+
+\subsection{Syntax}
+
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+plot & List<$\mathbb{R}$[]> (dipole currents), List<$\mathbb{S}$>(plot type), $\mathbb{S}$(interaction type) & void & Plotting Error \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+
+
+
+\DIFaddbegin \subsection*{\textbf{\DIFadd{activePlots}}}
+
+
+
+
+
+\DIFaddend \begin{itemize}
+\item
+\DIFdelbegin \DIFdel{activePlots:
+$\mathbb{D}$<PlotID, PlotData> (metadata for open plots)
+.
+}\DIFdelend \DIFaddbegin \textbf{\DIFadd{Initial State}}\DIFadd{:
+An empty dictionary
+}\item
+\textbf{\DIFadd{Updated By}}\DIFadd{:
+}\DIFaddend
+
+
+
+
+\DIFaddbegin \begin{itemize}
+\DIFaddend \item
+\DIFdelbegin \DIFdel{linkedViews: Set<PlotID>(plots synchronized via linkPlots)
+.
+}\DIFdelend \DIFaddbegin \DIFadd{plot(data, type)
+}\DIFaddend
+
+
+
+\DIFdelbegin %DIFDELCMD < \end{itemize}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \item
+\DIFadd{update\_plot(plotID, newData)
+}\DIFaddend
+
+
+
+\DIFdelbegin \subsubsection{\DIFdel{Environment Variables}}
+%DIFAUXCMD
+\addtocounter{subsubsection}{-1}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \item
+\DIFadd{close\_plot(plotID)
+}\DIFaddend
+
+
+
+\DIFdelbegin \DIFdel{GPU acceleration (enabled via plotly.graph\_objects and nilearn.plotting)
+}\subsubsection{\DIFdel{Assumptions}}
+%DIFAUXCMD
+\addtocounter{subsubsection}{-1}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \end{itemize}
+\DIFaddend
+
+
+
+
+\DIFdelbegin \subsubsection{\DIFdel{Access Routine Semantics}}
+%DIFAUXCMD
+\addtocounter{subsubsection}{-1}%DIFAUXCMD
+%DIFDELCMD <
+
+%DIFDELCMD < \begin{itemize}
+%DIFDELCMD < %%%
+\DIFdelend \item
+\DIFdelbegin \DIFdel{renderCorticalMap()}\DIFdelend \DIFaddbegin \textbf{\DIFadd{Transition}}\DIFaddend :
+
+
+
+
+\begin{itemize}
+\item
+\DIFdelbegin \textit{\DIFdel{Output}}%DIFAUXCMD
+\DIFdel{:
+Generates brain activation map using plotly.graph\_objects and nilearn.plotting
+}\DIFdelend \DIFaddbegin \textbf{\DIFadd{When a new plot is created}} \DIFadd{via plot, a new entry is added:
+}\DIFaddend
+
+
+\DIFaddbegin \DIFadd{activePlots}[\DIFadd{plotID}] \DIFadd{← PlotData
+}
+
+
+
+\DIFaddend \item
+\DIFdelbegin \textit{\DIFdel{Exceptions}}%DIFAUXCMD
+\DIFdel{:
+Plotting Error
+}\DIFdelend \DIFaddbegin \textbf{\DIFadd{When a plot is updated}}\DIFadd{, the entry is modified:
+}\DIFaddend
+
+
+\DIFaddbegin \DIFadd{activePlots}[\DIFadd{plotID}] \DIFadd{← updatedPlotData
+}
+
+
+
+\item
+\textbf{\DIFadd{When a plot is closed}}\DIFadd{, the entry is removed:
+}
+
+
+\DIFadd{del activePlots}[\DIFadd{plotID}]
+
+
+
+\DIFaddend \end{itemize}
+
+
+
+
+\end{itemize}
+\DIFaddbegin \subsubsection{\DIFadd{Access Routine: Semantics}}
+\DIFaddend
+
+\DIFdelbegin \subsubsection{\DIFdel{Local Functions}}
+%DIFAUXCMD
+\addtocounter{subsubsection}{-1}%DIFAUXCMD
+%DIFDELCMD <
+
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \noindent\textbf{\DIFadd{Syntax:}}
+\DIFaddend \begin{itemize}
+  \item \DIFdelbegin \DIFdel{\_updateLinkedAxes(}\DIFdelend \DIFaddbegin \texttt{\DIFadd{plot(data: List<R}[]\DIFadd{>}}\DIFadd{, }\texttt{\DIFadd{plotTypes: List<String>}}\DIFadd{, }\texttt{\DIFadd{interactionMode: String}}\DIFaddend )
+\DIFdelbegin \DIFdel{: Propagates axis changes to all linked plots.
+  }\DIFdelend \DIFaddbegin \end{itemize}
+\DIFaddend
+
+\DIFaddbegin \noindent\textbf{\DIFadd{Valid }\texttt{\DIFadd{plotTypes}} \DIFadd{values (case-insensitive):}}
+\begin{itemize}
+  \item \texttt{\DIFadd{"time\_series"}} \DIFadd{– Renders time vs amplitude plots for each channel.
+  }\item \texttt{\DIFadd{"glass\_brain"}} \DIFadd{– Displays brain activity using anatomical projections (e.g., with }\texttt{\DIFadd{nilearn}}\DIFadd{).
+  }\item \texttt{\DIFadd{"topomap"}} \DIFadd{– Sensor-space topographic activation maps.
+}\DIFaddend \end{itemize}
+
+\DIFaddbegin \noindent\textbf{\DIFadd{Valid }\texttt{\DIFadd{interactionMode}} \DIFadd{values:}}
+\begin{itemize}
+  \item \texttt{\DIFadd{"zoom"}} \DIFadd{– Enables scroll and drag-based zooming.
+  }\item \texttt{\DIFadd{"drag"}} \DIFadd{– Enable click and drag plots
+  }\item \texttt{\DIFadd{"click"}} \DIFadd{– Enable click in data plots
+}\end{itemize}
+\DIFaddend \newpage
+
+\bibliographystyle {plainnat}
+\bibliography {../../../refs/References}
+
+\newpage
+
+\section{Appendix} \label{Appendix}
+
+\subsection{ Dependencies}
+\begin{itemize}
+\item Plotly: Used for interactive HTML5 visualizations (zooming, panning, tooltips).
+
+
+\item Nilearn: Handles neuroimaging-specific rendering (glass brain plots).
+
+
+\end{itemize}
+ \DIFdelbegin \subsection{\DIFdel{Performance Notes}}
+%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+%DIFDELCMD < \begin{itemize}
+\begin{itemize}%DIFAUXCMD
+%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{GPU acceleration is optional but recommended for real-time interaction with large datasets (>10⁶ samples).
+}%DIFDELCMD <
+
+
+\end{itemize}%DIFAUXCMD
+%DIFDELCMD < \end{itemize}
+%DIFDELCMD <
+
+%DIFDELCMD <  %%%
+\DIFdelend\end{document}

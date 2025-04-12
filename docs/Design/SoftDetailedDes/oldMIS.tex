@@ -54,7 +54,6 @@ urlcolor=cyan          % color of external links
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 March 17 & 1.0 & Initial Draft\\
-Apr 11 & 1.1 & Modify\\
 \bottomrule
 \end{tabularx}
 
@@ -93,8 +92,7 @@ The following table summarizes the primitive data types used by \progname.
 \textbf{Data Type} & \textbf{Notation} & \textbf{Description}\\
 \midrule
 String & $\mathbb{S}$ & a character string \\
-Dict[str, Any]
- & $\mathbb{D}$ & a storage type for KV structures \\
+data type dictionary & $\mathbb{D}$ & a storage type for KV structures \\
 bool & $\mathbb{B}$ &  Boolean data type, which can hold one of two values: either true or false \\
 integer & $\mathbb{Z}$ & a number without a fractional component in (-$\infty$, $\infty$) \\
 natural number & $\mathbb{N}$ & a number without a fractional component in [1, $\infty$) \\
@@ -174,22 +172,22 @@ savePlot & plot data & file(.jpeg) & SavePlotError \\
 
 \subsubsection{Environment Variables}
 
-File system-fs, display hardware-dh.
+File system, display hardware.
 \subsubsection{Assumptions}
 OS compatibility (Linux/Windows/macOS)
 
 \subsubsection{Access Routine Semantics}
 
 \begin{itemize}
-\item readFile(): Reads neural data from disk, returns a sequence of characters.
+\item readFile(): Reads neural data from disk, returns a sequence of $\mathbb{R}$ numbers.
 
 
-\item savePlot(): Renders visualization output to screen or file under ../visualization/output.
+\item savePlot(): Renders visualization output to screen or file.
 
 
 \end{itemize}
 
-\newpage
+
 
 
 \section{MIS of Input Format Module}
@@ -205,8 +203,8 @@ Multi-Format MEG/EEG Data Parser
 
 \subsubsection{Exported Constants}
 
-supported formats = [EDF, FIF] (supported data formats).\\
-max channels = 256 (maximum allowed channels per dataset).
+supported formats = [EDF, FIF, BrainVision](supported data formats).\\
+max channels = 256(maximum allowed channels per dataset).
 
 
 \subsubsection{Exported Access Programs}
@@ -223,58 +221,15 @@ load brainvision() & $\mathbb{S}$ (.vhdr file path) & $\mathbb{D}$<$\mathbb{S}$:
 \end{tabular}
 \end{center}
 
-\textbf{Notation Explanation:}
-
-
-\begin{itemize}
-
-
- \item \texttt{$\mathbb{R}$[]} – a one-dimensional array of real numbers (e.g., one EEG channel)
-
-
-\end{itemize}
-
-
-
 \subsection{Semantics}
 
 \subsubsection{State Variables}
 
 \begin{itemize}
-\item currentFormat: $\mathbb{S}$(last detected data format, e.g., FIF(enum type)).
+\item currentFormat: $\mathbb{S}$(last detected data format, e.g., "FIF").
 
 
-
-\begin{itemize}
-\item
-Stores the most recently detected data format.
-
-
-FormatType is an \textbf{enumerated type} with the following values:
-
-
-
-
-\begin{itemize}
-\item
-FIF
-
-
-
-\item
-EDF
-
-
-
-\end{itemize}
-
-
-
-
-\end{itemize}
-
-
-
+\item metadataCache: $\mathbb{D}$(cached metadata from parsed files).
 
 
 \end{itemize}
@@ -283,184 +238,33 @@ EDF
 \subsubsection{Environment Variables}
 
 
-
-
-\begin{itemize}
-\item
-\textbf{DATA PATH: String}\textbf{}
-
-
-Path to the directory where data files are stored.
-
-
-This value can be passed explicitly or set using an environment variable (e.g., LIVE NEURO DATA PATH).
-
-
-
-\end{itemize}
-
-
-
-
 \subsubsection{Access Routine Semantics}
 \begin{itemize}
+  \item load edf():
+    \subitem Output:
+        \subsubitem data: Time-series array of shape[channels × samples].
+    \subitem Exception:
+        \subsubitem EDFHeaderError: Invalid EDF header structure.
+    \subitem Implementation: Uses eelbrain for EDF parsing.
+  \item load fif():
+    \subitem Output:
+        \subsubitem data: MEG/EEG sensor data.
+    \subitem Exception:
+        \subsubitem FIFFileError: FIF file version mismatch or missing data tags.
+    \subitem Implementation: Relies on mne-python library.
+  \item load brainvision():
+    \subitem Output:
+        \subsubitem data: EEG data segmented by markers
+    \subitem Exception:
+        \subsubitem VHDRParseError: Inconsistent header fields in.vhdr file.
+\end{itemize}
 
 
-
-
-\subsubsection*{\textbf{load\_edf(filepath: String)}
-
-
-
-
-
+\subsubsection{Local Functions}
 \begin{itemize}
-\item
-\textbf{Purpose}: Loads data from an EDF (European Data Format) file and returns EEG time-series data.
-
-
-
-\item
-\textbf{Input}:
-
-
-
-
-\begin{itemize}
-\item
-filepath: Path to the .edf file as a string.
-
-
-
+\item parse edf header(): Extracts EDF header fields and validates integrity.\\
+\item align brainvision files(): Synchronizes.vhdr,.vmrk, and.eeg data.
 \end{itemize}
-
-
-
-
-\item
-\textbf{Output}:
-
-
-
-
-\begin{itemize}
-\item
-data: A data Dict[String : array]
-
-
-
-\end{itemize}
-
-
-
-
-\item
-\textbf{Exceptions}:
-
-
-
-
-\begin{itemize}
-\item
-EDFFileError: Raised if the EDF file is malformed or unsupported.
-
-
-
-\end{itemize}
-
-
-
-
-\item
-\textbf{Implementation Detail}: Uses mne.io.read\_raw\_edf()
-
-\end{itemize}
-
-
-
-
-
-
-
-
-
-\subsubsection*{\textbf{load\_fif(filepath: String) → mne.io.Raw}}
-
-
-
-
-
-\begin{itemize}
-\item
-\textbf{Purpose}: Loads MEG/EEG sensor data from an MNE .fif file.
-
-
-
-\item
-\textbf{Input}:
-
-
-
-
-\begin{itemize}
-\item
-filepath: Path to the .fif file as a string.
-
-
-
-\end{itemize}
-
-
-
-
-\item
-\textbf{Output}:
-
-
-
-
-\begin{itemize}
-\item
-data: A Raw object from the mne library.
-
-
-
-\end{itemize}
-
-
-
-
-\item
-\textbf{Exceptions}:
-
-
-
-
-\begin{itemize}
-\item
-FIFFileError: Raised for version mismatch, file corruption, or missing tags.
-
-
-
-\end{itemize}
-
-
-
-
-\item
-\textbf{Implementation Detail}: Calls mne.io.read\_raw\_fif().
-
-
-
-\end{itemize}
-
-
-
-
-\end{itemize}
-
-
-
 
 \section{MIS of Data Processing Module}
 
@@ -498,137 +302,17 @@ compute statistics & $\mathbb{R}$[] & $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$> &
 \end{tabular}
 \end{center}
 
-Although input validation could technically be performed immediately after data is loaded, we intentionally separate the \textbf{validation logic} into its own module for reasons of \textbf{modularity}, \textbf{reusability}, and \textbf{maintainability}.
-
-
-Specifically:
-
-
-\begin{itemize}
-\item
-\textbf{Validation is not only for file loading}: In many use cases, data may come from \textbf{non-file sources}, such as the \textbf{internet}, \textbf{APIs}, or \textbf{in-memory structures}. Centralizing validation ensures consistency across all entry points.
-
-\item
-\textbf{Validation rules evolve}: Scientific or clinical datasets may have \textbf{changing standards} or \textbf{conditional rules}. Keeping validation separate allows updates to these rules \textbf{without modifying the loader} or tightly coupled modules.
-
-\item
-\textbf{Cleaner architecture}: Following the \textbf{Single Responsibility Principle}, the file-loading module focuses purely on parsing and decoding data formats (e.g., EDF, FIF), while the validation module handles semantic correctness and integrity.
-
-\item
-\textbf{Testing and reuse}: A standalone validation module can be tested independently and reused in \textbf{preprocessing pipelines}, \textbf{live data streaming}, or even \textbf{user-uploaded data checks}.
-
-\end{itemize}
-
-
-
-
-
-Therefore, validation is performed in a \textbf{later module}, after the raw data is loaded, to support broader use cases and maintain long-term flexibility of the system.
-
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-
-
-
-\subsubsection*{\textbf{validatedSignals}}
-
-
-
-
-
 \begin{itemize}
-\item
-\textbf{Initial State}: None
+\item validatedSignals: $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$[]>(cached validated data).
 
 
-
-\item
-\textbf{Updated By}: validate\_input(data)
-
-
-
-\item
-\textbf{Transition}:
-
-
-
-
-\begin{itemize}
-\item
-If data passes validation, validatedSignals ← data
-
-
-
-\item
-If validation fails, validatedSignals remains unchanged
-
+\item baselineStats: $\mathbb{D}$<$\mathbb{S}$: $\mathbb{R}$>(mean and std of reference signals).
 
 
 \end{itemize}
-
-
-
-
-\end{itemize}
-
-
-
-
-
-
-
-
-\subsubsection*{\textbf{baselineStats}}
-
-
-
-
-
-\begin{itemize}
-\item
-\textbf{Initial State}: None
-
-
-
-\item
-\textbf{Updated By}: compute\_statistics(data)
-
-
-
-\item
-\textbf{Transition}:
-
-
-
-
-\begin{itemize}
-\item
-Computes mean and standard deviation from data
-
-
-
-\item
-Sets baselineStats ← {mean: μ, std: σ}
-
-
-
-\item
-If data contains invalid values (e.g., NaN), raises NaNError, and baselineStats remains unchanged
-
-
-
-\end{itemize}
-
-
-
-
-\end{itemize}
-
-
-
-
-
 
 \subsubsection{Access Routine Semantics}
 \begin{itemize}
@@ -678,103 +362,48 @@ plot & List<$\mathbb{R}$[]> (dipole currents), List<$\mathbb{S}$>(plot type), $\
 
 \subsubsection{State Variables}
 
-
-
-
-\subsection*{\textbf{activePlots}}
-
-
-
-
-
 \begin{itemize}
-\item
-\textbf{Initial State}:
-An empty dictionary
-\item
-\textbf{Updated By}:
+\item activePlots: $\mathbb{D}$<PlotID, PlotData> (metadata for open plots).
 
 
-
-
-\begin{itemize}
-\item
-plot(data, type)
-
-
-
-\item
-update\_plot(plotID, newData)
-
-
-
-\item
-close\_plot(plotID)
-
+\item linkedViews: Set<PlotID>(plots synchronized via linkPlots).
 
 
 \end{itemize}
 
 
+\subsubsection{Environment Variables}
+
+GPU acceleration (enabled via plotly.graph\_objects and nilearn.plotting)
+\subsubsection{Assumptions}
 
 
-\item
-\textbf{Transition}:
-
-
-
+\subsubsection{Access Routine Semantics}
 
 \begin{itemize}
-\item
-\textbf{When a new plot is created} via plot, a new entry is added:
+\item renderCorticalMap():
 
-
-activePlots[plotID] ← PlotData
-
-
-
-\item
-\textbf{When a plot is updated}, the entry is modified:
-
-
-activePlots[plotID] ← updatedPlotData
-
-
-
-\item
-\textbf{When a plot is closed}, the entry is removed:
-
-
-del activePlots[plotID]
-
-
-
-\end{itemize}
-
-
-
-
-\end{itemize}
-\subsubsection{Access Routine: Semantics}
-
-\noindent\textbf{Syntax:}
 \begin{itemize}
-  \item \texttt{plot(data: List<R[]>}, \texttt{plotTypes: List<String>}, \texttt{interactionMode: String})
+\item \textit{Output}: Generates brain activation map using plotly.graph\_objects and nilearn.plotting
+
+
+\item \textit{Exceptions}: Plotting Error
+
+
 \end{itemize}
 
-\noindent\textbf{Valid \texttt{plotTypes} values (case-insensitive):}
-\begin{itemize}
-  \item \texttt{"time\_series"} – Renders time vs amplitude plots for each channel.
-  \item \texttt{"glass\_brain"} – Displays brain activity using anatomical projections (e.g., with \texttt{nilearn}).
-  \item \texttt{"topomap"} – Sensor-space topographic activation maps.
 \end{itemize}
 
-\noindent\textbf{Valid \texttt{interactionMode} values:}
+
+
+\subsubsection{Local Functions}
+
 \begin{itemize}
-  \item \texttt{"zoom"} – Enables scroll and drag-based zooming.
-  \item \texttt{"drag"} – Enable click and drag plots
-  \item \texttt{"click"} – Enable click in data plots
+\item \_updateLinkedAxes(): Propagates axis changes to all linked plots.
+
+
 \end{itemize}
+
 \newpage
 
 \bibliographystyle {plainnat}
@@ -793,4 +422,11 @@ del activePlots[plotID]
 
 
 \end{itemize}
+\subsection{Performance Notes}
+\begin{itemize}
+\item GPU acceleration is optional but recommended for real-time interaction with large datasets (>10⁶ samples).
+
+
+\end{itemize}
+
 \end{document}
