@@ -270,30 +270,33 @@ class TestBrainViewerConnection(unittest.TestCase):
             "info": self.info,
             "times": self.times,
         }
-        
+
         mock_stat_img = MagicMock()
         mock_image.load_img.return_value = mock_stat_img
-        
+
         mock_brain_mask = MagicMock()
         mock_brain_mask.get_fdata.return_value = self.brain_data
         mock_image.resample_to_img.return_value = mock_brain_mask
 
         # Create instance
         viewer = BrainViewerConnection()
-        
-        # Mock the Dash app.run_server method
-        viewer.app.run_server = MagicMock()
-        
-        # Test run_server method
-        viewer.run_server(debug=False)
-        
-        # Verify run_server was called
-        viewer.app.run_server.assert_called_once()
-        
-        # Check arguments
-        args, kwargs = viewer.app.run_server.call_args
-        self.assertEqual(kwargs["debug"], False)
-        self.assertEqual(kwargs["port"], viewer.port)
+
+        # Mock the app.run method to prevent actual server start
+        with patch.object(viewer.app, 'run') as mock_run:
+            viewer.run_server(debug=False)
+            mock_run.assert_called_once_with(port=viewer.port, debug=False)
+
+            # Test retry logic by simulating a port conflict
+            mock_run.side_effect = [OSError("Port in use"), None]
+            mock_run.reset_mock()
+
+            # Create OSError to trigger retry logic
+            with patch('src.visualization.build_connection_plot.find_free_port', return_value=viewer.port + 1):
+                viewer.run_server(debug=True)
+
+                # Since we mocked find_free_port to return a different port,
+                # a second call should happen with the new port
+                self.assertEqual(mock_run.call_count, 2)
 
 
 if __name__ == "__main__":
