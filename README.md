@@ -79,22 +79,6 @@ CAS741/
 └── README.md           # This file
 ```
 
-## Usage Examples
-
-### Basic Visualization
-
-```python
-from src.visualization import plot_butterfly, plot_topography, plot_glassbrain
-from src.input_format import load_eeg_data
-
-# Load EEG data
-data = load_eeg_data('path_to_eeg_file')
-
-# Create visualizations
-butterfly_plot = plot_butterfly(data)
-topo_plot = plot_topography(data)
-glass_brain = plot_glassbrain(data)
-```
 
 ## Continuous Integration
 

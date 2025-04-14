@@ -7,7 +7,8 @@ from typing import Union, Tuple, Dict, Any
 from pathlib import Path
 from nilearn import datasets, image
 
-def load_eeg_data(file_path: Union[str, Path]) -> Dict[str, Any]:
+
+def load_data(file_path: Union[str, Path]) -> Dict[str, Any]:
     """Load EEG data from various file formats.
     
     Parameters
@@ -33,7 +34,7 @@ def load_eeg_data(file_path: Union[str, Path]) -> Dict[str, Any]:
     file_path = Path(file_path)
     if not file_path.exists():
         raise FileNotFoundError(f"File not found: {file_path}")
-        
+
     # Load data based on file extension
     if file_path.suffix.lower() in ['.fif', '.fif.gz']:
         raw = mne.io.read_raw_fif(file_path, preload=True)
@@ -53,7 +54,7 @@ def load_eeg_data(file_path: Union[str, Path]) -> Dict[str, Any]:
         raw = mne.io.RawArray(df.values.T, info)
     else:
         raise ValueError(f"Unsupported file format: {file_path.suffix}")
-    
+
     return {
         'data': reconstruct_brain_activity(raw.get_data()),
         'sfreq': raw.info['sfreq'],
@@ -62,47 +63,6 @@ def load_eeg_data(file_path: Union[str, Path]) -> Dict[str, Any]:
         'info': raw.info
     }
 
-def validate_data_format(data: Dict[str, Any]) -> Tuple[bool, str]:
-    """Validate the format of loaded EEG data.
-    
-    Parameters
-    ----------
-    data : Dict[str, Any]
-        Dictionary containing EEG data and metadata as returned by load_eeg_data()
-        
-    Returns
-    -------
-    Tuple[bool, str]
-        (is_valid, message) where is_valid is True if the data format is valid,
-        and message contains any error description if invalid
-    """
-    required_keys = ['data', 'sfreq', 'ch_names', 'ch_types', 'info']
-    
-    # Check for required keys
-    for key in required_keys:
-        if key not in data:
-            return False, f"Missing required key: {key}"
-    
-    # Validate data array
-    if not isinstance(data['data'], np.ndarray):
-        return False, "Data must be a numpy array"
-    
-    if len(data['data'].shape) != 2:
-        return False, f"Data must be 2D (channels, times), got shape {data['data'].shape}"
-    
-    # Validate channel information
-    n_channels = data['data'].shape[0]
-    if len(data['ch_names']) != n_channels:
-        return False, f"Number of channel names ({len(data['ch_names'])}) does not match data shape ({n_channels})"
-    
-    if len(data['ch_types']) != n_channels:
-        return False, f"Number of channel types ({len(data['ch_types'])}) does not match data shape ({n_channels})"
-    
-    # Validate sampling frequency
-    if not isinstance(data['sfreq'], (int, float)) or data['sfreq'] <= 0:
-        return False, f"Invalid sampling frequency: {data['sfreq']}"
-    
-    return True, "Data format is valid"
 
 def reconstruct_brain_activity(eeg_data: np.ndarray) -> np.ndarray:
     """Reconstruct 4D brain activity data from EEG measurements.
@@ -120,7 +80,7 @@ def reconstruct_brain_activity(eeg_data: np.ndarray) -> np.ndarray:
     """
     target_shape = (53, 63, 46)
     n_timepoints = eeg_data.shape[1]  # Get number of timepoints from input data
-    
+
     # Get brain mask/outline
     brain_mask = image.load_img(datasets.load_mni152_brain_mask())
     motor_images = datasets.load_sample_motor_activation_image()
@@ -132,58 +92,57 @@ def reconstruct_brain_activity(eeg_data: np.ndarray) -> np.ndarray:
         interpolation='nearest'
     )
     brain_outline = brain_mask.get_fdata()
-    
+
     # Initialize output array
     activation_data = np.zeros((*target_shape, n_timepoints))
-    
+
     # Get dimensions
     x_size, y_size, z_size = target_shape
-    
+
     # Create coordinate arrays
     x = np.arange(x_size)
     y = np.arange(y_size)
     z = np.arange(z_size)
-    
+
     # Create meshgrid for distance calculation
     X, Y, Z = np.meshgrid(x, y, z, indexing='ij')
-    
+
     for t in range(n_timepoints):
         current_activation = np.zeros(target_shape)
-        
+
         # 1. Create moving activation center
-        center_x = int(x_size/2 + 20 * np.sin(2 * np.pi * t/n_timepoints))
-        center_y = int(y_size/2 + 20 * np.cos(2 * np.pi * t/n_timepoints))
-        center_z = z_size//2
-        
+        center_x = int(x_size / 2 + 20 * np.sin(2 * np.pi * t / n_timepoints))
+        center_y = int(y_size / 2 + 20 * np.cos(2 * np.pi * t / n_timepoints))
+        center_z = z_size // 2
+
         # Calculate distance from center
         dist = np.sqrt(
-            (X - center_x)**2 + 
-            (Y - center_y)**2 + 
-            (Z - center_z)**2
+            (X - center_x) ** 2 +
+            (Y - center_y) ** 2 +
+            (Z - center_z) ** 2
         )
-        
+
         # Create gaussian activation pattern
-        gaussian = 2 * np.exp(-dist/20)
-        
+        gaussian = 2 * np.exp(-dist / 20)
+
         # Add varying intensity
-        intensity = 1 + 0.5 * np.sin(2 * np.pi * t/n_timepoints)
+        intensity = 1 + 0.5 * np.sin(2 * np.pi * t / n_timepoints)
         current_activation += gaussian * intensity
-        
+
         # 2. Add simple wave patterns
-        X_wave = np.sin(2 * np.pi * (X/x_size + t/n_timepoints))
-        Y_wave = np.sin(2 * np.pi * (Y/y_size + t/n_timepoints))
+        X_wave = np.sin(2 * np.pi * (X / x_size + t / n_timepoints))
+        Y_wave = np.sin(2 * np.pi * (Y / y_size + t / n_timepoints))
         current_activation += 0.5 * (X_wave + Y_wave)
-        
+
         # Apply brain mask
         current_activation *= (brain_outline > 0.5)
-        
+
         # Store in 4D array
         activation_data[..., t] = current_activation
-    
+
     # Normalize activation data
     activation_data = (activation_data - np.min(activation_data)) / \
                       (np.max(activation_data) - np.min(activation_data))
     activation_data = 2 * (activation_data - 0.5)  # Scale to [-1, 1]
-    
+
     return activation_data
-        

@@ -824,7 +824,8 @@ M1 (writePlot), M3 (processed data), M5 (TRF results)
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-plot & List<$\mathbb{R}$[]> (dipole currents), List<$\mathbb{S}$>(plot type), $\mathbb{S}$(interaction type) & void & Plotting Error \\
+plot & \DIFdelbegin \DIFdel{List}\DIFdelend \DIFaddbegin \DIFadd{Dict}\DIFaddend <\DIFdelbegin \DIFdel{$\mathbb{R}$}%DIFDELCMD < []%%%
+\DIFdel{> (dipole currents),List<}\DIFdelend \DIFaddbegin \DIFadd{$\mathbb{S}$,}\DIFaddend $\mathbb{S}$> (plot type\DIFaddbegin \DIFadd{, plot data path}\DIFaddend ), $\mathbb{S}$(interaction type) & void & Plotting Error \\
 
 \hline
 \end{tabular}
@@ -959,7 +960,7 @@ Plotting Error
 %DIFDELCMD < %%%
 \DIFdelend \DIFaddbegin \noindent\textbf{\DIFadd{Syntax:}}
 \DIFaddend \begin{itemize}
-  \item \DIFdelbegin \DIFdel{\_updateLinkedAxes(}\DIFdelend \DIFaddbegin \texttt{\DIFadd{plot(data: List<R}[]\DIFadd{>}}\DIFadd{, }\texttt{\DIFadd{plotTypes: List<String>}}\DIFadd{, }\texttt{\DIFadd{interactionMode: String}}\DIFaddend )
+  \item \DIFdelbegin \DIFdel{\_updateLinkedAxes(}\DIFdelend \DIFaddbegin \texttt{\DIFadd{plot(data: Dict<R,R>}}\DIFadd{,  }\texttt{\DIFadd{interactionMode: String}}\DIFaddend )
 \DIFdelbegin \DIFdel{: Propagates axis changes to all linked plots.
   }\DIFdelend \DIFaddbegin \end{itemize}
 \DIFaddend

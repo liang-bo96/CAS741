@@ -16,7 +16,7 @@ import sys
 project_root = Path(__file__).parent.parent.parent
 sys.path.append(str(project_root))
 
-from src.input_format.data_loader import load_eeg_data
+from src.input_format.data_loader import load_data
 from src.visualization.glassbrain_plotter import GlassBrainPlotter
 from src.visualization.time_series_plotter import TimeSeriesPlotter
 
@@ -31,12 +31,14 @@ def find_free_port() -> int:
 
 
 class BrainViewerConnection:
-    def __init__(self):
+    def __init__(self, brain_type_data=dict, interaction_type=list):
         self.app = Dash(__name__)
         self.time_data = None
         self.brain_data = None
         self.current_time = 0
         self.selected_channel = None
+        self.brain_type_data = brain_type_data
+        self.interaction_type = interaction_type
 
         # Load sample data
         self.load_sample_data()
@@ -80,7 +82,7 @@ class BrainViewerConnection:
         # Load EEG data
         current_dir = Path(__file__).parent
         sample_data_path = current_dir / "sample_data.fif"
-        eeg_data = load_eeg_data(sample_data_path)
+        eeg_data = load_data(sample_data_path)
 
         # Store the EEG data
         self.activation_data = eeg_data["data"]
@@ -452,7 +454,9 @@ class BrainViewerConnection:
 
 # Example usage
 if __name__ == "__main__":
-    viewer = BrainViewerConnection()
+    brain_type_data = {"GlassBrainPlotter":"sample_data.fif","TimeSeriesPlotter":"sample_data.fif"}
+    interaction_type = ["click","dragging","zooming"]
+    viewer = BrainViewerConnection(brain_type_data,interaction_type)
 
     viewer.run_server()
 

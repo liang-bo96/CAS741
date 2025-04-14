@@ -7,6 +7,6 @@ This module handles the core data processing functionality for EEG analysis, inc
 - Data transformation
 """
 
-from .statistical_analyzer import compute_statistics
+from .data_processing import compute_statistics, validate_input
 
-__all__ = ["compute_statistics"]
+__all__ = ["compute_statistics","validate_input",]

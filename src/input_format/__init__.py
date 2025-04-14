@@ -6,13 +6,12 @@ This module handles the input format processing for EEG data, including:
 - Data preprocessing
 """
 
-from .data_loader import load_eeg_data, validate_data_format
+from .data_loader import load_data
 from .format_converter import convert_to_dataframe, convert_to_mne
 from .preprocessor import preprocess_data
 
 __all__ = [
-    "load_eeg_data",
-    "validate_data_format",
+    "load_data",
     "convert_to_dataframe",
     "convert_to_mne",
     "preprocess_data",

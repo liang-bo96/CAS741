@@ -9,7 +9,7 @@ from pathlib import Path
 import tempfile
 import shutil
 
-from .data_loader import load_eeg_data, validate_data_format
+from .data_loader import load_data
 from .format_converter import convert_to_dataframe, convert_to_mne
 from .preprocessor import preprocess_data
 
@@ -60,7 +60,7 @@ class TestInputFormat(unittest.TestCase):
     
     def test_load_eeg_data_fif(self):
         """Test loading EEG data from FIF file."""
-        data = load_eeg_data(self.fif_path)
+        data = load_data(self.fif_path)
         
         # Check data structure
         self.assertIn('data', data)
@@ -81,7 +81,7 @@ class TestInputFormat(unittest.TestCase):
     
     def test_load_eeg_data_csv(self):
         """Test loading EEG data from CSV file."""
-        data = load_eeg_data(self.csv_path)
+        data = load_data(self.csv_path)
         
         # Check data structure
         self.assertIn('data', data)
@@ -104,43 +104,8 @@ class TestInputFormat(unittest.TestCase):
             f.write('invalid data')
         
         with self.assertRaises(ValueError):
-            load_eeg_data(invalid_path)
-    
-    def test_validate_data_format(self):
-        """Test data format validation."""
-        # Create valid data dictionary with 4D brain data
-        valid_data = {
-            'data': np.random.randn(53, 63, 46, 1000),  # Using 4D brain activity shape
-            'sfreq': self.info['sfreq'],
-            'ch_names': self.ch_names,
-            'ch_types': self.ch_types,
-            'info': self.info
-        }
-        
-        # For the data validation test, we need to use 2D format temporarily
-        # since that's what the validate_data_format function expects
-        test_data_2d = self.test_data.copy()
-        
-        # Test valid data with 2D format for validation function
-        valid_data_2d = valid_data.copy()
-        valid_data_2d['data'] = test_data_2d
-        is_valid, message = validate_data_format(valid_data_2d)
-        self.assertTrue(is_valid)
-        self.assertEqual(message, "Data format is valid")
-        
-        # Test missing key
-        invalid_data = valid_data_2d.copy()
-        del invalid_data['data']
-        is_valid, message = validate_data_format(invalid_data)
-        self.assertFalse(is_valid)
-        self.assertEqual(message, "Missing required key: data")
-        
-        # Test invalid data shape - using 3D instead of 2D
-        invalid_data = valid_data_2d.copy()
-        invalid_data['data'] = np.random.randn(3, 4, 5)  # 3D array
-        is_valid, message = validate_data_format(invalid_data)
-        self.assertFalse(is_valid)
-        self.assertIn("Data must be 2D", message)
+            load_data(invalid_path)
+
     
     def test_convert_to_dataframe(self):
         """Test conversion to DataFrame format."""

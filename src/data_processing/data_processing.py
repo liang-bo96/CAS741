@@ -128,4 +128,47 @@ def compute_statistics(
                 'significant': p_values < alpha
             }
     
-    return result 
+    return result
+
+
+def validate_input(data: Dict[str, Any]) -> Tuple[bool, str]:
+    """Validate the format of loaded EEG data.
+
+    Parameters
+    ----------
+    data : Dict[str, Any]
+        Dictionary containing EEG data and metadata as returned by load_eeg_data()
+
+    Returns
+    -------
+    Tuple[bool, str]
+        (is_valid, message) where is_valid is True if the data format is valid,
+        and message contains any error description if invalid
+    """
+    required_keys = ['data', 'sfreq', 'ch_names', 'ch_types', 'info']
+
+    # Check for required keys
+    for key in required_keys:
+        if key not in data:
+            return False, f"Missing required key: {key}"
+
+    # Validate data array
+    if not isinstance(data['data'], np.ndarray):
+        return False, "Data must be a numpy array"
+
+    if len(data['data'].shape) != 2:
+        return False, f"Data must be 2D (channels, times), got shape {data['data'].shape}"
+
+    # Validate channel information
+    n_channels = data['data'].shape[0]
+    if len(data['ch_names']) != n_channels:
+        return False, f"Number of channel names ({len(data['ch_names'])}) does not match data shape ({n_channels})"
+
+    if len(data['ch_types']) != n_channels:
+        return False, f"Number of channel types ({len(data['ch_types'])}) does not match data shape ({n_channels})"
+
+    # Validate sampling frequency
+    if not isinstance(data['sfreq'], (int, float)) or data['sfreq'] <= 0:
+        return False, f"Invalid sampling frequency: {data['sfreq']}"
+
+    return True, "Data format is valid"

@@ -7,7 +7,7 @@ from scipy import stats
 import mne
 from typing import Dict, Any
 
-from .statistical_analyzer import compute_statistics
+from .data_processing import compute_statistics, validate_input
 
 class TestDataProcessing(unittest.TestCase):
     """Test cases for data processing module."""
@@ -68,7 +68,41 @@ class TestDataProcessing(unittest.TestCase):
         self.assertIn('mean', window_stats['descriptive'])
         self.assertIn('skewness', window_stats['descriptive'])
         self.assertIn('kurtosis', window_stats['descriptive'])
-        
 
+    def test_validate_data_format(self):
+        """Test data format validation."""
+        # Create valid data dictionary with 4D brain data
+        valid_data = {
+            'data': np.random.randn(53, 63, 46, 1000),  # Using 4D brain activity shape
+            'sfreq': self.info['sfreq'],
+            'ch_names': self.ch_names,
+            'ch_types': self.ch_types,
+            'info': self.info
+        }
+
+        # For the data validation test, we need to use 2D format temporarily
+        # since that's what the validate_data_format function expects
+        test_data_2d = self.test_data.copy()
+
+        # Test valid data with 2D format for validation function
+        valid_data_2d = valid_data.copy()
+        valid_data_2d['data'] = test_data_2d
+        is_valid, message = validate_input(valid_data_2d)
+        self.assertTrue(is_valid)
+        self.assertEqual(message, "Data format is valid")
+
+        # Test missing key
+        invalid_data = valid_data_2d.copy()
+        del invalid_data['data']
+        is_valid, message = validate_input(invalid_data)
+        self.assertFalse(is_valid)
+        self.assertEqual(message, "Missing required key: data")
+
+        # Test invalid data shape - using 3D instead of 2D
+        invalid_data = valid_data_2d.copy()
+        invalid_data['data'] = np.random.randn(3, 4, 5)  # 3D array
+        is_valid, message = validate_input(invalid_data)
+        self.assertFalse(is_valid)
+        self.assertIn("Data must be 2D", message)
 if __name__ == '__main__':
     unittest.main() 

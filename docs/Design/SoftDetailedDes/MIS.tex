@@ -668,7 +668,7 @@ M1 (writePlot), M3 (processed data), M5 (TRF results)
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-plot & List<$\mathbb{R}$[]> (dipole currents), List<$\mathbb{S}$>(plot type), $\mathbb{S}$(interaction type) & void & Plotting Error \\
+plot & Dict<$\mathbb{S}$,$\mathbb{S}$> (plot type, plot data path), $\mathbb{S}$(interaction type) & void & Plotting Error \\
 
 \hline
 \end{tabular}
@@ -759,7 +759,7 @@ del activePlots[plotID]
 
 \noindent\textbf{Syntax:}
 \begin{itemize}
-  \item \texttt{plot(data: List<R[]>}, \texttt{plotTypes: List<String>}, \texttt{interactionMode: String})
+  \item \texttt{plot(data: Dict<R,R>},  \texttt{interactionMode: String})
 \end{itemize}
 
 \noindent\textbf{Valid \texttt{plotTypes} values (case-insensitive):}
